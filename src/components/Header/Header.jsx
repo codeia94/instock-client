@@ -1,5 +1,5 @@
 import './Header.scss';
-import { ReactComponent as InStockLogo } from '../../assets/instock-logo.svg';
+import { ReactComponent as InStockLogo } from '../../assets//logo/instock-logo.svg';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
