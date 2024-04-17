@@ -19,7 +19,7 @@ function App() {
         <Route path='/warehouses/:warehouseId'></Route>
 
         {/* Warehouse edit form */}
-        <Route path='/:warehouseId/:warehouseId/edit'></Route>
+        <Route path='/warehouses/:warehouseId/edit'></Route>
 
         {/* Inventory list */}
         <Route path='/inventory'></Route>
