@@ -1,0 +1,84 @@
+@use "variables" as *;
+  
+@mixin typography($size, $line-height, $weight: $font-weight-regular) {
+    font-size: $size;
+    line-height: $line-height;
+    font-weight: $weight;
+    font-family: $font-primary;
+}
+  
+  
+@mixin tablet {
+    @media (min-width: $tablet-width) {
+      @content;
+    }
+}
+  
+@mixin desktop {
+    @media (min-width: $desktop-width) {
+      @content;
+    }
+}
+  
+
+@mixin h1-style {
+    @include typography(28px, 36px, $font-weight-semibold); 
+  
+    @include tablet {
+      @include typography(32px, 40px, $font-weight-semibold); 
+    }
+}
+
+
+@mixin h2-style {
+    @include typography(20px, 28px, $font-weight-semibold); 
+  
+    @include tablet {
+      @include typography(24px, 32px, $font-weight-semibold); 
+    }
+}
+  
+  
+@mixin h3-style {
+    @include typography(13px, 20px, $font-weight-regular); 
+  
+    @include tablet {
+      @include typography(14px, 22px, $font-weight-regular); 
+    }
+}
+  
+
+@mixin h4-style {
+    @include typography(11px, 16px, $font-weight-regular); 
+  
+    @include tablet {
+      @include typography(12px, 18px, $font-weight-regular); 
+    }
+}
+  
+
+@mixin p1-style {
+    @include typography(15px, 26px, $font-weight-regular); 
+  
+    @include tablet {
+      @include typography(16px, 28px, $font-weight-regular); 
+    }
+}
+  
+
+@mixin p2-style {
+    @include typography(13px, 20px, $font-weight-regular); 
+  
+    @include tablet {
+      @include typography(14px, 22px, $font-weight-regular);
+    }
+}
+  
+
+@mixin p3-style {
+    @include typography(11px, 16px, $font-weight-regular);
+  
+    @include tablet {
+      @include typography(12px, 18px, $font-weight-regular); 
+    }
+}

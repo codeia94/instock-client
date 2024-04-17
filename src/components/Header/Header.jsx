@@ -14,16 +14,18 @@ export default function Header() {
 
     return (
         <header className='header'>
-            <InStockLogo className='header__logo'/>
-            <div className='header__tabs'>
-                <Link
-                    to='/warehouses'
-                    className={url === '/warehouses' ? 'header__button header__button--active' : 'header__button'}
-                    >Warehouses</Link>
-                <Link
-                    to='/inventory'
-                    className={url === '/inventory' ? 'header__button header__button--active' : 'header__button'}
-                >Inventory</Link>
+            <div className='header__content'>
+                <InStockLogo className='header__logo'/>
+                <div className='header__tabs'>
+                    <Link
+                        to='/warehouses'
+                        className={url === '/warehouses' ? 'header__button header__button--active' : 'header__button'}
+                        >Warehouses</Link>
+                    <Link
+                        to='/inventory'
+                        className={url === '/inventory' ? 'header__button header__button--active' : 'header__button'}
+                    >Inventory</Link>
+                </div>
             </div>
         </header>
     )
