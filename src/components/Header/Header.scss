@@ -1,0 +1,43 @@
+.header {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    height: 200px;
+    padding: 2rem 1rem;
+    background-color: #232940;
+    
+    &__logo {
+        margin-bottom: 1rem;
+    }
+
+    &__tabs {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__button {
+        all: unset;
+        text-decoration: none;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        cursor: pointer;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+        
+        &--active {
+            background-color: #13182C;
+            columns: white;
+            text-decoration: none;
+        }
+
+    }
+}
