@@ -1,5 +1,6 @@
 @use '../../styles/partials/mixins' as *;
 @use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
 
 .header {
     box-sizing: border-box;
@@ -30,7 +31,7 @@
 
         @include desktop {
             max-width: 1020px;
-            margin: 0;
+            margin: 1.5rem 0;
         }
     }
 
@@ -54,21 +55,27 @@
         all: unset;
         text-decoration: none;
         width: 40%;
+        color: $cloud;
         text-align: center;
-        color: white;
         padding: 0.5rem 1rem;
         border-radius: 25px;
         cursor: pointer;
+        @include p2-style;
+        font-weight: $font-weight-semibold;
         
         @include tablet {
             width: unset;
-        }
+            font-weight: $font-weight-semibold;
 
+        }
+        
         &:hover {
             text-decoration: underline;
+            font-weight: $font-weight-semibold;
         }
         
         &--active {
+            color: white;
             background-color: $instock-black;
             // color: white;
             text-decoration: none;
