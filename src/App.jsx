@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
+import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
         <Route path='/'></Route>
         
         {/* Warehouse list */}
-        <Route path='/warehouses'></Route>
+        <Route path='/warehouses' element={<WarehousesPage />}></Route>
 
         {/* Warehouse add form */}
         <Route path='/warehouses/add'></Route>
