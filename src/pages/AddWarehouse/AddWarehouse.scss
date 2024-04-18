@@ -1,0 +1,135 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+
+.add-warehouse {
+    display: flex;
+    flex-direction: column;
+
+    &__heading-container {
+        border-bottom: 0.0625rem solid $cloud;
+        display: flex;
+        justify-content: left;
+        margin-top: 0;
+        background-color: $white;
+    }
+
+    &__heading {
+        color: $instock-black;
+        @include h1-style;
+
+    }
+
+    &__backimg {
+        margin-left: 1.5rem;
+        margin-top: 1.5rem;
+        margin-right: 1rem;
+
+        @include tablet {
+            margin-top: 2rem;
+        }
+    }
+}
+
+.form-container__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    &__h2 {
+        color: $instock-black;
+        @include h2-style;
+
+    }
+
+    &__div1 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        border-bottom: 0.0625rem solid $cloud;
+
+        @include tablet {
+            border-bottom: none;
+            border-right: 0.0625rem solid $cloud;
+        }
+    }
+
+    &__div2 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    &__label {
+        color: $instock-black;
+        @include h3-style;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+
+    &__input {
+        height: 2.25rem;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.5rem 1rem;
+        border: 0.0625rem solid $cloud;
+        border-radius: 1.25rem;
+        margin-bottom: 0.5rem;
+        position: relative;
+
+        @include tablet {
+            height: 2.375rem;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $slate;
+        }
+
+        &--error {
+            border-color: $red;
+        }
+
+        &--active {
+            border-color: $slate;
+        }
+    }
+
+}
+
+.form-container {
+    &__error--container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-top: 0;
+    }
+
+    &__error {
+        @include p3-style;
+        color: $red;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
+
+    &__error--img {
+        height: 1rem;
+        width: 1rem;
+    }
+
+}
+
+
+.button-container {
+    background-color: $light-grey;
+}

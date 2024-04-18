@@ -1,6 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import './AddWarehouse.scss';
+import back from "../../assets/icons/arrow_back.svg";
+import info from "../../assets/icons/error-24px.svg";
+import { Link } from "react-router-dom";
 
 function FormWarehouse(){
     const [warehouse, setWarehouse] = useState("");
@@ -150,10 +153,15 @@ function FormWarehouse(){
 
     return (
     <div className="add-warehouse">
-        <h1 className="add-warehouse__heading">Add New Warehouse</h1>
-        <form onSubmit={handleSubmit} className="form-container">
+         <div className="add-warehouse__heading-container">
+                      <Link to='/warehouses'>
+                                <img src={back} className="add-warehouse__backimg" alt="Go back"/>
+                      </Link>
+                      <h1 className="add-warehouse__heading">Add New Warehouse</h1>
+        </div>
+        <form onSubmit={handleSubmit} className="form-container--wrapper">
             <div className="form-container">
-                <div>
+                <div className="form-container__div1">
                     <h2 className="form-container__h2">Warehouse Details</h2>
                     
                     <label className="form-container__label">Warehouse Name </label>
@@ -168,10 +176,13 @@ function FormWarehouse(){
                     error && !warehouse ? "form-container__input--error" : ""
                     } ${activeInput === "warehouse" ? "form-container__input--active" : ""}`}
                     />
-                    {error && !warehouse && (
-                            <p className="form-container__error">Warehouse name is required</p>
+                    <div className="form-container__error--container">
+                      
+                    {error && !warehouse && (   
+                            <p className="form-container__error">
+                              <img className="form-container__error--img" src={info}></img>Warehouse name is required</p>
                         )}
-         
+                    </div>
                     
                     <label className="form-container__label">Street Address</label>
                     <input
@@ -185,10 +196,12 @@ function FormWarehouse(){
                         error && !address ? "form-container__input--error" : ""
                         } ${activeInput === "address" ? "form-container__input--active" : ""}`}
                     />
+                    <div className="form-container__error--container">
                     {error && !address && (
-                            <p className="form-container__error">Address is required</p>
+                            <p className="form-container__error">
+                              <img className="form-container__error--img" src={info}></img>Address is required</p>
                         )}
-
+                    </div>
         
                     <label className="form-container__label">City </label>
                     <input
@@ -202,9 +215,12 @@ function FormWarehouse(){
                             error && !city ? "form-container__input--error" : ""
                              } ${activeInput === "city" ? "form-container__input--active" : ""}`}
                     />
+                    <div className="form-container__error--container">
                     {error && !city && (
-                            <p className="form-container__error">City is required</p>
+                            <p className="form-container__error">
+                              <img className="form-container__error--img" src={info}></img>City is required</p>
                         )}
+                    </div>
 
                     <label className="form-container__label">Country</label>
                         <input
@@ -218,12 +234,15 @@ function FormWarehouse(){
                     error && !country ? "form-container__input--error" : ""
                     } ${activeInput === "country" ? "form-container__input--active" : ""}`}
                     />
+                    <div className="form-container__error--container">
                     {error && !country && (
-                            <p className="form-container__error">Country is required</p>
+                            <p className="form-container__error">
+                              <img className="form-container__error--img" src={info}></img>Country is required</p>
                         )}
+                    </div>
 
                 </div>
-                <div>
+                <div className="form-container__div2">
                     <h2 className="form-container__h2">Contact Details</h2>
                     <label className="form-container__label">Contact Name</label>
                     <input
@@ -237,9 +256,12 @@ function FormWarehouse(){
                         error && !name ? "form-container__input--error" : ""
                          } ${activeInput === "name" ? "form-container__input--active" : ""}`}
                     />
+                    <div className="form-container__error--container">
                     {error && !name && (
-                            <p className="form-container__error">Contact name is required</p>
+                            <p className="form-container__error">
+                              <img className="form-container__error--img" src={info}></img>Contact name is required</p>
                         )}
+                    </div>
 
                     <label className="form-container__label">Position</label>
                     <input
@@ -253,9 +275,12 @@ function FormWarehouse(){
                         error && !position ? "form-container__input--error" : ""
                         } ${activeInput === "position" ? "form-container__input--active" : ""}`}
                     />
+                    <div className="form-container__error--container">
                     {error && !position && (
-                            <p className="form-container__error">Position is required</p>
+                            <p className="form-container__error">
+                              <img className="form-container__error--img" src={info}></img>Position is required</p>
                         )}
+                    </div>
 
                     <label className="form-container__label">Phone Number</label>
                     <input
@@ -269,9 +294,12 @@ function FormWarehouse(){
                     error && !isValidPhoneNumber(phone) ? "form-container__input--error" : ""
                     } ${activeInput === "phone" ? "form-container__input--active" : ""}`}
                     />
+                    <div className="form-container__error--container">
                     {error && !isValidPhoneNumber(phone) && (
-                            <p className="form-container__error">Phone Number is invalid</p>
+                            <p className="form-container__error">
+                              <img className="form-container__error--img" src={info}></img>Phone Number is invalid</p>
                         )}
+                    </div>
 
                     <label className="form-container__label">Email</label>
                     <input
@@ -287,13 +315,17 @@ function FormWarehouse(){
                      } ${activeInput === "email" ? "form-container__input--active" : ""}`
                      }
                     />
+                    <div className="form-container__error--container">
                     {error && !isValidEmail(email) && (
-                            <p className="form-container__error">Email is invalid</p>
+                            <p className="form-container__error">
+                              <img className="form-container__error--img" src={info}></img>Email is invalid</p>
                         )}
+                    </div>
 
                     </div>
             </div>
-            <div>
+            <div className="button-container">
+                    <button type="submit">Cancel</button>
                     <button type="submit">Add Warehouse</button>
             </div>
         </form>
