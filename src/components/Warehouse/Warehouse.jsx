@@ -15,43 +15,43 @@ function Warehouse({ data }) {
 
 	return (
 		
-			<div className="warehouse">
-				<div className="warehouse-top">
-					<div className="warehouse-container">
-						<div className="warehouse-location">
-							<h3 className="warehouse-label">WAREHOUSE</h3>
-							<Link className="warehouse-location__item">{warehouse_name} <img src={Chevron}/></Link>
-						</div>
-						<div className="warehouse-address">
-							<h3 className="warehouse-label">ADDRESS</h3>
-							<p className="warehouse-address__item">{address}, {city}, {country}</p>
-						</div>
+		<div className="warehouse">
+			<div className="warehouse-top">
+				<div className="warehouse-container warehouse-container__one">
+					<div className="warehouse-location">
+						<h4 className="warehouse-label">WAREHOUSE</h4>
+						<Link className="warehouse-location__item">{warehouse_name} <img src={Chevron}/></Link>
 					</div>
-
-					<div className="warehouse-container">
-						<div className="warehouse-contact">
-							<h3 className="warehouse-label">CONTACT NAME</h3>
-							<p className="warehouse-contact__item">{contact_name}</p>
-						</div>
-						<div className="warehouse-information">
-							<h3 className="warehouse-label">CONTACT INFORMATION</h3>
-							<p className="warehouse-information__item">{contact_phone}</p>
-							<p className="warehouse-information__item warehouse-information__item-email">{contact_email}</p>
-						</div>
+					<div className="warehouse-address">
+						<h4 className="warehouse-label">ADDRESS</h4>
+						<p className="warehouse-address__item">{address}, {city}, {country}</p>
 					</div>
 				</div>
-				<div className="warehouse-btm warehouse-container">
-					<div className="warehouse-actions">
-						<h3 className="warehouse-actions__label warehouse-label">ACTIONS</h3>
-						<button className="warehouse-actions__button">
-							<img src={DeleteButton} alt="Delete Button" />
-						</button>
-						<button className="warehouse-actions__button">
-							<img src={EditButton} alt="Edit Button" />
-						</button>
+
+				<div className="warehouse-container warehouse-container__two">
+					<div className="warehouse-contact">
+						<h4 className="warehouse-label">CONTACT NAME</h4>
+						<p className="warehouse-contact__item">{contact_name}</p>
+					</div>
+					<div className="warehouse-information">
+						<h4 className="warehouse-label">CONTACT INFORMATION</h4>
+						<p className="warehouse-information__item">{contact_phone}</p>
+						<p className="warehouse-information__item warehouse-information__item-email">{contact_email}</p>
 					</div>
 				</div>
 			</div>
+			<div className="warehouse-btm ">
+				<div className="warehouse-actions">
+					<h4 className="warehouse-actions__label warehouse-label">ACTIONS</h4>
+					<button className="warehouse-actions__button">
+						<img src={DeleteButton} alt="Delete Button" />
+					</button>
+					<button className="warehouse-actions__button">
+						<img src={EditButton} alt="Edit Button" />
+					</button>
+				</div>
+			</div>
+		</div>
 
 	);
 }

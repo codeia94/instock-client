@@ -48,7 +48,7 @@ function Warehouses() {
 				<WarehouseLabel className="warehouseLabel-component"/>
 				{data.map((warehouse) => {
 						return (
-							<div key={warehouse.id}>
+							<div className="warehouses-container__flex" key={warehouse.id}>
 								<Warehouse data={warehouse} className="warehouse-component"/>
 							</div>
 						);

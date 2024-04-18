@@ -8,20 +8,29 @@ function WarehouseLabel() {
 	return (
 		<div className="warehouseLabel">
 			<div className="warehouseLabel-container">
+
 				<div className="warehouseLabel-column">
-					<h3 className="warehouseLabel-label"><span>WAREHOUSE</span><button className="warehouseLabel-btn"><img src={Sort} alt="sort" /></button></h3>
+					<h4 className="warehouseLabel-label">WAREHOUSE</h4>
+					<button className="warehouseLabel-btn"><img src={Sort} alt="sort" /></button>
 				</div>
+
 				<div className=" warehouseLabel-column">
-					<h3 className="warehouseLabel-label"><span>ADDRESS</span><button className="warehouseLabel-btn"><img src={Sort} alt="sort" /></button></h3>
+					<h4 className="warehouseLabel-label">ADDRESS</h4>
+					<button className="warehouseLabel-btn"><img src={Sort} alt="sort" /></button>
 				</div>
+
 				<div className=" warehouseLabel-column">
-					<h3 className="warehouseLabel-label"><span>CONTACT NAME</span><button className="warehouseLabel-btn"><img src={Sort} alt="sort" /></button></h3>
+					<h4 className="warehouseLabel-label">CONTACT NAME</h4>
+					<button className="warehouseLabel-btn"><img src={Sort} alt="sort" /></button>
 				</div>
+
 				<div className=" warehouseLabel-column">
-					<h3 className="warehouseLabel-label"><span>CONTACT INFORMATION</span><button className="warehouseLabel-btn"><img src={Sort} alt="sort" /></button></h3>
+					<h4 className="warehouseLabel-label">CONTACT INFORMATION</h4>
+					<button className="warehouseLabel-btn"><img src={Sort} alt="sort" /></button>
 				</div>
+				
 				<div className=" warehouseLabel-column">
-					<h3 className="warehouseLabel-label"><span>ACTIONS</span></h3>
+					<h4 className="warehouseLabel-label">ACTIONS</h4>
 				</div>
 			</div>
 		</div>
