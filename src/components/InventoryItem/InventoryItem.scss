@@ -4,11 +4,16 @@
 
 .inventory-item {
     display: flex;
-    justify-content: space-between;
-    padding: 16px;
-    border-bottom: 1px solid $light-grey;
     flex-direction: column;
+    justify-content: center;
+    border-bottom: $cloud 1px solid;
+    padding: 24px;
     color: $instock-black;
+
+    @include tablet {
+      padding: 32px;
+      flex-direction: row;
+    }
 
     &__main-container{
         display: flex;
@@ -20,75 +25,96 @@
     &__info-container {
       display: flex;
       flex-direction: column;
-      width:50%;
+      flex: 1;
+
+      @include tablet {
+        flex-direction: row;
+        align-items: center;
+        flex: auto;
+        max-width: 300px;
+        justify-content: space-evenly;
+      }
     }
-  
+
     &__label-mobile {
-      display: block;
-      font-size: 14px;
-      color: $slate;
-      margin-bottom: 0;
-      padding-bottom:0;
+      @include h4-style;
+		  color: $slate;
+		  
+      @include tablet {
+			  display: none;
+		  }
     }
-  
-    &__name-sub-container,
-    &__category,
-    &__status,
-    &__quantity,
-    &__warehouse {
-      @include p2-style;
-      margin-bottom: 4px;
-      margin-top:0;
-    }
+
 
     &__name{
         margin-top: 0;
-
+        color: $instock-indigo;
     }
 
     &__name-sub-container {
-        color: $instock-indigo;
         font-weight: $font-weight-semibold;
         display: flex;
         flex-direction: row;
         text-decoration: none;
+        @include h3-style;
+        //margin-bottom: 4px;
+        margin-top:0;
+
+        @include tablet {
+          margin-right:2rem;
+        }
     }
+
+    &__category,
+    &__status,
+    &__quantity,
+    &__warehouse {
+      @include h3-style;
+      margin-bottom: 1px;
+      margin-top:0;
+
+      @include tablet {
+        margin-right:1rem;
+      }
+    }
+
 
     &__chevron{
         height: 20px;
     }
   
     &__status {
-        //padding: 4px 8px; 
         border-radius: 20px; 
         height: 24px;
-        display: inline-block; // This makes the background color wrap around the text
+        display: inline-block; 
         justify-content: center;
         align-items: center;
-        &.in-stock {
-            background-color: rgba(#15B463, 0.7); 
-            color: $green;
+
+        @include tablet {
+          height: 26px; 
         }
+
+        &.in-stock {
+          background-color: rgba(#15B463, 7%);
+          color: #15B463;
+          padding: 4px 8px; 
+        }
+
         &.out-of-stock {
-            background-color: rgba(#C94515, 0.7); 
-            color: $red;
+          background-color: rgba(#C94515, 7%);
+          color: #C94515; 
+          padding: 4px 8px; 
         }
     }
   
     &__actions {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      height: 1.5rem;
   
       button {
         background: none;
         border: none;
         padding: 0;
-  
-        &:hover {
-          cursor: pointer;
-        }
   
         svg {
           width: 24px;
@@ -98,42 +124,3 @@
     }
   }
   
-  // Tablet view
-  @include tablet {
-    .inventory-item {
-        flex-direction: row;
-        padding: 20px;
-
-        &__details-container,
-        &__info-container {
-            flex-direction: row;
-            justify-content: space-around;
-        }
-
-        &__label-mobile {
-            display: none;
-        }
-
-        &__status {
-            height:26px;
-        }
-    }
-}
-  
-  // Desktop view
-  @include desktop {
-    .inventory-item {
-        flex-direction: row;
-        padding: 20px;
-
-        &__details-container,
-        &__info-container {
-            flex-direction: row;
-            justify-content: space-around;
-        }
-
-        &__label-mobile {
-            display: none;
-        }
-    }
-  }

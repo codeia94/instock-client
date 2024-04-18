@@ -6,9 +6,8 @@ import { ReactComponent as EditIcon } from '../../assets/icons/edit-24px.svg';
 import ChevronRightIcon from '../../assets/icons/chevron_right-24px.svg';
 
 function InventoryItem({inventory}) {
-
-    //const { id, item_name, description, category, status, quantity, warehouse } = inventory;
-
+    const statusClass = inventory.status.toLowerCase() === 'in stock' ? 'in-stock' : 'out-of-stock';
+    
     return (
         <div className="inventory-item">
             <div className="inventory-item__main-container">
@@ -28,7 +27,7 @@ function InventoryItem({inventory}) {
                 <div className="inventory-item__info-container">
                     <div className="inventory-item__status-container">
                         <p className="inventory-item__label-mobile">STATUS</p>
-                        <p className="inventory-item__status">{inventory.status}</p>
+                        <p className={`inventory-item__status ${statusClass}`}>{inventory.status}</p>
                     </div>
                     <div className="inventory-item__quantity-container">
                         <p className="inventory-item__label-mobile">QTY</p>
