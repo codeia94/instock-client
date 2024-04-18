@@ -2,11 +2,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import Header from './components/Header/Header';
+import ContentWrapper from "./components/ContentWrapper/ContentWrapper"
 
 function App() {
   return (
 <BrowserRouter>
     <Header/>
+		<ContentWrapper>
       <Routes>
         {/* reroute to warehouse list?? */}
         <Route path='/'></Route>
@@ -36,6 +38,7 @@ function App() {
         <Route path='/inventory/:itemId/edit'></Route>
       </Routes>
     {/* Footer */}
+		</ContentWrapper>
     </BrowserRouter>
   );
 }
