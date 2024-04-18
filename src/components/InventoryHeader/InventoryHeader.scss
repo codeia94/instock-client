@@ -9,6 +9,7 @@
   border-bottom: $cloud 1px solid;
 
   @include tablet {
+    border-bottom: none;
     padding:0;
     flex-direction: row;
     justify-content: space-between;

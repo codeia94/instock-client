@@ -21,8 +21,6 @@ function InventoryPage() {
         fetchInventories();
     }, []);
 
-    //try doing a useEffect to get the warehouse name from localhost:8080/api/warehouses/:id
-
     return (
         <div className="inventory-page">
             <InventoryHeader />

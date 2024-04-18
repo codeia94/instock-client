@@ -7,7 +7,6 @@
     flex-direction: column;
     justify-content: center;
     border-bottom: $cloud 1px solid;
-    padding: 24px;
     color: $instock-black;
 
     @include tablet {
@@ -110,6 +109,7 @@
     &__actions {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 1rem;;
   
       button {
         background: none;
