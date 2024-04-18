@@ -5,13 +5,10 @@ import DeleteButton from "../../assets/icons/delete_outline-24px.svg";
 import EditButton from "../../assets/icons/edit-24px.svg";
 import Chevron from "../../assets/icons/chevron_right-24px.svg";
 
-//import react component
 
+function Warehouse({ data, handleOpenWarehouseModal }) {
 
-
-function Warehouse({ data }) {
-
-	const { warehouse_name, address, city, country, contact_name, contact_phone, contact_email } = data;
+	const { id, warehouse_name, address, city, country, contact_name, contact_phone, contact_email } = data;
 
 	return (
 		<div className="wrapper">
@@ -44,7 +41,7 @@ function Warehouse({ data }) {
 					<div className="warehouse-actions">
 						<h4 className="warehouse-actions__label warehouse-label">ACTIONS</h4>
 						<button className="warehouse-actions__button">
-							<img src={DeleteButton} alt="Delete Button" />
+							<img src={DeleteButton} id={id} alt="Delete Button" onClick={handleOpenWarehouseModal}/>
 						</button>
 						<button className="warehouse-actions__button">
 							<img src={EditButton} alt="Edit Button" />
