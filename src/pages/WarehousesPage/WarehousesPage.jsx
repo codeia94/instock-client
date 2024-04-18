@@ -5,28 +5,49 @@ import axios from 'axios';
 import './WarehousesPage.scss';
 import Warehouse from "../../components/Warehouse/Warehouse"
 import WarehouseLabel from "../../components/WarehouseLabel/WarehouseLabel"
+import WarehouseModal from '../../components/WarehouseModal/WarehouseModal';
 
 
 function Warehouses() {
 
 	const [data, setData] = useState([]);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await axios.get(`http://localhost:8080/api/warehouses`);
-				setData(response.data);
-			} catch (error) {
-				console.error(`Error fetching data: ${error}`);
-			}
+	const [ warehouseModalOpen, setWarehouseModalOpen ] = useState(false);
+    const [ selectedWarehouse, setSelectedWarehouse ] = useState("");
+  
+    const handleOpenWarehouseModal = (event) => {
+        const id = Number(event.target.id);
+        setSelectedWarehouse(id);
+        setWarehouseModalOpen(true);
+    };
+  
+    const handleCloseWarehouseModal = () => {
+        setWarehouseModalOpen(false);
+    };
+	
+	const fetchData = async () => {
+		try {
+			const response = await axios.get(`http://localhost:8080/api/warehouses`);
+			setData(response.data);
+		} catch (error) {
+			console.error(`Error fetching data: ${error}`);
 		}
+	}
 
+	useEffect(() => {
 		fetchData();
 	}, []);
 
 
 
 	return(
+	<>
+		<WarehouseModal
+			isOpen={warehouseModalOpen}
+			onClose={handleCloseWarehouseModal}
+			warehouseId={selectedWarehouse}
+			fetchData={fetchData}
+		/>
 		<section className="warehouses">
 			<div className="warehouses-bg">
 				<div className="warehouses-container">
@@ -49,7 +70,11 @@ function Warehouses() {
 				{data.map((warehouse) => {
 						return (
 							<div className="warehouses-container__flex" key={warehouse.id}>
-								<Warehouse data={warehouse} className="warehouse-component"/>
+								<Warehouse 
+									data={warehouse}
+									className="warehouse-component" 
+									handleOpenWarehouseModal={handleOpenWarehouseModal}
+								/>
 							</div>
 						);
 					})
@@ -57,6 +82,7 @@ function Warehouses() {
 				{/* <Warehouse /> */}
 			</div>
 		</section>
+	</>
 	)
 };
 

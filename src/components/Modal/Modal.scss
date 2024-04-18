@@ -3,7 +3,6 @@
 @use '../../styles/partials/variables' as *;
 
 .modal {
-    position: relative;
     box-sizing: border-box;
     border: none;
     width: 100%;
@@ -12,7 +11,7 @@
     max-height: unset;
     
     @include tablet {
-        margin: 0 auto;
+        margin: 186px auto;
         height: 262px;
         max-width: 672px;
     }
