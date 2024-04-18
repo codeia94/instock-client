@@ -4,6 +4,8 @@ import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import Header from './components/Header/Header';
 import ContentWrapper from "./components/ContentWrapper/ContentWrapper"
 
+import FormWarehouse from './pages/AddWarehouse/AddWarehouse';
+
 function App() {
   return (
 <BrowserRouter>
@@ -17,7 +19,8 @@ function App() {
         <Route path='/warehouses' element={<WarehousesPage />}></Route>
 
         {/* Warehouse add form */}
-        <Route path='/warehouses/add'></Route>
+        <Route path='/warehouses/add' element=
+        {<FormWarehouse/>}></Route>
 
         {/* Warehouse details */}
         <Route path='/warehouses/:warehouseId'></Route>
