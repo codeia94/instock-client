@@ -1,0 +1,91 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+
+// .mainbackground {
+// 	background-color: $light-grey;
+// }
+
+
+.warehouse {
+	box-sizing: border-box;
+	background-color: $white;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 24px;
+
+	&-top {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	// &-btm {
+	// 	display: flex;
+	// 	flex-direction: row;
+	// }
+
+	&-container {
+		display: flex;
+		flex-direction: column;
+		// justify-content: center;
+		flex: 1;
+	}
+
+	&-label {
+		@include h4-style;
+		color: $slate;
+	}
+
+	&-location {
+		&__item {
+			@include h3-style;
+			text-decoration: none;
+			color: $instock-indigo;
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	&-address {
+		&__item {
+			@include h3-style;
+			color: $instock-black
+		}
+	}
+
+	&-contact {
+		&__item {
+			@include h3-style;
+			margin: 0;
+			color: $instock-black;
+			margin-bottom: 4px;
+		}
+	}
+
+	&-information {
+		&__item {
+			@include h3-style;
+			color: $instock-black;
+			margin-bottom: 0;
+			&-email {
+				margin-top: 0;
+			}
+		}
+	}
+	&-actions {
+		display: flex;
+		justify-content: space-between;
+		&__label {
+			display: none;
+		}
+		&__button {
+			background: none;
+			border: none;
+			padding: 0;
+		}
+	}
+}

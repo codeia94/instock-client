@@ -26,25 +26,28 @@ function Warehouses() {
 
 
 	return(
-		<section section="warehouses">
-			<div className="warehouses-container">
-				<div className="warehouses-header">
-					<h1 className="warehouses-header__title">Warehouses</h1>
+		<section className="warehouses">
+			<div className="warehouses-bg">
+				<div className="warehouses-container">
+					<div className="warehouses-header">
+						<h1 className="warehouses-header__title">Warehouses</h1>
+					</div>
+					<form className="warehouses-form">
+						<input type="text" className="warehouses-form__search" placeholder="Search..."/>
+					</form>
+					<Link>
+						<button className="warehouses-form__button">
+							+ Add New Warehouse
+						</button>
+					</Link>
 				</div>
-				<form className="warehouses-form">
-					<input type="text" className="warehouses-form__search" placeholder="Search..."/>
-				</form>
-				<Link>
-					<button className="warehouses-form__button">
-						+ Add New Warehouse
-					</button>
-				</Link>
+				<hr></hr>
+				{/* {data.map((warehouse) => {
+					return <Warehouse key={warehouse.id} data={warehouse}/>
+				})} */}
+				<Warehouse />
+				<hr></hr>
 			</div>
-			{/* {data.map((warehouse) => {
-				return <Warehouse key={warehouse.id} data={warehouse}/>
-			})} */}
-			<Warehouse />
-			
 		</section>
 	)
 };
