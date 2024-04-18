@@ -2,7 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import Header from './components/Header/Header';
-import ContentWrapper from "./components/ContentWrapper/ContentWrapper"
+import ContentWrapper from "./components/ContentWrapper/ContentWrapper";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -37,8 +38,8 @@ function App() {
         {/* Edit inventory item form */}
         <Route path='/inventory/:itemId/edit'></Route>
       </Routes>
-    {/* Footer */}
 		</ContentWrapper>
+    <Footer/>
     </BrowserRouter>
   );
 }
