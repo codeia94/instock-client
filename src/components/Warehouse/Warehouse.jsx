@@ -11,7 +11,7 @@ import Chevron from "../../assets/icons/chevron_right-24px.svg";
 
 function Warehouse({ data }) {
 
-	const { id, warehouse_name, address, city, country, contact_name, contact_phone, contact_email } = data;
+	const { warehouse_name, address, city, country, contact_name, contact_phone, contact_email } = data;
 
 	return (
 		
@@ -20,7 +20,7 @@ function Warehouse({ data }) {
 				<div className="warehouse-container warehouse-container__one">
 					<div className="warehouse-location">
 						<h4 className="warehouse-label">WAREHOUSE</h4>
-						<Link className="warehouse-location__item">{warehouse_name} <img src={Chevron}/></Link>
+						<Link className="warehouse-location__item">{warehouse_name} <img src={Chevron} alt='chevron'/></Link>
 					</div>
 					<div className="warehouse-address">
 						<h4 className="warehouse-label">ADDRESS</h4>
