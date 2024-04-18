@@ -14,10 +14,10 @@ hr {
 .warehouses {
 	width: 100%;
 	background-color: $light-grey;
-	@include desktop {
-		display: flex;
-		justify-content: center;
-	}
+	// @include desktop {
+	// 	display: flex;
+	// 	justify-content: center;
+	// }
 
 	// &-bg {
 	// 	margin: 0 1rem;
