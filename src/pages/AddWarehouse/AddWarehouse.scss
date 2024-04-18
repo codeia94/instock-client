@@ -45,7 +45,7 @@
 
     @include tablet {
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: center;
     }
 
     &__h2 {
@@ -63,11 +63,19 @@
             border-bottom: none;
             border-right: 0.0625rem solid $cloud;
         }
+
+        @include desktop {
+            width: 40%;
+        }
     }
 
     &__div2 {
         padding-left: 2rem;
         padding-right: 2rem;
+
+        @include desktop {
+            width: 40%;
+        }
     }
 
     &__label {

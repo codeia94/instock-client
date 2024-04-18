@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import Header from './components/Header/Header';
-import AddWarehouse from './components/AddWarehouse/AddWarehouse';
-import FormWarehouse from './components/AddWarehouse/AddWarehouse';
+
+import FormWarehouse from './pages/AddWarehouse/AddWarehouse';
 
 function App() {
   return (

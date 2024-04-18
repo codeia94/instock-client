@@ -325,7 +325,9 @@ function FormWarehouse(){
                     </div>
             </div>
             <div className="button-container">
-                    <button type="submit">Cancel</button>
+                   <Link to="/warehouses">
+                   <button>Cancel</button>
+                   </Link>
                     <button type="submit">Add Warehouse</button>
             </div>
         </form>
