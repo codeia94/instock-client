@@ -1,0 +1,30 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/typography' as *;
+@use '../../styles/partials/variables' as *;
+
+.primary-button {
+    all: unset;
+    background-color: $instock-indigo;
+    color: $white;
+    width: 100%;
+    height: 36px;
+    @include p3-style;
+    font-weight: $font-weight-semibold;
+    border-radius: 20px;
+    cursor: pointer;
+
+    @include tablet {
+      width: unset;
+      padding: 0 1rem;
+      height: 38px;
+      font-weight: $font-weight-semibold;
+    }
+
+    @include desktop {
+      font-weight: $font-weight-semibold;
+    }
+
+    &:hover {
+      background-color: $instock-black;
+    }
+}
