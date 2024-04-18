@@ -3,17 +3,25 @@
 @use '../../styles/partials/typography' as *;
 
 
-.inventory-list-section__label {
-  display: none;
+.inventory-list-section{
+  display: flex;
+  flex-direction: column;
+  width:100%;
 
-  @include tablet {
-    display: flex;
-    //flex-direction: row;
-    background-color:#F4F4F4;
-    }
+  &__labels {
+    display: none;
 
-  @include desktop {
-    display: flex;
-    flex-direction: row;
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #F7F8F9;
+      color: #5C667E;
+      font-size: 12px;
+      height:40px;
     }
-}       
+  }
+}
+
+   
