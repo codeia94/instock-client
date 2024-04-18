@@ -12,6 +12,7 @@
     font-weight: $font-weight-semibold;
     border-radius: 20px;
     cursor: pointer;
+    text-align: center;
 
     @include tablet {
       width: unset;
