@@ -1,0 +1,21 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+
+.content-wrapper {
+	margin: 0 1rem;
+	background-color: $white;
+	border-radius: 4px;
+	box-shadow: 0px 2px 5px #13182c34;
+	transform: translateY(-3.4rem);
+
+	@include tablet {
+		margin: 0 32px;
+		transform: translateY(-5.5rem);
+	}
+	@include desktop {
+		width: 1020px;
+		margin: auto;
+	}
+}
