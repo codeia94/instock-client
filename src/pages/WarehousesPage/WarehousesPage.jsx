@@ -14,7 +14,7 @@ function Warehouses() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get(`http://localhost:8080/warehouses`);
+				const response = await axios.get(`http://localhost:8080/api/warehouses`);
 				setData(response.data);
 			} catch (error) {
 				console.error(`Error fetching data: ${error}`);
