@@ -1,0 +1,17 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.inventory-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+
+  @include tablet {
+    padding: 2rem 4rem; 
+  }
+
+  @include desktop {
+    padding: 4rem 8rem; 
+  }
+}

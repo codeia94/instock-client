@@ -1,0 +1,19 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+
+.inventory-list-section__label {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    //flex-direction: row;
+    background-color:#F4F4F4;
+    }
+
+  @include desktop {
+    display: flex;
+    flex-direction: row;
+    }
+}       

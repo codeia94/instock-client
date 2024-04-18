@@ -1,0 +1,139 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+.inventory-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid $light-grey;
+    flex-direction: column;
+    color: $instock-black;
+
+    &__main-container{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+  
+    &__details-container,
+    &__info-container {
+      display: flex;
+      flex-direction: column;
+      width:50%;
+    }
+  
+    &__label-mobile {
+      display: block;
+      font-size: 14px;
+      color: $slate;
+      margin-bottom: 0;
+      padding-bottom:0;
+    }
+  
+    &__name-sub-container,
+    &__category,
+    &__status,
+    &__quantity,
+    &__warehouse {
+      @include p2-style;
+      margin-bottom: 4px;
+      margin-top:0;
+    }
+
+    &__name{
+        margin-top: 0;
+
+    }
+
+    &__name-sub-container {
+        color: $instock-indigo;
+        font-weight: $font-weight-semibold;
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+    }
+
+    &__chevron{
+        height: 20px;
+    }
+  
+    &__status {
+        //padding: 4px 8px; 
+        border-radius: 20px; 
+        height: 24px;
+        display: inline-block; // This makes the background color wrap around the text
+        justify-content: center;
+        align-items: center;
+        &.in-stock {
+            background-color: rgba(#15B463, 0.7); 
+            color: $green;
+        }
+        &.out-of-stock {
+            background-color: rgba(#C94515, 0.7); 
+            color: $red;
+        }
+    }
+  
+    &__actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 1.5rem;
+  
+      button {
+        background: none;
+        border: none;
+        padding: 0;
+  
+        &:hover {
+          cursor: pointer;
+        }
+  
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+  
+  // Tablet view
+  @include tablet {
+    .inventory-item {
+        flex-direction: row;
+        padding: 20px;
+
+        &__details-container,
+        &__info-container {
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        &__label-mobile {
+            display: none;
+        }
+
+        &__status {
+            height:26px;
+        }
+    }
+}
+  
+  // Desktop view
+  @include desktop {
+    .inventory-item {
+        flex-direction: row;
+        padding: 20px;
+
+        &__details-container,
+        &__info-container {
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        &__label-mobile {
+            display: none;
+        }
+    }
+  }
