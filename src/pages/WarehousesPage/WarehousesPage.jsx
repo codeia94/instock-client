@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './WarehousesPage.scss';
 import Warehouse from "../../components/Warehouse/Warehouse"
+import WarehouseLabel from "../../components/WarehouseLabel/WarehouseLabel"
 
 
 function Warehouses() {
@@ -32,21 +33,28 @@ function Warehouses() {
 					<div className="warehouses-header">
 						<h1 className="warehouses-header__title">Warehouses</h1>
 					</div>
-					<form className="warehouses-form">
-						<input type="text" className="warehouses-form__search" placeholder="Search..."/>
-					</form>
-					<Link>
-						<button className="warehouses-form__button">
-							+ Add New Warehouse
-						</button>
-					</Link>
+					<div className="warehouses-form__container">
+						<form className="warehouses-form">
+							<input type="text" className="warehouses-form__search" placeholder="Search..."/>
+						</form>
+						<Link>
+							<button className="warehouses-form__button">
+								+ Add New Warehouse
+							</button>
+						</Link>
+					</div>
 				</div>
 				<hr></hr>
-				{/* {data.map((warehouse) => {
-					return <Warehouse key={warehouse.id} data={warehouse}/>
-				})} */}
-				<Warehouse />
-				<hr></hr>
+				<WarehouseLabel className="warehouseLabel-component"/>
+				{data.map((warehouse) => {
+						return (
+							<div key={warehouse.id}>
+								<Warehouse data={warehouse} className="warehouse-component"/>
+							</div>
+						);
+					})
+				}
+				{/* <Warehouse /> */}
 			</div>
 		</section>
 	)

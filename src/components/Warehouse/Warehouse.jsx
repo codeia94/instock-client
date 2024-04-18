@@ -5,11 +5,13 @@ import DeleteButton from "../../assets/icons/delete_outline-24px.svg";
 import EditButton from "../../assets/icons/edit-24px.svg";
 import Chevron from "../../assets/icons/chevron_right-24px.svg";
 
+//import react component
 
 
-function Warehouse() {
 
-	// const { id, warehouseName, address, city, country, contactName, phone, email } = data;
+function Warehouse({ data }) {
+
+	const { id, warehouse_name, address, city, country, contact_name, contact_phone, contact_email } = data;
 
 	return (
 		
@@ -18,23 +20,23 @@ function Warehouse() {
 					<div className="warehouse-container">
 						<div className="warehouse-location">
 							<h3 className="warehouse-label">WAREHOUSE</h3>
-							<Link className="warehouse-location__item">Manhattan <img src={Chevron}/></Link>
+							<Link className="warehouse-location__item">{warehouse_name} <img src={Chevron}/></Link>
 						</div>
 						<div className="warehouse-address">
 							<h3 className="warehouse-label">ADDRESS</h3>
-							<p className="warehouse-address__item">503 Broadway, New York, USA</p>
+							<p className="warehouse-address__item">{address}, {city}, {country}</p>
 						</div>
 					</div>
 
 					<div className="warehouse-container">
 						<div className="warehouse-contact">
 							<h3 className="warehouse-label">CONTACT NAME</h3>
-							<p className="warehouse-contact__item">Parmin Aujla</p>
+							<p className="warehouse-contact__item">{contact_name}</p>
 						</div>
 						<div className="warehouse-information">
 							<h3 className="warehouse-label">CONTACT INFORMATION</h3>
-							<p className="warehouse-information__item">+1 (629) 555-0129</p>
-							<p className="warehouse-information__item warehouse-information__item-email">paujla@instock.com</p>
+							<p className="warehouse-information__item">{contact_phone}</p>
+							<p className="warehouse-information__item warehouse-information__item-email">{contact_email}</p>
 						</div>
 					</div>
 				</div>
