@@ -135,20 +135,20 @@ export default function InventoryForm () {
             return;
         } else {
             try {
-                console.log("Sending post request...")
                 const requestBody = {
-                    warehouse_id: Number(warehouse),
-                    item_name: item,
-                    description: description,
-                    category: category.toLocaleLowerCase(),
-                    status: inStock,
-                    quantity: quantity
+                    "warehouse_id": Number(warehouse),
+                    "item_name": item,
+                    "description": description,
+                    "category": category.toLocaleLowerCase(),
+                    "status": inStock,
+                    "quantity": quantity
                 }
                 console.log(requestBody);
+                axios.post('http://localhost:8080/api/inventories', requestBody)
             } catch (error) {
-                console.log("Error:", error);
+                console.log("Unable to add inventory item:", error);
             }
-    }
+        }
     }
 
     return (
