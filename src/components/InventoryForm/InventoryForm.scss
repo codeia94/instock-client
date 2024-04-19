@@ -11,18 +11,19 @@
     
         @include tablet {
             flex-direction: row;
-            justify-content: center;
+            justify-content: stretch;
         }
     }
 
     &__section {
-        padding-left: 2rem;
+        padding: 0 2rem 1.5rem;
         padding-right: 2rem;
         border-bottom: 0.0625rem solid $cloud;
 
         @include tablet {
             border-bottom: none;
             border-right: 0.0625rem solid $cloud;
+            flex-grow: 1;
         }
 
         @include desktop {
@@ -31,6 +32,10 @@
 
         &--2 {
             border-bottom: none;
+
+            @include tablet {
+                border-right: none;
+            }
         }
     }
 
@@ -44,8 +49,12 @@
         color: $instock-black;
         @include h3-style;
         font-weight: 600;
-        margin-bottom: 0;
+        margin-bottom: 0.25rem;
         margin-top: 1rem;
+
+        @include tablet {
+            font-weight: 600;
+        }
     }
 
     &__input {
@@ -74,6 +83,12 @@
 
         &--error {
             border-color: $red;
+        }
+
+        &--dropdown {
+            background-image: url('../../assets/icons/arrow_drop_down-24px.svg');
+            background-repeat: no-repeat;
+            background-position: right center;
         }
     }
 
@@ -104,6 +119,47 @@
         &--error {
             border-color: $red;
         }
+    }
+
+    &__option {
+        &::placeholder {
+            @include p2-style;
+        }
+    }
+
+    &__radio {
+        @include p2-style;
+    }
+
+    &__quantity {
+        display: block;
+
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__dropdown {
+        background-color: $white;
+
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__option {
+        @include p2-style;
+        color: $slate;
+
+        &:hover {
+            background-color: #2E66E509;
+        }
+    }
+
+    &__radio-container {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
     }
 
     &__buttons {
