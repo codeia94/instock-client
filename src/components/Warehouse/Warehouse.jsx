@@ -4,6 +4,7 @@ import './Warehouse.scss';
 import DeleteButton from "../../assets/icons/delete_outline-24px.svg";
 import EditButton from "../../assets/icons/edit-24px.svg";
 import Chevron from "../../assets/icons/chevron_right-24px.svg";
+import EditWarehouse from '../../pages/EditWarehouse/EditWarehouse';
 
 
 function Warehouse({ data, handleOpenWarehouseModal }) {
@@ -43,9 +44,11 @@ function Warehouse({ data, handleOpenWarehouseModal }) {
 						<button className="warehouse-actions__button">
 							<img src={DeleteButton} id={id} alt="Delete Button" onClick={handleOpenWarehouseModal}/>
 						</button>
+						<Link to={`/warehouses/${id}/edit`}>
 						<button className="warehouse-actions__button">
 							<img src={EditButton} alt="Edit Button" />
 						</button>
+						</Link>
 					</div>
 				</div>
 			</div>

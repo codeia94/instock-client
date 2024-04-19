@@ -1,0 +1,33 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+
+.inventory-list{
+  padding:12px;
+
+}
+
+.inventory-list-section{
+  display: flex;
+  flex-direction: column;
+
+  &__labels {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #F7F8F9;
+      color: #5C667E;
+      font-size: 12px;
+      height:40px;
+    }
+  }
+}
+
+
+
+   
