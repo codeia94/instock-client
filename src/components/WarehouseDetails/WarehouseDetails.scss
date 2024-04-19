@@ -1,0 +1,119 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+hr {
+	border: 1px $cloud solid;
+	margin: 0;
+	@include tablet {
+		display: none;
+	}
+}
+
+.warehouse-details__container {
+	padding: 1rem;
+	box-sizing: border-box;
+	@include tablet {
+		padding: 32px;
+		display: flex;
+	}
+}
+
+.warehouse-address {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin-bottom: 24px;
+
+	@include tablet {
+		flex: 1;
+		border-right: 1px solid $cloud;
+		gap: 0;
+		margin-bottom: 0;
+	}
+
+	&__label {
+		margin: 0;
+		@include h4-style;
+		font-weight: 600;
+		color: $slate;
+		@include tablet {
+			margin-bottom: 8px;
+			font-weight: 600;
+		}
+	}
+
+	&__container {
+		display: flex;
+
+		@include tablet {
+			flex-direction: column;
+		}
+
+		&-item {
+			margin: 0;
+			@include p2-style;
+			color: $instock-black;
+		}
+	}
+}
+
+.details-contact {
+	display: flex;
+	// justify-content: space-between;
+	gap: 4px;
+
+	@include tablet {
+		flex: 2;
+		justify-content: space-evenly;
+		margin-left: -2rem;
+	}
+
+	&__name {
+		flex: 1;
+		@include tablet {
+			flex: none;
+		}
+
+		&-label {
+			margin: 0;
+			@include h4-style;
+			font-weight: 600;
+			color: $slate;
+			@include tablet {
+				margin-bottom: 8px;
+				font-weight: 600;
+			}
+		}
+
+		&-item, &-pos {
+			margin: 0;
+			@include p2-style;
+			color: $instock-black;
+		}
+	}
+
+	&__info {
+		flex: 1;
+		@include tablet {
+			flex: none;
+		}
+
+		&-label {
+			margin: 0;
+			@include h4-style;
+			font-weight: 600;
+			color: $slate;
+			@include tablet {
+				margin-bottom: 8px;
+				font-weight: 600;
+			}
+		}
+
+		&-num, &-email {
+			margin: 0;
+			@include p2-style;
+			color: $instock-black;
+		}
+	}
+}
