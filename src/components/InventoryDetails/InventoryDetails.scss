@@ -2,23 +2,15 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/typography' as *;
 
-hr {
-	border: 1px $cloud solid;
-	margin: 0;
-	@include tablet {
-		display: none;
-	}
-}
-
-
 .inventory-details {
 	padding: 1rem;
 	box-sizing: border-box;
     display: flex;
 	flex-direction: column;
+	
 	@include tablet {
+		flex-direction: row;
 		padding: 32px;
-		display: flex;
 	}
 }
 
@@ -26,7 +18,12 @@ hr {
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
-	margin-bottom: 24px;
+
+	@include tablet {
+		max-width: 50%;
+		margin-right:2rem;
+		border-right: 1px solid $cloud;
+	}
 }
 
 .inventory-details__container2{
@@ -34,28 +31,36 @@ hr {
 	flex-direction: column;
 	gap: 4px;
 	margin-bottom: 24px;
+
+	@include tablet {
+		width: 50%;
+		//margin-right:2rem;
+	}
 }
 
 .inventory-details__status-and-quantity{
 	display: flex;
 	flex-direction: row;
     gap: 4px;
-	margin-bottom: 24px;
+
+	@include tablet {
+		margin-bottom: 24px;
+	}
 }
 
 .inventory-description,
 .inventory-category,
 .inventory-status,
-.inventory-quantity
+.inventory-quantity,
 .inventory-warehouse {
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
 	margin-bottom: 24px;
+	@include p2-style;
 
 	@include tablet {
 		flex: 1;
-		border-right: 1px solid $cloud;
 		gap: 0;
 		margin-bottom: 0;
 	}
@@ -72,17 +77,15 @@ hr {
 		}
 	}
 
-	&__container {
+	&__content {
 		display: flex;
+		margin-top: 0;
+		color:$instock-black;
+		margin-right: 2rem;;
+
 
 		@include tablet {
 			flex-direction: column;
-		}
-
-		&-item {
-			margin: 0;
-			@include p2-style;
-			color: $instock-black;
 		}
 	}
 }
@@ -92,10 +95,10 @@ hr {
 	flex-direction: column;
 	gap: 4px;
 	margin-bottom: 24px;
+	width: 50%;
 
 	@include tablet {
 		flex: 1;
-		border-right: 1px solid $cloud;
 		gap: 0;
 		margin-bottom: 0;
 	}
@@ -112,23 +115,25 @@ hr {
 	}
 
 	&__content {
-        border-radius: 20px; 
+		border-radius: 20px;
         height: 24px;
         display: inline-block; 
         justify-content: center;
         align-items: center;
+		width: 50%;
 
         @include tablet {
           height: 26px; 
+		  width: 55%;
         }
 
-        &.in-stock {
+        &.In-stock {
           background-color: rgba(#15B463, 7%);
           color: #15B463;
           padding: 4px 8px; 
         }
 
-        &.out-of-stock {
+        &.Out-of-stock {
           background-color: rgba(#C94515, 7%);
           color: #C94515; 
           padding: 4px 8px; 
