@@ -4,6 +4,8 @@ import './EditWarehouse.scss';
 import back from "../../assets/icons/arrow_back.svg";
 import info from "../../assets/icons/error-24px.svg";
 import { Link, useParams } from "react-router-dom";
+import ButtonPrimary from "../../components/ButtonPrimary/ButtonPrimary";
+import ButtonSecondary from "../../components/ButtonSecondary/ButtonSecondary";
 
 function EditWarehouse() {
     const {warehouseId}  = useParams();
@@ -344,10 +346,14 @@ function EditWarehouse() {
                         </div>
                 </div>
                 <div className="button-container">
-                       <Link to="/warehouses">
-                       <button>Cancel</button>
-                       </Link>
-                        <button type="submit">Save Warehouse</button>
+                <div className="button-container__cancel">
+                <Link to="/warehouses">
+                  <ButtonSecondary>Cancel</ButtonSecondary>
+                </Link>
+              </div>
+              <div className="button-container__submit">
+                <ButtonPrimary onClick={handleSubmit}>Save</ButtonPrimary>
+              </div>
                 </div>
             </form>
         </div>
