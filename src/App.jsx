@@ -6,6 +6,7 @@ import ContentWrapper from "./components/ContentWrapper/ContentWrapper";
 import Footer from "./components/Footer/Footer";
 
 import FormWarehouse from './pages/AddWarehouse/AddWarehouse';
+import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
         <Route path='/warehouses/:warehouseId'></Route>
 
         {/* Warehouse edit form */}
-        <Route path='/warehouses/:warehouseId/edit'></Route>
+        <Route path='/warehouses/:warehouseId/edit' element={<EditWarehouse/>}></Route>
 
         {/* Inventory list */}
         <Route path='/inventory'></Route>
