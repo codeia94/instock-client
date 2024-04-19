@@ -1,68 +1,118 @@
 import './InventoryForm.scss';
-import error from '../../assets/icons/error-24px.svg';
+import ErrorIcon from '../../assets/icons/error-24px.svg';
 import ButtonPrimary from '../ButtonPrimary/ButtonPrimary';
 import ButtonSecondary from '../ButtonSecondary/ButtonSecondary';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function InventoryForm () {
     const navigate = useNavigate();
 
+    const [ warehouseList, setWarehouseList ] = useState([]);
     const [ item, setItem ] = useState("");
     const [ description, setDescription ] = useState("");
     const [ category, setCategory ] = useState("");
-    const [ inStock, setInStock ] = useState(true);
+    const [ inStock, setInStock ] = useState("Out of stock");
     const [ quantity, setQuantity ] = useState("");
     const [ warehouse, setWarehouse ] = useState("");
     const [ error, setError ] = useState(false);
     const [ activeInput, setActiveInput ] = useState(null);
 
+    // Get warehouse list for dropdown menu
+    useEffect(() => {
+        const getWarehouses = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8080/api/warehouses`);
+                setWarehouseList(response.data);
+                console.log(warehouseList);
+            } catch (error) {
+                console.error(`Error fetching data: ${error}`);
+            }
+        }
+        getWarehouses();
+    }, [])
+
+    // Change handlers
     const handleChangeItem = (event) => {
         setItem(event.target.value);
+        console.log(item);
     }
-
     const handleChangeDescription = (event) => {
         setDescription(event.target.value)
+        console.log(description);
     }
-
     const handleChangeCategory = (event) => {
         setCategory(event.target.value);
+        console.log(category);
     }
-
     const handleChangeSatus = (event) => {
         setInStock(event.target.value);
+        if (inStock === "Out of stock") {
+            setQuantity("0");
+        }
+        console.log(inStock);
     }
-
     const handleChangeQuantity = (event) => {
-        // put this in validation function with a check for number
-        // if (event.target.value <= 0) {
-        //     setError(true);
-        // }
         setQuantity(event.target.value);
+        console.log(quantity);
     }
-
     const handleChangeWarehouse = (event) => {
-        // validation here for making sure the warehouse exists?
         setWarehouse(event.target.value);
+        console.log(warehouse);
     }
-
     const handleFocus = (input) => {
         setActiveInput(input);
     }
 
-    // const isValidQuantity
-
-    // const isFormValid
-
-    // const handleSubmit
-        const requestBody = {
-            "warehouse_id": warehouse,
-            "item_name": item,
-            "description": description,
-            "category": category,
-            "status": inStock,
-            "quantity": quantity
+    // Validation functions
+    const isValidQuantity = () => {
+        const num = Number(quantity);
+        if (!num) {
+            return false;
         }
+        if (num < 0) {
+            return false;
+        }
+        return true;
+    }
+
+    const isFormValid = () => {
+        if ( !item || !description || !category || !inStock || !quantity || !warehouse ) {
+            setError(true);
+            return false;
+        }
+
+        if (!isValidQuantity) {
+            setError(true);
+            return false;
+        }
+    }
+
+    // Submit form
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        isFormValid();
+        if (isFormValid) {
+            try {
+                console.log("Sending post request...")
+                const requestBody = {
+                    warehouse_id: warehouse,
+                    item_name: item,
+                    description: description,
+                    category: category,
+                    status: inStock,
+                    quantity: quantity
+                }
+                console.log(requestBody);
+            } catch (error) {
+                console.log("Error:", error);
+            }
+        } else {
+            alert("Failed to add inventory item")
+        }
+    }
+
     return (
         <form className='inventory-form'>
             <section className='inventory-form__content'>
@@ -86,7 +136,7 @@ export default function InventoryForm () {
                     <div className='inventory-form__error-container'>
                         {error && !item && (
                             <p className='inventory-form__error-message'>
-                                <img className='inventory-form error-icon' src={error}></img>
+                                <img className='inventory-form error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
                                 Item name is required
                             </p>
                         )}
@@ -108,7 +158,7 @@ export default function InventoryForm () {
                     <div className='inventory-form__error-container'>
                         {error && !description && (
                             <p className='inventory-form__error-message'>
-                                <img className='inventory-form error-icon' src={error}></img>
+                                <img className='inventory-form error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
                                 Description is required
                             </p>
                         )}
@@ -136,7 +186,7 @@ export default function InventoryForm () {
                     <div className='inventory-form__error-container'>
                         {error && !category && (
                             <p className='inventory-form__error-message'>
-                                <img className='inventory-form error-icon' src={error}></img>
+                                <img className='inventory-form error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
                                 Category is required
                             </p>
                         )}
@@ -153,17 +203,17 @@ export default function InventoryForm () {
                         name='status'
                         value="In Stock"
                         onFocus={() => setActiveInput('in-stock')}
-                        onSelect={handleChangeSatus}
-                        checked
-                    />
+                        onClick={handleChangeSatus}
+                        />
                     <label htmlFor='in-stock'>In stock</label>
                     <input
                         type='radio'
                         id='out-of-stock'
                         name='status'
-                        value="Out of Stock" // how does this work with data in state??
+                        value="Out of stock"
                         onFocus={() => setActiveInput('out-of-stock')}
-                        onSelect={handleChangeSatus}
+                        onClick={handleChangeSatus}
+                        defaultChecked
                     />
                     <label htmlFor='out-of-stock'>Out of stock</label>
 
@@ -177,6 +227,7 @@ export default function InventoryForm () {
                         placeholder='0'
                         className={
                             `inventory-form__input
+                            ${inStock === "Out of Stock" ? 'inventory-form__input--hidden' : ""}
                             ${error && !quantity ? 'inventory-form__input--error' : ""}
                             ${activeInput === 'quantity' ? 'inventory-form__input--active' : ""}`
                         }
@@ -184,7 +235,7 @@ export default function InventoryForm () {
                     <div className='inventory-form__error-container'>
                         {error && !quantity && (
                             <p className='inventory-form__error-message'>
-                                <img className='inventory-form error-icon' src={error}></img>
+                                <img className='inventory-form error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
                                 Quantity is required
                             </p>
                         )}
@@ -203,22 +254,37 @@ export default function InventoryForm () {
                         }
                     >
                         <option value="">Please select</option>
-                        <option value="Boston">Boston</option>
-                        <option value="Brooklyn">Brooklyn</option>
-                        <option value="Jersey">Jersey</option>
-                        <option value="Miami">Miami</option>
-                        <option value="Santa Monica">Santa Monica</option>
-                        <option value="Seattle">Seattle</option>
-                        <option value="SF">SF</option>
-                        <option value="Washington">Washington</option>
+                        {warehouseList.map((warehouse)=>{
+                            return (
+                            <option 
+                                key={warehouse.id} 
+                                value={warehouse.id}
+                            >{warehouse.warehouse_name}
+                            </option>
+                            )})
+                        }
                     </select>
+                    <div className='inventory-form__error-container'>
+                        {error && !warehouse && (
+                            <p className='inventory-form__error-message'>
+                                <img className='inventory-form error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
+                                Warehouse is required
+                            </p>
+                        )}
+                    </div>
                 </div>
             </section>
             <section className='inventory-form__buttons'>
-                <div className='inventory-form__button-wrapper' onClick={() => navigate('/inventory')}>
+                <div 
+                    className='inventory-form__button-wrapper' 
+                    onClick={() => navigate('/inventory')}
+                >
                     <ButtonSecondary>Cancel</ButtonSecondary>
                 </div>
-                <div className='inventory-form__button-wrapper'>
+                <div
+                    className='inventory-form__button-wrapper'
+                    onClick={handleSubmit}
+                >
                     <ButtonPrimary>+ Add Item</ButtonPrimary>
                 </div>
             </section>
