@@ -41,7 +41,7 @@ function InventoryItem({inventory,handleOpenInventoryModal}) {
             </div>
             <div className="inventory-item__actions">
                 <button aria-label="Delete item" className="inventory-item__delete" >
-                    <img src={deleteicon} onClick={() => handleOpenInventoryModal} />
+                    <img src={deleteicon} id={inventory.id} onClick={() => handleOpenInventoryModal} />
                 </button>
                 <button aria-label="Edit item" className="inventory-item__edit">
                     <EditIcon />
