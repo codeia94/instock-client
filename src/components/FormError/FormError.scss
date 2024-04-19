@@ -1,0 +1,24 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+.input-error {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 0;
+    height: 1.25rem;
+    
+    &__icon {
+        display: block;
+        height: 14px;
+        width: 14px;
+    }
+
+    &__message {
+        @include p3-style;
+        color: $red;
+        margin-left: 0.25rem;
+    }
+}

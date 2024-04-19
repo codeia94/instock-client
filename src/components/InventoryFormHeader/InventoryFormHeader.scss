@@ -1,0 +1,28 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+.inventory-form {
+    &__header {
+        border-bottom: 0.0625rem solid $cloud;
+        display: flex;
+        justify-content: left;
+        margin-top: 0;
+        background-color: $white;
+    }
+
+    &__back-icon {
+        margin-left: 1.5rem;
+        margin-top: 1.5rem;
+        margin-right: 1rem;
+
+        @include tablet {
+            margin-top: 2rem;
+        }
+    }
+
+    &__title {
+        color: $instock-black;
+        @include h1-style;
+    }
+}

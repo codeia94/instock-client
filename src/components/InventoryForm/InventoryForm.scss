@@ -1,0 +1,200 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+.inventory-form {
+    &__content {
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        background-color: $white;
+    
+        @include tablet {
+            flex-direction: row;
+            justify-content: stretch;
+            margin: 1rem 0;
+        }
+    }
+
+    &__section {
+        padding: 0 2rem 1.5rem;
+        border-bottom: 0.0625rem solid $cloud;
+
+        @include tablet {
+            border-bottom: none;
+            border-right: 0.0625rem solid $cloud;
+            flex-grow: 1;
+            padding: 0 2rem 1rem;
+        }
+
+        @include desktop {
+            width: 40%;
+        }
+
+        &--2 {
+            border-bottom: none;
+
+            @include tablet {
+                border-right: none;
+            }
+        }
+    }
+
+    &__subheader {
+        color: $instock-black;
+        @include h2-style;
+    }
+
+    &__label {
+        display: block;
+        color: $instock-black;
+        @include h3-style;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        margin-top: 1rem;
+
+        @include tablet {
+            font-weight: 600;
+        }
+    }
+
+    &__input {
+        height: 2.25rem;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.5rem 1rem;
+        border: 0.0625rem solid $cloud;
+        border-radius: 1.25rem;
+        position: relative;
+
+        @include tablet {
+            height: 2.375rem;
+        }
+
+        &::placeholder {
+            @include p2-style;
+            color: $slate;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $instock-indigo;
+            color: $instock-black;
+        }
+
+        &--error {
+            border-color: $red;
+        }
+
+        &--dropdown {
+            background-image: url('../../assets/icons/arrow_drop_down-24px.svg');
+            background-repeat: no-repeat;
+            background-position: right center;
+        }
+    }
+
+    &__textarea {
+        width: 100%;
+        height: 120px;
+        box-sizing: border-box;
+        padding: 0.5rem 1rem;
+        border: 0.0625rem solid $cloud;
+        border-radius: 1.25rem;
+        position: relative;
+
+        @include tablet {
+            // height: 2.375rem;
+        }
+
+        &::placeholder {
+            @include p2-style;
+            color: $slate;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $instock-indigo;
+            color: $instock-black;
+        }
+
+        &--error {
+            border-color: $red;
+        }
+    }
+
+    &__option {
+        &::placeholder {
+            @include p2-style;
+        }
+    }
+
+    &__radio {
+        @include p2-style;
+    }
+
+    &__quantity {
+        display: block;
+
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__dropdown {
+        box-sizing: border-box;
+        background-color: $white;
+        border-radius: 4px;
+        box-shadow: 0px 1px 5px $instock-black;
+        padding-left: 0.5rem;
+
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__option {
+        @include p2-style;
+        color: $slate;
+
+        &:hover {
+            background-color: #2E66E509;
+        }
+    }
+
+    &__radio-container {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        @include tablet {
+            justify-content: flex-start;
+            gap: 2rem;
+        }
+    }
+
+    &__buttons {
+        background-color: $light-grey;
+        box-sizing: border-box;
+        display: flex;
+        width: 100%;
+        height: 57px;
+        justify-content: space-evenly;
+        align-items: center;
+
+        @include tablet {
+            justify-content: flex-end;
+            padding-right: 2rem;
+        }
+    }
+
+    &__button-wrapper {
+        width: 8rem;
+        height: 36px;
+
+        @include tablet {
+            width: unset;
+            height: 38px;
+            margin-left: 1rem;
+        }
+    }
+}
