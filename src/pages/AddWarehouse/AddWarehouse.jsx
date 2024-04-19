@@ -4,6 +4,8 @@ import './AddWarehouse.scss';
 import back from "../../assets/icons/arrow_back.svg";
 import info from "../../assets/icons/error-24px.svg";
 import { Link } from "react-router-dom";
+import ButtonPrimary from "../../components/ButtonPrimary/ButtonPrimary";
+import ButtonSecondary from "../../components/ButtonSecondary/ButtonSecondary";
 
 function FormWarehouse(){
     const [warehouse, setWarehouse] = useState("");
@@ -325,10 +327,14 @@ function FormWarehouse(){
                     </div>
             </div>
             <div className="button-container">
-                   <Link to="/warehouses">
-                   <button>Cancel</button>
-                   </Link>
-                    <button type="submit">Add Warehouse</button>
+              <div className="button-container__cancel">
+                <Link to="/warehouses">
+                  <ButtonSecondary>Cancel</ButtonSecondary>
+                </Link>
+              </div>
+              <div className="button-container__submit">
+                <ButtonPrimary onClick={handleSubmit}>Add Warehouse</ButtonPrimary>
+              </div>
             </div>
         </form>
     </div>
