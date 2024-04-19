@@ -106,27 +106,6 @@
         }
     }
 
-    &__error-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        margin-top: 0;
-        height: 1.25rem;
-    }
-
-    &__error-message {
-        @include p3-style;
-        color: $red;
-        margin-left: 0.25rem;
-    }
-
-    &__error-icon {
-        display: block;
-        height: 14px;
-        width: 14px;
-    }
-
     &__buttons {
         background-color: $light-grey;
         display: flex;

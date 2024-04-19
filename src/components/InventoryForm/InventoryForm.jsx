@@ -5,6 +5,7 @@ import ButtonSecondary from '../ButtonSecondary/ButtonSecondary';
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import FormError from '../FormError/FormError';
 
 export default function InventoryForm () {
     const navigate = useNavigate();
@@ -133,12 +134,7 @@ export default function InventoryForm () {
                             ${activeInput === "name" ? "inventory-form__input--active" : ""}`
                         }
                     />
-                    {error && !item && (
-                        <span className='inventory-form__error-container'>
-                            <img className='inventory-form__error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
-                            <p className='inventory-form__error-message'>Item is required</p>
-                        </span>
-                    )}
+                    <FormError errorState={error} field={item}>Item is required</FormError>
 
                     <label className='inventory-form__label' htmlFor='description'>Description</label>
                     <textarea
@@ -153,12 +149,8 @@ export default function InventoryForm () {
                             ${activeInput === "name" ? "inventory-form__textarea--active" : ""}`
                         }
                     />
-                    {error && !description && (
-                        <span className='inventory-form__error-container'>
-                            <img className='inventory-form__error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
-                            <p className='inventory-form__error-message'>Description is required</p>
-                        </span>
-                    )}
+                    <FormError errorState={error} field={description}>Item is required</FormError>
+
 
                     <label className='inventory-form__label' htmlFor='category'>Category</label>
                     <select
@@ -179,14 +171,8 @@ export default function InventoryForm () {
                         <option value="gear">Gear</option>
                         <option value="health">Health</option>
                     </select>
-                    <div className='inventory-form__error-container'>
-                        {error && !category && (
-                            <p className='inventory-form__error-message'>
-                                <img className='inventory-form error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
-                                Category is required
-                            </p>
-                        )}
-                    </div>
+                    <FormError errorState={error} field={category}>Item is required</FormError>
+
                 </div>
 
                 <div className='inventory-form__section inventory-form__section--2'>
@@ -228,14 +214,12 @@ export default function InventoryForm () {
                             ${activeInput === 'quantity' ? 'inventory-form__input--active' : ""}`
                         }
                     />
-                    <div className='inventory-form__error-container'>
-                        {error && !quantity && (
-                            <p className='inventory-form__error-message'>
-                                <img className='inventory-form error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
-                                Quantity is required
-                            </p>
-                        )}
-                    </div>
+                    {error && !quantity && (
+                        <span className='inventory-form__error-container'>
+                            <img className='inventory-form__error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
+                            <p className='inventory-form__error-message'>Quantity is required</p>
+                        </span>
+                    )}
 
                     <label htmlFor='warehouse' className='inventory-form__label'>Warehouse</label>
                     <select
@@ -260,14 +244,8 @@ export default function InventoryForm () {
                             )})
                         }
                     </select>
-                    <div className='inventory-form__error-container'>
-                        {error && !warehouse && (
-                            <p className='inventory-form__error-message'>
-                                <img className='inventory-form error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
-                                Warehouse is required
-                            </p>
-                        )}
-                    </div>
+                    <FormError errorState={error} field={warehouse}>Item is required</FormError>
+
                 </div>
             </section>
             <section className='inventory-form__buttons'>
