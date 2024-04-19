@@ -20,16 +20,18 @@ hr {
 }
 
 .warehouse-address {
-	display: flex;
-	flex-direction: column;
-	gap: 4px;
-	margin-bottom: 24px;
-
-	@include tablet {
-		flex: 1;
-		border-right: 1px solid $cloud;
-		gap: 0;
-		margin-bottom: 0;
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		margin-bottom: 24px;
+	
+		@include tablet {
+			flex: 1;
+			border-right: 1px solid $cloud;
+			gap: 0;
+			margin-bottom: 0;
+		}
 	}
 
 	&__label {
@@ -43,7 +45,7 @@ hr {
 		}
 	}
 
-	&__container {
+	&__list {
 		display: flex;
 
 		@include tablet {

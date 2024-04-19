@@ -11,14 +11,14 @@ import BackArrow from '../../assets/icons/arrow_back.svg';
 function WarehouseDetailsPage () {
 
 	const { warehouseId } = useParams();
-	const [ warehouseDetails, setWarehouseDetails ] = useState('');
+	const [ warehouseDetails, setWarehouseDetails ] = useState({});
 
 	useEffect(() => {
 		const fetchDetails = async () => {
 
 			try {
-				const response = await axios.get(`http://localhost:8080/api/warehouses/${warehouseId}`);
-				setWarehouseDetails(response.data);
+				const fetchResponse = await axios.get(`http://localhost:8080/api/warehouses/${warehouseId}`);
+				setWarehouseDetails(fetchResponse.data);
 
 			} catch (error) {
 				console.error(`Error fetching data: ${error}`);
@@ -44,7 +44,7 @@ function WarehouseDetailsPage () {
 				</button>
 			</div>
 			<hr></hr>
-			<WarehouseDetails details={warehouseDetails}/>
+			<WarehouseDetails details={warehouseDetails} warehouseId={warehouseId}/>
 		</section>
 	)
 }
