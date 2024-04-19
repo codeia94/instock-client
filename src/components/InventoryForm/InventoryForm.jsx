@@ -116,7 +116,7 @@ export default function InventoryForm () {
     return (
         <form className='inventory-form'>
             <section className='inventory-form__content'>
-                <div className='inventorty-form__section'>
+                <div className='inventory-form__section'>
                     <h2 className='inventory-form__subheader'>Item Details</h2>
                     
                     <label className='inventory-form__label' htmlFor='name'>Item Name</label>
@@ -133,14 +133,12 @@ export default function InventoryForm () {
                             ${activeInput === "name" ? "inventory-form__input--active" : ""}`
                         }
                     />
-                    <div className='inventory-form__error-container'>
-                        {error && !item && (
-                            <p className='inventory-form__error-message'>
-                                <img className='inventory-form error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
-                                Item name is required
-                            </p>
-                        )}
-                    </div>
+                    {error && !item && (
+                        <span className='inventory-form__error-container'>
+                            <img className='inventory-form__error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
+                            <p className='inventory-form__error-message'>Item is required</p>
+                        </span>
+                    )}
 
                     <label className='inventory-form__label' htmlFor='description'>Description</label>
                     <textarea
@@ -155,14 +153,12 @@ export default function InventoryForm () {
                             ${activeInput === "name" ? "inventory-form__textarea--active" : ""}`
                         }
                     />
-                    <div className='inventory-form__error-container'>
-                        {error && !description && (
-                            <p className='inventory-form__error-message'>
-                                <img className='inventory-form error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
-                                Description is required
-                            </p>
-                        )}
-                    </div>
+                    {error && !description && (
+                        <span className='inventory-form__error-container'>
+                            <img className='inventory-form__error-icon' src={ErrorIcon} alt='ErrorIcon'></img>
+                            <p className='inventory-form__error-message'>Description is required</p>
+                        </span>
+                    )}
 
                     <label className='inventory-form__label' htmlFor='category'>Category</label>
                     <select
@@ -193,7 +189,7 @@ export default function InventoryForm () {
                     </div>
                 </div>
 
-                <div className='inventorty-form__section'>
+                <div className='inventory-form__section inventory-form__section--2'>
                     <h2 className='inventory-form__subheader'>Item Availability</h2>
 
                     <label className='inventory-form__label' htmlFor='status'>Status</label>
