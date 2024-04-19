@@ -1,0 +1,42 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+
+.warehouseLabel {
+	display: none;
+	@include tablet {
+		@include h4-style;
+		color: $slate;
+		display: flex;
+		background-color: $light-grey;
+		padding: 0 32px;
+		box-sizing: border-box;
+		width: 100%;
+
+	}
+
+	&-container {
+		@include tablet {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+		}
+	}
+
+	&-column {
+		@include tablet {
+			h4 {
+				@include h4-style;
+			}
+			display: flex;
+			flex-direction: row;
+		}
+	}
+
+	&-btn {
+		background: none;
+		border: none;
+		padding: 0;
+	}
+}
