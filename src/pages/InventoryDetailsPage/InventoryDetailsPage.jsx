@@ -29,19 +29,20 @@ function InventoryDetailsPage () {
 
     return (
         <section className='inventory-details-page'>
-        <div className='inventory-details-header'>
-            <div className='inventory-details-header__nav'>
-                <Link to='/inventory' className='inventory-details-header__nav-arrow'>
-                    <img src={BackArrow} alt='Back Arrow'/>
+            <div className='inventory-details-header'>
+                <div className='inventory-details-header__nav'>
+                    <Link to='/inventory' className='inventory-details-header__nav-arrow'>
+                        <img src={BackArrow} alt='Back Arrow'/>
+                    </Link>
+                    <h1 className='inventory-details-header__nav-current'>{inventoryDetails.item_name}</h1>
+                </div>
+                <Link to={`/inventory/${itemId}/edit`} className='inventory-details-header__btn'>
+                    <img className='inventory-details-header__btn-edit' src={Edit} alt='Edit'/>
+                    <div className='inventory-details-header__btn-text'>Edit</div>
                 </Link>
-                <h1 className='inventory-details-header__nav-current'>{inventoryDetails.item_name}</h1>
             </div>
-            <Link to={`/inventory/${itemId}/edit`} className='inventory-details-header__btn'>
-                <img className='inventory-details-header__btn-edit' src={Edit} alt='Edit'/>
-            </Link>
-        </div>
-        <hr />
-        <InventoryDetails details={inventoryDetails} />
+            <hr />
+            <InventoryDetails details={inventoryDetails} />
         </section>
     );
  }
