@@ -14,7 +14,7 @@ function InventoryItem({inventory}) {
                 <div className="inventory-item__details-container">
                     <div className="inventory-item__name-container">
                         <p className="inventory-item__label-mobile">INVENTORY ITEM</p>
-                        <Link to={``} className="inventory-item__name-sub-container">
+                        <Link to={`/inventory/${inventory.id}`} className="inventory-item__name-sub-container">
                             <p className="inventory-item__name">{inventory.item_name}</p>
                             <img src={ChevronRightIcon} alt="More details" className="inventory-item__chevron" />
                         </Link>
