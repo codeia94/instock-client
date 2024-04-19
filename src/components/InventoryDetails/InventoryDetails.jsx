@@ -1,11 +1,9 @@
 import './InventoryDetails.scss';
-import Edit from '../../assets/icons/edit-24px.svg';
-
 
 function InventoryDetails({ details }) {
 
-	const {id, warehouse_name, item_name, description, category, status, quantity, } = details;
-    const statusClass = {status}.toLowerCase() === 'in stock' ? 'in-stock' : 'out-of-stock';
+	const {warehouse_name, description, category, status, quantity} = details;
+    const statusClass = status ? (status.toLowerCase() === 'in stock' ? 'in-stock' : 'out-of-stock') : '';
 
 	return (
 		<section className='inventory-details'>

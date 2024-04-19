@@ -3,22 +3,21 @@ import InventoryDetails from '../../components/InventoryDetails/InventoryDetails
 import axios from "axios";
 import './InventoryDetailsPage.scss';
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link } from 'react-router-dom';
 import Edit from '../../assets/icons/edit-24px.svg';
 import BackArrow from '../../assets/icons/arrow_back.svg';
 
 function InventoryDetailsPage () {
-
-	const { InventoryId } = useParams();
-	const [ InventoryDetails, setInventoryDetails ] = useState('');
+	const { itemId } = useParams();
+	const [ inventoryDetails, setInventoryDetails ] = useState('');
 
 	useEffect(() => {
 		const fetchDetails = async () => {
 
 			try {
-				const response = await axios.get(`http://localhost:8080/api/inventories/${InventoryId}`);
+				const response = await axios.get(`http://localhost:8080/api/inventories/${itemId}`);
 				setInventoryDetails(response.data);
+                console.log(response.data);
 
 			} catch (error) {
 				console.error(`Error fetching data: ${error}`);
@@ -26,27 +25,25 @@ function InventoryDetailsPage () {
 		}
 
 		fetchDetails();
+	}, [itemId]);
 
-	}, [InventoryId]);
-
-
-	return (
-		<section className='Inventory-details'>
-			<div className='Inventory-details-header'>
-				<div className='Inventory-details-header__nav'>
-					<Link to='/Inventory' className='Inventory-details-header__nav-arrow'>
-						<img src={BackArrow} alt='Back Arrow'/>
-					</Link>
-					<h1 className='Inventory-details-header__nav-current'>{InventoryDetails.Inventory_name}</h1>
-				</div>
-				<button className='Inventory-details-header__btn'>
-					<img className='Inventory-details-header__btn-edit' src={Edit} alt='Edit'/>
-				</button>
-			</div>
-			<hr></hr>
-			<InventoryDetails details={InventoryDetails}/>
-		</section>
-	)
-}
+    return (
+        <section className='inventory-details-page'>
+        <div className='inventory-details-header'>
+            <div className='inventory-details-header__nav'>
+                <Link to='/inventory' className='inventory-details-header__nav-arrow'>
+                    <img src={BackArrow} alt='Back Arrow'/>
+                </Link>
+                <h1 className='inventory-details-header__nav-current'>{inventoryDetails.item_name}</h1>
+            </div>
+            <Link to={`/inventory/${itemId}/edit`} className='inventory-details-header__btn'>
+                <img className='inventory-details-header__btn-edit' src={Edit} alt='Edit'/>
+            </Link>
+        </div>
+        <hr />
+        <InventoryDetails details={inventoryDetails} />
+        </section>
+    );
+ }
 
 export default InventoryDetailsPage;
