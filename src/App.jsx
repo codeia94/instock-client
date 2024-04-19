@@ -1,20 +1,37 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import Header from './components/Header/Header';
-import InventoryPage from './pages/InventoryPage/InventoryPage.jsx';
+import InventoryPage from './pages/InventoryPage/InventoryPage';
 
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
+<BrowserRouter>
+    <Header/>
       <Routes>
-        {/* Redirect root path to inventory list */}
-        <Route path="/" element={<Navigate replace to="/inventories" />} />
-        
+        {/* reroute to warehouse list?? */}
+        <Route path='/'></Route>
+
+        {/* Warehouse list */}
+        <Route path='/warehouses'></Route>
+
+        {/* Warehouse add form */}
+        <Route path='/warehouses/add'></Route>
+        {/* Warehouse details */}
+        <Route path='/warehouses/:warehouseId'></Route>
+        {/* Warehouse edit form */}
+        <Route path='/warehouses/:warehouseId/edit'></Route>
         {/* Inventory list */}
-        <Route path="/inventories" element={<InventoryPage />} />
+        <Route path='/api/inventories' element={<InventoryPage />}></Route>
+        
+        {/* Add inventory item form */}
+        <Route path='/inventory/add'></Route>
+        {/* Inventory item details */}
+        <Route path='/inventory/:itemId'></Route>
+        {/* Edit inventory item form */}
+        <Route path='/inventory/:itemId/edit'></Route>
       </Routes>
+    {/* Footer */}
     </BrowserRouter>
   );
 }
