@@ -1,0 +1,125 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+.inventory-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: $cloud 1px solid;
+    color: $instock-black;
+
+    @include tablet {
+      padding: 32px;
+      flex-direction: row;
+    }
+
+    &__main-container{
+        display: flex;
+        flex-direction: row;
+        min-width: 100%;
+    }
+  
+    &__details-container,
+    &__info-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      @include tablet {
+        flex-direction: row;
+        align-items: center;
+        max-width: 100%;
+        justify-content: space-evenly;
+      }
+    }
+
+    &__label-mobile {
+      @include h4-style;
+		  color: $slate;
+		  
+      @include tablet {
+			  display: none;
+		  }
+    }
+
+
+    &__name{
+        margin-top: 0;
+        color: $instock-indigo;
+    }
+
+    &__name-sub-container {
+        font-weight: $font-weight-semibold;
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+        @include h3-style;
+        //margin-bottom: 4px;
+        margin-top:0;
+
+        @include tablet {
+          margin-right:2rem;
+        }
+    }
+
+    &__category,
+    &__status,
+    &__quantity,
+    &__warehouse {
+      @include h3-style;
+      margin-bottom: 1px;
+      margin-top:0;
+
+      @include tablet {
+        margin-right:1rem;
+      }
+    }
+
+
+    &__chevron{
+        height: 20px;
+    }
+  
+    &__status {
+        border-radius: 20px; 
+        height: 24px;
+        display: inline-block; 
+        justify-content: center;
+        align-items: center;
+
+        @include tablet {
+          height: 26px; 
+        }
+
+        &.in-stock {
+          background-color: rgba(#15B463, 7%);
+          color: #15B463;
+          padding: 4px 8px; 
+        }
+
+        &.out-of-stock {
+          background-color: rgba(#C94515, 7%);
+          color: #C94515; 
+          padding: 4px 8px; 
+        }
+    }
+  
+    &__actions {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;;
+  
+      button {
+        background: none;
+        border: none;
+        padding: 0;
+  
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+  
