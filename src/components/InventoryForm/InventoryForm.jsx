@@ -6,7 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import FormError from '../FormError/FormError';
 
-export default function InventoryForm () {
+// takes an optional argument (inventory item object)
+// if no argument, use default values for labelstate and valuestate
+// figure out how to connect the state and what is displayed in the placeholder
+// if argument, use arg properties for labelstate
+
+export default function InventoryForm ({ object }) {
     const navigate = useNavigate();
 
     const [ warehouseList, setWarehouseList ] = useState([]);
@@ -29,7 +34,6 @@ export default function InventoryForm () {
             try {
                 const response = await axios.get(`http://localhost:8080/api/warehouses`);
                 setWarehouseList(response.data);
-                console.log(warehouseList);
             } catch (error) {
                 console.error(`Error fetching data: ${error}`);
             }
@@ -54,7 +58,6 @@ export default function InventoryForm () {
     }
 
     useEffect(() => {
-        console.log(`inStock set to ${inStock}`);
         if (inStock === "Out of stock") {
             setQuantity("0");
         }
@@ -63,19 +66,15 @@ export default function InventoryForm () {
     useEffect (() => {
         const quantityUpdate = isValidQuantity();
         setQuantityValid(quantityUpdate);
-        console.log(quantityUpdate);
     }, [quantity, inStock]);
 
     const handleChangeQuantity = (event) => {
         setQuantity(event.target.value);
-        console.log(quantity);
     }
     const handleChangeWarehouse = (event) => {
-        console.log(event.target.value)
         setWarehouse(event.target.value);
         setWarehouseMenuVisible(false);
         setWarehouseDropdownLabel(event.target.id)
-        console.log(warehouse);
     }
     const handleWarehouseDropdown = () => {
         if (!warehouseMenuVisible) {
@@ -100,14 +99,11 @@ export default function InventoryForm () {
     // Validation functions
     const isValidQuantity = () => {
         const num = Number(quantity);
-        console.log(num);
         if ((inStock === "In stock") && (num <= 0 || !num)) {
-            console.log("validating for state 'In Stock'")
             setQuantityValid(false);
             return false;
         }
         if ((inStock === "Out of stock") && num > 0) {
-            console.log("validating for state 'Out of Stock'")
             setQuantityValid(false);
             return false;
         }
@@ -116,14 +112,17 @@ export default function InventoryForm () {
 
     const isFormValid = () => {
         if ( !item || !description || !category || !inStock || !quantity || !warehouse ) {
+            console.log("info missing")
             setError(true);
             return false;
         }
 
         if (!quantityValid) {
+            console.log("quantity invalid")
             setError(true);
             return false;
         }
+        return true;
     }
 
     // Submit form
@@ -133,7 +132,8 @@ export default function InventoryForm () {
 
         if (!valid) {
             return;
-        } else {
+        } 
+        else {
             try {
                 const requestBody = {
                     "warehouse_id": Number(warehouse),
@@ -143,8 +143,8 @@ export default function InventoryForm () {
                     "status": inStock,
                     "quantity": quantity
                 }
-                console.log(requestBody);
                 axios.post('http://localhost:8080/api/inventories', requestBody)
+                navigate('/inventory');
             } catch (error) {
                 console.log("Unable to add inventory item:", error);
             }
@@ -280,14 +280,14 @@ export default function InventoryForm () {
                             {warehouseList
                                 .map((warehouse)=>{
                                 return (
-                                <div 
+                                <option 
                                     key={warehouse.id} 
-                                    name={warehouse.id}
+                                    value={warehouse.id}
                                     id={warehouse.warehouse_name}
                                     className={'inventory-form__option'}
                                     onClick={handleChangeWarehouse}
                                 >{warehouse.warehouse_name}
-                                </div>
+                                </option>
                                 )})
                             }
                         </div>
