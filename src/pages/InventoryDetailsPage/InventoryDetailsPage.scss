@@ -1,0 +1,59 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+
+.inventory-details {
+	&-header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 1rem;
+
+		@include tablet {
+			border-bottom: 1px solid $cloud;
+			padding: 32px 32px 24px;
+		}
+
+		&__nav {
+			display: flex;
+			align-items: center;
+
+			&-arrow {
+				padding-top:0.5rem;
+			}
+			
+			&-current {
+				margin: 0;
+				@include h1-style;
+				margin-left: 4px;
+			}
+		}
+
+
+		&__btn {
+			width: 36px;
+			height: 36px;
+			border-radius: 20px;
+			color: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			
+				&:hover {
+					background-color: darken(#0052cc, 10%); 
+				}
+
+			@include tablet {
+				width: 8rem;
+				border-bottom: 1px solid $cloud;
+			}
+
+			&-text {
+				@include tablet {
+					color: $instock-indigo;
+					margin-left:0.5rem;
+				}
+			}
+		}
+	}
+}

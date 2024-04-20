@@ -8,6 +8,7 @@ import ContentWrapper from "./components/ContentWrapper/ContentWrapper";
 import Footer from "./components/Footer/Footer";
 import FormWarehouse from './pages/AddWarehouse/AddWarehouse';
 import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
+import InventoryDetailsPage from './pages/InventoryDetailsPage/InventoryDetailsPage';
 import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage';
 
 
@@ -40,7 +41,8 @@ function App() {
         <Route path='/inventory/add' element={<AddInventoryPage></AddInventoryPage>}></Route>
 
         {/* Inventory item details */}
-        <Route path='/inventory/:itemId'></Route>
+        <Route path='/inventory/:itemId' element={<InventoryDetailsPage />} ></Route>
+
         {/* Edit inventory item form */}
         <Route path='/inventory/:itemId/edit'></Route>
       </Routes>
