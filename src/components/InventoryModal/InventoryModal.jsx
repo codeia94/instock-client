@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from '../Modal/Modal';
+import './InventoryModal.scss';
 
 export default function InventoryModal ({ isOpen, onClose,inventoryId, fetchData }) {
   const [inventoryName, setInventoryName] = useState("");
  
+
   useEffect(() => {
     const fetchInventoryName = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/api/inventories/${inventoryId}`);
         setInventoryName(response.data.item_name);
+        console.log(inventoryName);
       } catch (error) {
         console.error('Error fetching inventory name:', error);
       }
