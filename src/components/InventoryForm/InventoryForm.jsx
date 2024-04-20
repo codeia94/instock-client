@@ -66,7 +66,6 @@ export default function EditInventoryForm ({ data, button, warehouseId }) {
     }
     const handleChangeWarehouse = (event) => {
         setWarehouse(event.target.value);
-        console.log(warehouse);
     }
 
     // Validation functions
@@ -116,7 +115,6 @@ export default function EditInventoryForm ({ data, button, warehouseId }) {
                     "status": inStock,
                     "quantity": quantity
                 }
-                console.log(requestBody)
                 if (itemId) {
                     axios.put(`http://localhost:8080/api/inventories/${data.id}`, requestBody)
                 } else {
@@ -130,7 +128,7 @@ export default function EditInventoryForm ({ data, button, warehouseId }) {
     }
 
     return (
-        <form className='inventory-form'>
+        <form className='inventory-form' onSubmit={handleSubmit}>
             <section className='inventory-form__content'>
                 <div className='inventory-form__section'>
                     <h2 className='inventory-form__subheader'>Item Details</h2>

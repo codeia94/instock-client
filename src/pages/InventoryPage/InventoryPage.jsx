@@ -19,7 +19,7 @@ function InventoryPage() {
         };
 
         fetchInventories();
-    }, []);
+    }, [inventory]);
 
     return (
         <div className="inventory-page">
