@@ -120,19 +120,20 @@
         justify-content: center;
         align-items: center;
 		width: 50%;
+		text-transform: uppercase;
 
         @include tablet {
           height: 26px; 
 		  width: 55%;
         }
 
-        &.In-stock {
+        &.in-stock {
           background-color: rgba(#15B463, 7%);
           color: #15B463;
           padding: 4px 8px; 
         }
 
-        &.Out-of-stock {
+        &.out-of-stock {
           background-color: rgba(#C94515, 7%);
           color: #C94515; 
           padding: 4px 8px; 

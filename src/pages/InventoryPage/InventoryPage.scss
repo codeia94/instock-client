@@ -4,7 +4,6 @@
 .inventory-page {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
 
   @include tablet {
     padding: 2rem 4rem; 
