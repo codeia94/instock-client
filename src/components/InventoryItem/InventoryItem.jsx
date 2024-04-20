@@ -1,11 +1,11 @@
 import React from 'react';
 import './InventoryItem.scss';
 import { Link } from 'react-router-dom';
-import { ReactComponent as DeleteIcon } from '../../assets/icons/delete_outline-24px.svg';
+import deleteicon from '../../assets/icons/delete_outline-24px.svg';
 import { ReactComponent as EditIcon } from '../../assets/icons/edit-24px.svg';
 import ChevronRightIcon from '../../assets/icons/chevron_right-24px.svg';
 
-function InventoryItem({inventory}) {
+function InventoryItem({inventory,handleOpenInventoryModal}) {
     const statusClass = inventory.status.toLowerCase() === 'in stock' ? 'in-stock' : 'out-of-stock';
     
     return (
@@ -41,7 +41,7 @@ function InventoryItem({inventory}) {
             </div>
             <div className="inventory-item__actions">
                 <button aria-label="Delete item" className="inventory-item__delete">
-                    <DeleteIcon />
+                    <img src={deleteicon} id={inventory.id} onClick={handleOpenInventoryModal} />
                 </button>
                 <button aria-label="Edit item" className="inventory-item__edit">
                     <EditIcon />
