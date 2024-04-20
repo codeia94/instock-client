@@ -137,34 +137,7 @@
 
 }
 
+
 .button-container {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 100%;
     background-color: $light-grey;
-
-    @include tablet {
-        justify-content: flex-end;
-        width: unset;
-        margin: 0 3rem 1rem 3rem;
-        gap: 1rem;
-    }
-
-    &__cancel {
-        width: 45%;
-
-        @include tablet {
-            width: unset;
-        }
-    }
-
-    &__submit {
-        width: 45%;
-
-        @include tablet {
-            width: unset;
-        }
-    }
 }

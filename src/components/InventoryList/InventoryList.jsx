@@ -3,8 +3,7 @@ import InventoryItem from '../InventoryItem/InventoryItem';
 import SortIcon from '../../assets/icons/sort-24px.svg';
 import './InventoryList.scss'; 
 
-
-function InventoryList({ inventory,handleOpenInventoryModal }) { 
+function InventoryList({ inventory }) { 
     return (
         <section className="inventory-list-section">
             <div className="inventory-list-section__labels">
@@ -32,7 +31,6 @@ function InventoryList({ inventory,handleOpenInventoryModal }) {
                     <InventoryItem 
                         key={item.id} 
                         inventory={item} 
-                        handleOpenInventoryModal={handleOpenInventoryModal}
                     />
                 ))}
             </ul>           

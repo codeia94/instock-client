@@ -45,9 +45,9 @@ function Warehouse({ data, handleOpenWarehouseModal }) {
 							<img src={DeleteButton} id={id} alt="Delete Button" onClick={handleOpenWarehouseModal}/>
 						</button>
 						<Link to={`/warehouses/${id}/edit`}>
-							<button className="warehouse-actions__button">
-								<img src={EditButton} alt="Edit Button" />
-							</button>
+						<button className="warehouse-actions__button">
+							<img src={EditButton} alt="Edit Button" />
+						</button>
 						</Link>
 					</div>
 				</div>
