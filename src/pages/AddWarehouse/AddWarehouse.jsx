@@ -159,7 +159,7 @@ function FormWarehouse(){
                       <Link to='/warehouses'>
                                 <img src={back} className="add-warehouse__backimg" alt="Go back"/>
                       </Link>
-                      <h1 className="add-warehouse__heading">Add New Warehouse</h1>
+                      <h1 className="add-warehouse__heading">+Add New Warehouse</h1>
         </div>
         <form onSubmit={handleSubmit} className="form-container--wrapper">
             <div className="form-container">
