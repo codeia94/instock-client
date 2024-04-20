@@ -32,7 +32,7 @@ function InventoryPage() {
 
     useEffect(() => {
         fetchInventories();
-    }, []);
+    }, [inventory]);
 
     return (
         <>
