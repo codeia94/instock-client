@@ -1,33 +1,26 @@
-import './InventoryForm.scss';
+import '../InventoryForm/InventoryForm.scss';
+import axios from 'axios';
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
 import ButtonPrimary from '../ButtonPrimary/ButtonPrimary';
 import ButtonSecondary from '../ButtonSecondary/ButtonSecondary';
-import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import FormError from '../FormError/FormError';
 
-// takes an optional argument (inventory item object)
-// if no argument, use default values for labelstate and valuestate
-// figure out how to connect the state and what is displayed in the placeholder
-// if argument, use arg properties for labelstate
-
-export default function InventoryForm ({ object }) {
+export default function EditInventoryForm ({ data, button, warehouseId }) {
     const navigate = useNavigate();
+    const { itemId } = useParams();
 
     const [ warehouseList, setWarehouseList ] = useState([]);
-    const [ item, setItem ] = useState("");
-    const [ description, setDescription ] = useState("");
-    const [ category, setCategory ] = useState("");
-    const [ inStock, setInStock ] = useState("Out of stock");
-    const [ quantity, setQuantity ] = useState("0");
-    const [ warehouse, setWarehouse ] = useState("");
+
+    const [ item, setItem ] = useState(data.item_name);
+    const [ description, setDescription ] = useState(data.description);
+    const [ category, setCategory ] = useState(data.category);
+    const [ inStock, setInStock ] = useState(data.status);
+    const [ quantity, setQuantity ] = useState(data.quantity);
+    const [ warehouse, setWarehouse ] = useState(warehouseId);
     const [ error, setError ] = useState(false);
     const [ quantityValid, setQuantityValid ] = useState(true);
-    const [ warehouseMenuVisible, setWarehouseMenuVisible ] = useState(false);
-    const [ warehouseDropdownLable, setWarehouseDropdownLabel ] = useState("Please select");
-    const [ categoryMenuVisible, setCategoryMenuVisible ] = useState(false);
-    const [ categoryDropdownLable, setCategoryDropdownLabel ] = useState("Please select")
-
+    
     // Get warehouse list for dropdown menu
     useEffect(() => {
         const getWarehouses = async () => {
@@ -39,8 +32,8 @@ export default function InventoryForm ({ object }) {
             }
         }
         getWarehouses();
-    }, [])
-
+    }, [itemId])
+    
     // Change handlers
     const handleChangeItem = (event) => {
         setItem(event.target.value);
@@ -49,20 +42,20 @@ export default function InventoryForm ({ object }) {
         setDescription(event.target.value)
     }
     const handleChangeCategory = (event) => {
-        setCategory(event.target.id);
-        setCategoryMenuVisible(false);
-        setCategoryDropdownLabel(event.target.id)
+        setCategory(event.target.value);
     }
     const handleChangeSatus = (event) => {
         setInStock(event.target.value)
     }
 
+
     useEffect(() => {
-        if (inStock === "Out of stock") {
+        if (inStock === "Out of Stock") {
             setQuantity("0");
         }
     }, [inStock]);
 
+    
     useEffect (() => {
         const quantityUpdate = isValidQuantity();
         setQuantityValid(quantityUpdate);
@@ -73,37 +66,17 @@ export default function InventoryForm ({ object }) {
     }
     const handleChangeWarehouse = (event) => {
         setWarehouse(event.target.value);
-        setWarehouseMenuVisible(false);
-        setWarehouseDropdownLabel(event.target.id)
-    }
-    const handleWarehouseDropdown = () => {
-        if (!warehouseMenuVisible) {
-            setWarehouseMenuVisible(true)
-            setWarehouseDropdownLabel("Please select")
-            setWarehouse("")
-        } else {
-            setWarehouseMenuVisible(false)
-        }
-    }
-
-    const handleCategoryDropdown = () => {
-        if (!categoryMenuVisible) {
-            setCategoryMenuVisible(true)
-            setCategoryDropdownLabel("Please select")
-            setCategory("")
-        } else {
-            setCategoryMenuVisible(false)
-        }
+        console.log(warehouse);
     }
 
     // Validation functions
     const isValidQuantity = () => {
         const num = Number(quantity);
-        if ((inStock === "In stock") && (num <= 0 || !num)) {
+        if ((inStock === "In Stock") && (num <= 0 || !num)) {
             setQuantityValid(false);
             return false;
         }
-        if ((inStock === "Out of stock") && num > 0) {
+        if ((inStock === "Out of Stock") && num > 0) {
             setQuantityValid(false);
             return false;
         }
@@ -139,11 +112,16 @@ export default function InventoryForm ({ object }) {
                     "warehouse_id": Number(warehouse),
                     "item_name": item,
                     "description": description,
-                    "category": category.toLocaleLowerCase(),
+                    "category": category,
                     "status": inStock,
                     "quantity": quantity
                 }
-                axios.post('http://localhost:8080/api/inventories', requestBody)
+                console.log(requestBody)
+                if (itemId) {
+                    axios.put(`http://localhost:8080/api/inventories/${data.id}`, requestBody)
+                } else {
+                    axios.post('http://localhost:8080/api/inventories', requestBody)
+                }
                 navigate('/inventory');
             } catch (error) {
                 console.log("Unable to add inventory item:", error);
@@ -162,7 +140,7 @@ export default function InventoryForm ({ object }) {
                         type='text'
                         name='name'
                         value={item}
-                        placeholder='Item Name'
+                        placeholder={item || "Item name"}
                         onChange={handleChangeItem}
                         className={
                             `inventory-form__input 
@@ -176,7 +154,7 @@ export default function InventoryForm ({ object }) {
                         name='description'
                         value={description}
                         onChange={handleChangeDescription}
-                        placeholder='Please enter a brief description...'
+                        placeholder={description || "Please enter a brief item description..."}
                         className={
                             `inventory-form__textarea
                             ${error && !description ? "inventory-form__textarea--error" : ""}`
@@ -186,31 +164,23 @@ export default function InventoryForm ({ object }) {
 
 
                     <label className='inventory-form__label' htmlFor='category'>Category</label>
-                    <div
+                    <select
+                        name='category'
+                        value={category}
+                        onChange={handleChangeCategory}
                         className={
-                            `inventory-form__input inventory-form__input--dropdown 
+                            `inventory-form__input inventory-form__input--select
                             ${error && !category ? 'inventory-form__input--error' : ""}`
                         }
                     >
-                        <div 
-                            value=""
-                            className='inventory-form__option'
-                            onClick={handleCategoryDropdown}
-                        >{categoryDropdownLable}</div>
-                        <div className={
-                            `inventory-form__dropdown
-                            ${!categoryMenuVisible ? 'inventory-form__dropdown--hidden' : ""}`
-                            }
-                        >
-                            <div id="Accessories" className='inventory-form__option' onClick={handleChangeCategory}>Accessories</div>
-                            <div id="Apparel" className='inventory-form__option' onClick={handleChangeCategory}>Apparel</div>
-                            <div id="Electronics" className='inventory-form__option' onClick={handleChangeCategory}>Electronics</div>
-                            <div id="Gear" className='inventory-form__option' onClick={handleChangeCategory}>Gear</div>
-                            <div id="Health" className='inventory-form__option' onClick={handleChangeCategory}>Health</div>                    
-                        </div>
-                    </div>
+                        {!category && <option value="">Please select</option> }
+                        <option value="Accessories">Accessories</option>
+                        <option value="Apparel">Apparel</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Gear">Gear</option>
+                        <option value="Health">Health</option>
+                    </select>
                     <FormError errorState={error} field={category}>Item is required</FormError>
-
                 </div>
 
                 <div className='inventory-form__section inventory-form__section--2'>
@@ -223,8 +193,9 @@ export default function InventoryForm ({ object }) {
                                 type='radio'
                                 id='in-stock'
                                 name='status'
-                                value="In stock"
+                                value="In Stock"
                                 onClick={handleChangeSatus}
+                                defaultChecked={inStock === "In Stock" ? true : false}
                                 />
                             <label htmlFor='in-stock' className='inventory-form__radio'>In stock</label>
                         </div>
@@ -233,9 +204,9 @@ export default function InventoryForm ({ object }) {
                                 type='radio'
                                 id='out-of-stock'
                                 name='status'
-                                value="Out of stock"
+                                value="Out of Stock"
                                 onClick={handleChangeSatus}
-                                defaultChecked
+                                defaultChecked={inStock === "Out of Stock" ? true : false}
                             />
                             <label htmlFor='out-of-stock' className='inventory-form__radio'>Out of stock</label>
                         </div>
@@ -261,37 +232,25 @@ export default function InventoryForm ({ object }) {
                     <FormError errorState={error} field={quantityValid}>Invalid quantity</FormError>
 
                     <label htmlFor='warehouse' className='inventory-form__label'>Warehouse</label>
-                    <div
+                    <select
+                        name='warehouse'
+                        value={warehouse}
+                        onChange={handleChangeWarehouse}
                         className={
-                            `inventory-form__input inventory-form__input--dropdown 
+                            `inventory-form__input inventory-form__input--select
                             ${error && !warehouse ? 'inventory-form__input--error' : ""}`
                         }
                     >
-                        <div 
-                            value=""
-                            className='inventory-form__option'
-                            onClick={handleWarehouseDropdown}
-                        >{warehouseDropdownLable}</div>
-                        <div className={
-                            `inventory-form__dropdown
-                            ${!warehouseMenuVisible ? 'inventory-form__dropdown--hidden' : ""}`
-                            }
-                        >
-                            {warehouseList
-                                .map((warehouse)=>{
-                                return (
-                                <option 
-                                    key={warehouse.id} 
+                        {!warehouse && <option value="">Please select</option> }
+                        {warehouseList.map((warehouse) => {
+                            return (
+                                <option
+                                    key={warehouse.id}
                                     value={warehouse.id}
-                                    id={warehouse.warehouse_name}
-                                    className={'inventory-form__option'}
-                                    onClick={handleChangeWarehouse}
-                                >{warehouse.warehouse_name}
-                                </option>
-                                )})
-                            }
-                        </div>
-                    </div>
+                                >{warehouse.warehouse_name}</option>
+                            )
+                        })}
+                    </select>
                     <FormError errorState={error} field={warehouse}>Warehouse is required</FormError>
 
                 </div>
@@ -307,7 +266,7 @@ export default function InventoryForm ({ object }) {
                     className='inventory-form__button-wrapper'
                     onClick={handleSubmit}
                 >
-                    <ButtonPrimary>+ Add Item</ButtonPrimary>
+                    <ButtonPrimary>{button}</ButtonPrimary>
                 </div>
             </section>
         </form>

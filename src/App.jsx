@@ -9,6 +9,7 @@ import Footer from "./components/Footer/Footer";
 import FormWarehouse from './pages/AddWarehouse/AddWarehouse';
 import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
 import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage';
+import EditInventoryPage from './pages/EditInventoryPage/EditInventoryPage';
 
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
         {/* Inventory item details */}
         <Route path='/inventory/:itemId'></Route>
         {/* Edit inventory item form */}
-        <Route path='/inventory/:itemId/edit'></Route>
+        <Route path='/inventory/:itemId/edit' element={<EditInventoryPage/>}></Route>
       </Routes>
 		</ContentWrapper>
     <Footer/>
