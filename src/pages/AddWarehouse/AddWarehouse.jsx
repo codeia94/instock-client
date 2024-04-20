@@ -3,11 +3,12 @@ import axios from "axios";
 import './AddWarehouse.scss';
 import back from "../../assets/icons/arrow_back.svg";
 import info from "../../assets/icons/error-24px.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "../../components/ButtonSecondary/ButtonSecondary";
 
 function FormWarehouse(){
+    const navigate = useNavigate();
     const [warehouse, setWarehouse] = useState("");
     const [address, setAddress] = useState("");
     const [city,setCity] = useState("");
@@ -156,10 +157,13 @@ function FormWarehouse(){
     return (
     <div className="add-warehouse">
          <div className="add-warehouse__heading-container">
-                      <Link to='/warehouses'>
-                                <img src={back} className="add-warehouse__backimg" alt="Go back"/>
-                      </Link>
-                      <h1 className="add-warehouse__heading">Add New Warehouse</h1>
+            <img 
+              src={back} 
+              className="add-warehouse__backimg" 
+              alt="Go back"
+              onClick={() => navigate(-1)}
+            />
+            <h1 className="add-warehouse__heading">Add New Warehouse</h1>
         </div>
         <form onSubmit={handleSubmit} className="form-container--wrapper">
             <div className="form-container">
@@ -325,16 +329,17 @@ function FormWarehouse(){
                     </div>
 
                     </div>
-            </div>
-            <div className="button-container">
-              <div className="button-container__cancel">
-                <Link to="/warehouses">
+              </div>
+              <div className="button-container">
+                <div 
+                  className="button-container__cancel"
+                  onClick={() => navigate(-1)}
+                >
                   <ButtonSecondary>Cancel</ButtonSecondary>
-                </Link>
-              </div>
-              <div className="button-container__submit">
-                <ButtonPrimary onClick={handleSubmit}>Add Warehouse</ButtonPrimary>
-              </div>
+                </div>
+                <div className="button-container__submit">
+                  <ButtonPrimary onClick={handleSubmit}>Add Warehouse</ButtonPrimary>
+                </div>
             </div>
         </form>
     </div>

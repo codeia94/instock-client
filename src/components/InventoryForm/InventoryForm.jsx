@@ -256,7 +256,7 @@ export default function EditInventoryForm ({ data, button, warehouseId }) {
             <section className='inventory-form__buttons'>
                 <div 
                     className='inventory-form__button-wrapper' 
-                    onClick={() => navigate('/inventory')}
+                    onClick={() => navigate(-1)}
                 >
                     <ButtonSecondary>Cancel</ButtonSecondary>
                 </div>
