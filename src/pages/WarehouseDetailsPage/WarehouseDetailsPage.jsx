@@ -3,8 +3,7 @@ import WarehouseDetails from '../../components/WarehouseDetails/WarehouseDetails
 import axios from "axios";
 import './WarehouseDetailsPage.scss';
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import Edit from '../../assets/icons/edit-24px.svg';
 import BackArrow from '../../assets/icons/arrow_back.svg';
 
@@ -12,6 +11,7 @@ function WarehouseDetailsPage () {
 
 	const { warehouseId } = useParams();
 	const [ warehouseDetails, setWarehouseDetails ] = useState({});
+	const navigate = useNavigate();
 
 
 	useEffect(() => {
@@ -36,9 +36,11 @@ function WarehouseDetailsPage () {
 		<section className='warehouse-details'>
 			<div className='warehouse-details-header'>
 				<div className='warehouse-details-header__nav'>
-					<Link to='/warehouses' className='warehouse-details-header__nav-arrow'>
-						<img src={BackArrow} alt='Back Arrow'/>
-					</Link>
+					<img 
+						src={BackArrow}
+						alt='Back Arrow' 
+						className='warehouse-details-header__nav-arrow'
+                        onClick={() => navigate(-1)}/>
 					<h1 className='warehouse-details-header__nav-current'>{warehouseDetails.warehouse_name}</h1>
 				</div>
 

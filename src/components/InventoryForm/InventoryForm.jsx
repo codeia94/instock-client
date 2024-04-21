@@ -120,9 +120,9 @@ export default function EditInventoryForm ({ data, button, warehouseId }) {
                 } else {
                     axios.post('http://localhost:8080/api/inventories', requestBody)
                 }
-                navigate('/inventory');
+                navigate(-1);
             } catch (error) {
-                console.log("Unable to add inventory item:", error);
+                console.error("Unable to add inventory item:", error);
             }
         }
     }
@@ -256,7 +256,7 @@ export default function EditInventoryForm ({ data, button, warehouseId }) {
             <section className='inventory-form__buttons'>
                 <div 
                     className='inventory-form__button-wrapper' 
-                    onClick={() => navigate('/inventory')}
+                    onClick={() => navigate(-1)}
                 >
                     <ButtonSecondary>Cancel</ButtonSecondary>
                 </div>

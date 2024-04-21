@@ -3,11 +3,12 @@ import axios from "axios";
 import './EditWarehouse.scss';
 import back from "../../assets/icons/arrow_back.svg";
 import info from "../../assets/icons/error-24px.svg";
-import { Link, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "../../components/ButtonSecondary/ButtonSecondary";
 
 function EditWarehouse() {
+    const navigate = useNavigate();
     const {warehouseId}  = useParams();
     console.log(warehouseId);
     const id=warehouseId;
@@ -159,11 +160,7 @@ function EditWarehouse() {
                     contact_phone: phone,
                     contact_email: email,
                 });
-                if (response.status === 200) {
-                    alert("Warehouse Data updated successfully");
-                } else {
-                    alert("Failed to update Warehouse. Please try again later.");
-                }
+                navigate(-1)
             } catch (error) {
                 console.error("Error:", error);
                 alert("An error occurred");
@@ -175,10 +172,13 @@ function EditWarehouse() {
     return (
         <div className="add-warehouse">
              <div className="add-warehouse__heading-container">
-                          <Link to='/warehouses'>
-                                    <img src={back} className="add-warehouse__backimg" alt="Go back"/>
-                          </Link>
-                          <h1 className="add-warehouse__heading">Edit Warehouse</h1>
+              <img 
+                src={back} 
+                className="add-warehouse__backimg" 
+                alt="Go back"
+                onClick={() => navigate(-1)}
+              />
+              <h1 className="add-warehouse__heading">Edit Warehouse</h1>
             </div>
             <form onSubmit={handleSubmit} className="form-container--wrapper">
                 <div className="form-container">
@@ -346,14 +346,15 @@ function EditWarehouse() {
                         </div>
                 </div>
                 <div className="button-container">
-                <div className="button-container__cancel">
-                <Link to="/warehouses">
-                  <ButtonSecondary>Cancel</ButtonSecondary>
-                </Link>
-              </div>
-              <div className="button-container__submit">
-                <ButtonPrimary onClick={handleSubmit}>Save</ButtonPrimary>
-              </div>
+                  <div 
+                    className="button-container__cancel"
+                    onClick={() => navigate(-1)}
+                  >
+                    <ButtonSecondary>Cancel</ButtonSecondary>
+                  </div>
+                  <div className="button-container__submit">
+                    <ButtonPrimary onClick={handleSubmit}>Save</ButtonPrimary>
+                  </div>
                 </div>
             </form>
         </div>
