@@ -3,7 +3,7 @@ import './InventoryDetails.scss';
 function InventoryDetails({ details }) {
 
 	const {warehouse_name, description, category, status, quantity} = details;
-    const statusClass = status ? (status.toLowerCase() === 'in stock' ? 'In-stock' : 'Out-of-stock') : '';
+    const statusClass = status ? (status.toLowerCase() === 'in stock' ? 'in-stock' : 'out-of-stock') : '';
 
 	return (
 		<section className='inventory-details'>
@@ -22,7 +22,7 @@ function InventoryDetails({ details }) {
                 <div className='inventory-details__status-and-quantity'>
                     <div className='inventory-status'>
                         <h4 className='inventory-status__label'>STATUS:</h4>
-                        <p className={`inventory-status__content ${statusClass}`}>{statusClass}</p>
+                        <p className={`inventory-status__content ${statusClass}`}>{status}</p>
                     </div>
                     <div className='inventory-quantity'>
                         <h4 className='inventory-quantity__label'>QUANTITY:</h4>
