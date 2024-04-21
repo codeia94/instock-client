@@ -6,7 +6,7 @@ import './WarehousesPage.scss';
 import Warehouse from "../../components/Warehouse/Warehouse"
 import WarehouseLabel from "../../components/WarehouseLabel/WarehouseLabel"
 import WarehouseModal from '../../components/WarehouseModal/WarehouseModal';
-
+import ButtonPrimary from '../../components/ButtonPrimary/ButtonPrimary';
 
 function Warehouses() {
 
@@ -60,9 +60,9 @@ function Warehouses() {
 						</form>
 						
 						<Link to={`/warehouses/add`} className="warehouses-form__button-link">
-							<button className="warehouses-form__button">
+							<ButtonPrimary>
 								+ Add New Warehouse
-							</button>
+							</ButtonPrimary>
 						</Link>
 					</div>
 				</div>
