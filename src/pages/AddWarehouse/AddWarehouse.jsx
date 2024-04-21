@@ -3,11 +3,13 @@ import axios from "axios";
 import './AddWarehouse.scss';
 import back from "../../assets/icons/arrow_back.svg";
 import info from "../../assets/icons/error-24px.svg";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "../../components/ButtonSecondary/ButtonSecondary";
+import FormError from "../../components/FormError/FormError";
 
 function FormWarehouse(){
+    const navigate = useNavigate();
     const [warehouse, setWarehouse] = useState("");
     const [address, setAddress] = useState("");
     const [city,setCity] = useState("");
@@ -137,12 +139,7 @@ function FormWarehouse(){
                     contact_email: email,
                   }
                 );
-                
-                  if (response.status === 201) {
-                    alert("Warehouse Data submitted successfully");
-                  } else {
-                    alert("Failed to create Warehouse. Please try again later.");
-                  }
+                navigate(-1);
             } catch (error) {
               console.error("Error:", error);
               alert("An error occurred");
@@ -156,10 +153,13 @@ function FormWarehouse(){
     return (
     <div className="add-warehouse">
          <div className="add-warehouse__heading-container">
-                      <Link to='/warehouses'>
-                                <img src={back} className="add-warehouse__backimg" alt="Go back"/>
-                      </Link>
-                      <h1 className="add-warehouse__heading">Add New Warehouse</h1>
+            <img 
+              src={back} 
+              className="add-warehouse__backimg" 
+              alt="Go back"
+              onClick={() => navigate(-1)}
+            />
+            <h1 className="add-warehouse__heading">Add New Warehouse</h1>
         </div>
         <form onSubmit={handleSubmit} className="form-container--wrapper">
             <div className="form-container">
@@ -178,13 +178,7 @@ function FormWarehouse(){
                     error && !warehouse ? "form-container__input--error" : ""
                     }`}
                     />
-                    <div className="form-container__error--container">
-                      
-                    {error && !warehouse && (   
-                            <p className="form-container__error">
-                              <img className="form-container__error--img" src={info}></img>Warehouse name is required</p>
-                        )}
-                    </div>
+                    <FormError errorState={error} field={warehouse}>Warehouse is required</FormError>
                     
                     <label className="form-container__label">Street Address</label>
                     <input
@@ -198,12 +192,7 @@ function FormWarehouse(){
                         error && !address ? "form-container__input--error" : ""
                         }`}
                     />
-                    <div className="form-container__error--container">
-                    {error && !address && (
-                            <p className="form-container__error">
-                              <img className="form-container__error--img" src={info}></img>Address is required</p>
-                        )}
-                    </div>
+                    <FormError errorState={error} field={address}>Address is required</FormError>
         
                     <label className="form-container__label">City </label>
                     <input
@@ -217,12 +206,7 @@ function FormWarehouse(){
                             error && !city ? "form-container__input--error" : ""
                              }`}
                     />
-                    <div className="form-container__error--container">
-                    {error && !city && (
-                            <p className="form-container__error">
-                              <img className="form-container__error--img" src={info}></img>City is required</p>
-                        )}
-                    </div>
+                    <FormError errorState={error} field={city}>City is required</FormError>
 
                     <label className="form-container__label">Country</label>
                         <input
@@ -236,12 +220,7 @@ function FormWarehouse(){
                     error && !country ? "form-container__input--error" : ""
                     } `}
                     />
-                    <div className="form-container__error--container">
-                    {error && !country && (
-                            <p className="form-container__error">
-                              <img className="form-container__error--img" src={info}></img>Country is required</p>
-                        )}
-                    </div>
+                    <FormError errorState={error} field={country}>Country is required</FormError>
 
                 </div>
                 <div className="form-container__div2">
@@ -258,12 +237,7 @@ function FormWarehouse(){
                         error && !name ? "form-container__input--error" : ""
                          }`}
                     />
-                    <div className="form-container__error--container">
-                    {error && !name && (
-                            <p className="form-container__error">
-                              <img className="form-container__error--img" src={info}></img>Contact name is required</p>
-                        )}
-                    </div>
+                    <FormError errorState={error} field={name}>Contact Name is required</FormError>
 
                     <label className="form-container__label">Position</label>
                     <input
@@ -277,12 +251,7 @@ function FormWarehouse(){
                         error && !position ? "form-container__input--error" : ""
                         }`}
                     />
-                    <div className="form-container__error--container">
-                    {error && !position && (
-                            <p className="form-container__error">
-                              <img className="form-container__error--img" src={info}></img>Position is required</p>
-                        )}
-                    </div>
+                    <FormError errorState={error} field={position}>Position is required</FormError>
 
                     <label className="form-container__label">Phone Number</label>
                     <input
@@ -296,12 +265,7 @@ function FormWarehouse(){
                     error && !isValidPhoneNumber(phone) ? "form-container__input--error" : ""
                     } `}
                     />
-                    <div className="form-container__error--container">
-                    {error && !isValidPhoneNumber(phone) && (
-                            <p className="form-container__error">
-                              <img className="form-container__error--img" src={info}></img>Phone Number is invalid</p>
-                        )}
-                    </div>
+                    <FormError errorState={error} field={isValidPhoneNumber(phone)}>Phone Number is invalid</FormError>
 
                     <label className="form-container__label">Email</label>
                     <input
@@ -317,24 +281,20 @@ function FormWarehouse(){
                      } ${activeInput === "email" ? "form-container__input--active" : ""}`
                      }
                     />
-                    <div className="form-container__error--container">
-                    {error && !isValidEmail(email) && (
-                            <p className="form-container__error">
-                              <img className="form-container__error--img" src={info}></img>Email is invalid</p>
-                        )}
-                    </div>
+                    <FormError errorState={error} field={isValidEmail(email)}>Email is invalid</FormError>
 
                     </div>
-            </div>
-            <div className="button-container">
-              <div className="button-container__cancel">
-                <Link to="/warehouses">
+              </div>
+              <div className="button-container">
+                <div 
+                  className="button-container__cancel"
+                  onClick={() => navigate(-1)}
+                >
                   <ButtonSecondary>Cancel</ButtonSecondary>
-                </Link>
-              </div>
-              <div className="button-container__submit">
-                <ButtonPrimary onClick={handleSubmit}>Add Warehouse</ButtonPrimary>
-              </div>
+                </div>
+                <div className="button-container__submit">
+                  <ButtonPrimary onClick={handleSubmit}>+Add Warehouse</ButtonPrimary>
+                </div>
             </div>
         </form>
     </div>
