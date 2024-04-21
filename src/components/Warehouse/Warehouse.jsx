@@ -4,7 +4,7 @@ import './Warehouse.scss';
 import DeleteButton from "../../assets/icons/delete_outline-24px.svg";
 import EditButton from "../../assets/icons/edit-24px.svg";
 import Chevron from "../../assets/icons/chevron_right-24px.svg";
-import EditWarehouse from '../../pages/EditWarehouse/EditWarehouse';
+// import EditWarehouse from '../../pages/EditWarehouse/EditWarehouse';
 
 
 function Warehouse({ data, handleOpenWarehouseModal }) {

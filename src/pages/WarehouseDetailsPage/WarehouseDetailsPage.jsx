@@ -41,10 +41,11 @@ function WarehouseDetailsPage () {
 					</Link>
 					<h1 className='warehouse-details-header__nav-current'>{warehouseDetails.warehouse_name}</h1>
 				</div>
-
-				<button className='warehouse-details-header__btn'>
-					<img className='warehouse-details-header__btn-edit' src={Edit} alt='Edit'/>
-				</button>
+				<Link to='/warehouses/{warehouseId}/edit' >
+					<button className='warehouse-details-header__btn'>
+						<img className='warehouse-details-header__btn-edit' src={Edit} alt='Edit'/>
+					</button>
+				</Link>
 			</div>
 			<hr></hr>
 			<WarehouseDetails details={warehouseDetails} warehouseId={warehouseId}/>
