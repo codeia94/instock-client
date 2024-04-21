@@ -1,20 +1,34 @@
 import './WarehouseModal.scss';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import Modal from '../Modal/Modal';
 
 export default function DeleteModal ({ isOpen, onClose, warehouseId, fetchData }) {
 
-  // NEEDS TO BE UPDATED
-  // useEffect on component load to get warehouse details by id (warehouseId)
-  // assign the response "name" to warehouse variable
-  const warehouse = "Washington"
+  const [ warehouseName, setWarehouseName ] = useState("");
+
+  useEffect(() => {
+    const fetchWarehouseName = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/warehouses/${warehouseId}`);
+        setWarehouseName(response.data.warehouse_name);
+        console.log(warehouseName)
+      } catch (error) {
+        console.error('Error fetching warehouse name:', error)
+      }
+    }
+
+    if (isOpen && warehouseId) {
+      fetchWarehouseName();
+    }
+  }, [isOpen, warehouseId]);
 
   const deleteWarehouse = async (id) => {        
     try {
       await axios.delete(`http://localhost:8080/api/warehouses/${id}`);
       fetchData();
     } catch (error) {
-      console.log('Could not delete warehouse')
+      console.log('Could not delete warehouse', error)
     }
   }
   
@@ -25,9 +39,9 @@ export default function DeleteModal ({ isOpen, onClose, warehouseId, fetchData }
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} handleDelete={handleDelete}>
-        <div className='warehouse-modal__header'>Delete {warehouse} warehouse?</div>
+        <div className='warehouse-modal__header'>Delete {warehouseName} warehouse?</div>
         <div className='warehouse-modal__message'>
-            Please confirm that you'd like to delete the {warehouse} warehouse from the list of warehouses. You won't be able to undo this action.
+            Please confirm that you'd like to delete the {warehouseName} warehouse from the list of warehouses. You won't be able to undo this action.
         </div>
     </Modal>
   );
