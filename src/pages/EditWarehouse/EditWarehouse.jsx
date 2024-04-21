@@ -6,6 +6,7 @@ import info from "../../assets/icons/error-24px.svg";
 import { useParams, useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "../../components/ButtonSecondary/ButtonSecondary";
+import FormError from "../../components/FormError/FormError";
 
 function EditWarehouse() {
     const navigate = useNavigate();
@@ -181,182 +182,141 @@ function EditWarehouse() {
               <h1 className="add-warehouse__heading">Edit Warehouse</h1>
             </div>
             <form onSubmit={handleSubmit} className="form-container--wrapper">
-                <div className="form-container">
-                    <div className="form-container__div1">
-                        <h2 className="form-container__h2">Warehouse Details</h2>
-                        
-                        <label className="form-container__label">Warehouse Name </label>
+            <div className="form-container">
+                <div className="form-container__div1">
+                    <h2 className="form-container__h2">Warehouse Details</h2>
+                    
+                    <label className="form-container__label">Warehouse Name </label>
+                    <input
+                    type="text"
+                    name="warehouse"
+                    value={warehouse}
+                    onChange={handleChangeWarehouse}
+                    onFocus={() => handleFocus("warehouse")}
+                    placeholder="Warehouse Name"
+                    className={`form-container__input ${
+                    error && !warehouse ? "form-container__input--error" : ""
+                    }`}
+                    />
+                    <FormError errorState={error} field={warehouse}>Warehouse is required</FormError>
+                    
+                    <label className="form-container__label">Street Address</label>
+                    <input
+                        type="text"
+                        name="address"
+                        value={address}
+                        onChange={handleChangeAddress}
+                        onFocus={() => handleFocus("address")}
+                        placeholder="Street Address"
+                        className={`form-container__input ${
+                        error && !address ? "form-container__input--error" : ""
+                        }`}
+                    />
+                    <FormError errorState={error} field={address}>Address is required</FormError>
+        
+                    <label className="form-container__label">City </label>
+                    <input
+                        type="text"
+                        name="city"
+                        value={city}
+                         onChange={handleChangeCity}
+                        onFocus={() => handleFocus("city")}
+                        placeholder="City"
+                        className={`form-container__input ${
+                            error && !city ? "form-container__input--error" : ""
+                             }`}
+                    />
+                    <FormError errorState={error} field={city}>City is required</FormError>
+
+                    <label className="form-container__label">Country</label>
                         <input
                         type="text"
-                        name="warehouse"
-                        value={warehouse}
-                        onChange={handleChangeWarehouse}
-                        onFocus={() => handleFocus("warehouse")}
-                        placeholder="Warehouse Name"
+                        name="country"
+                        value={country}
+                        onChange={handleChangeCountry}
+                        onFocus={() => handleFocus("country")}
+                        placeholder="Country"
                         className={`form-container__input ${
-                        error && !warehouse ? "form-container__input--error" : ""
-                        } ${activeInput === "warehouse" ? "form-container__input--active" : ""}`}
-                        />
-                        <div className="form-container__error--container">
-                          
-                        {error && !warehouse && (   
-                                <p className="form-container__error">
-                                  <img className="form-container__error--img" src={info}></img>Warehouse name is required</p>
-                            )}
-                        </div>
-                        
-                        <label className="form-container__label">Street Address</label>
-                        <input
-                            type="text"
-                            name="address"
-                            value={address}
-                            onChange={handleChangeAddress}
-                            onFocus={() => handleFocus("address")}
-                            placeholder="Street Address"
-                            className={`form-container__input ${
-                            error && !address ? "form-container__input--error" : ""
-                            } ${activeInput === "address" ? "form-container__input--active" : ""}`}
-                        />
-                        <div className="form-container__error--container">
-                        {error && !address && (
-                                <p className="form-container__error">
-                                  <img className="form-container__error--img" src={info}></img>Address is required</p>
-                            )}
-                        </div>
-            
-                        <label className="form-container__label">City </label>
-                        <input
-                            type="text"
-                            name="city"
-                            value={city}
-                             onChange={handleChangeCity}
-                            onFocus={() => handleFocus("city")}
-                            placeholder="City"
-                            className={`form-container__input ${
-                                error && !city ? "form-container__input--error" : ""
-                                 } ${activeInput === "city" ? "form-container__input--active" : ""}`}
-                        />
-                        <div className="form-container__error--container">
-                        {error && !city && (
-                                <p className="form-container__error">
-                                  <img className="form-container__error--img" src={info}></img>City is required</p>
-                            )}
-                        </div>
-    
-                        <label className="form-container__label">Country</label>
-                            <input
-                            type="text"
-                            name="country"
-                            value={country}
-                            onChange={handleChangeCountry}
-                            onFocus={() => handleFocus("country")}
-                            placeholder="Country"
-                            className={`form-container__input ${
-                        error && !country ? "form-container__input--error" : ""
-                        } ${activeInput === "country" ? "form-container__input--active" : ""}`}
-                        />
-                        <div className="form-container__error--container">
-                        {error && !country && (
-                                <p className="form-container__error">
-                                  <img className="form-container__error--img" src={info}></img>Country is required</p>
-                            )}
-                        </div>
-    
+                    error && !country ? "form-container__input--error" : ""
+                    } `}
+                    />
+                    <FormError errorState={error} field={country}>Country is required</FormError>
+
+                </div>
+                <div className="form-container__div2">
+                    <h2 className="form-container__h2">Contact Details</h2>
+                    <label className="form-container__label">Contact Name</label>
+                    <input
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={handleChangeName}
+                    onFocus={() => handleFocus("name")}
+                    placeholder="Contact Name"
+                    className={`form-container__input ${
+                        error && !name ? "form-container__input--error" : ""
+                         }`}
+                    />
+                    <FormError errorState={error} field={name}>Contact Name is required</FormError>
+
+                    <label className="form-container__label">Position</label>
+                    <input
+                    type="text"
+                    name="position"
+                    value={position}
+                    onChange={handleChangePosition}
+                    onFocus={() => handleFocus("position")}
+                    placeholder="Position"
+                    className={`form-container__input ${
+                        error && !position ? "form-container__input--error" : ""
+                        }`}
+                    />
+                    <FormError errorState={error} field={position}>Position is required</FormError>
+
+                    <label className="form-container__label">Phone Number</label>
+                    <input
+                    type="text"
+                    name="phone"
+                    value={phone}
+                    onChange={handleChangePhone}
+                    onFocus={() => handleFocus("phone")}
+                    placeholder="Phone Number"
+                    className={`form-container__input ${
+                    error && !isValidPhoneNumber(phone) ? "form-container__input--error" : ""
+                    } `}
+                    />
+                    <FormError errorState={error} field={isValidPhoneNumber(phone)}>Phone Number is invalid</FormError>
+
+                    <label className="form-container__label">Email</label>
+                    <input
+                    type="text"
+                    name="email"
+                    value={email}
+                    onChange={handleChangeEmail}
+                    onFocus={() => handleFocus("email")}
+                    placeholder="Email"
+                    className={
+                    `form-container__input ${
+                    error && !isValidEmail(email) ? "form-container__input--error" : ""
+                     } ${activeInput === "email" ? "form-container__input--active" : ""}`
+                     }
+                    />
+                    <FormError errorState={error} field={isValidEmail(email)}>Email is invalid</FormError>
+
                     </div>
-                    <div className="form-container__div2">
-                        <h2 className="form-container__h2">Contact Details</h2>
-                        <label className="form-container__label">Contact Name</label>
-                        <input
-                        type="text"
-                        name="name"
-                        value={name}
-                        onChange={handleChangeName}
-                        onFocus={() => handleFocus("name")}
-                        placeholder="Contact Name"
-                        className={`form-container__input ${
-                            error && !name ? "form-container__input--error" : ""
-                             } ${activeInput === "name" ? "form-container__input--active" : ""}`}
-                        />
-                        <div className="form-container__error--container">
-                        {error && !name && (
-                                <p className="form-container__error">
-                                  <img className="form-container__error--img" src={info}></img>Contact name is required</p>
-                            )}
-                        </div>
-    
-                        <label className="form-container__label">Position</label>
-                        <input
-                        type="text"
-                        name="position"
-                        value={position}
-                        onChange={handleChangePosition}
-                        onFocus={() => handleFocus("position")}
-                        placeholder="Position"
-                        className={`form-container__input ${
-                            error && !position ? "form-container__input--error" : ""
-                            } ${activeInput === "position" ? "form-container__input--active" : ""}`}
-                        />
-                        <div className="form-container__error--container">
-                        {error && !position && (
-                                <p className="form-container__error">
-                                  <img className="form-container__error--img" src={info}></img>Position is required</p>
-                            )}
-                        </div>
-    
-                        <label className="form-container__label">Phone Number</label>
-                        <input
-                        type="text"
-                        name="phone"
-                        value={phone}
-                        onChange={handleChangePhone}
-                        onFocus={() => handleFocus("phone")}
-                        placeholder="Phone Number"
-                        className={`form-container__input ${
-                        error && !isValidPhoneNumber(phone) ? "form-container__input--error" : ""
-                        } ${activeInput === "phone" ? "form-container__input--active" : ""}`}
-                        />
-                        <div className="form-container__error--container">
-                        {error && !isValidPhoneNumber(phone) && (
-                                <p className="form-container__error">
-                                  <img className="form-container__error--img" src={info}></img>Phone Number is invalid</p>
-                            )}
-                        </div>
-    
-                        <label className="form-container__label">Email</label>
-                        <input
-                        type="text"
-                        name="email"
-                        value={email}
-                        onChange={handleChangeEmail}
-                        onFocus={() => handleFocus("email")}
-                        placeholder="Email"
-                        className={
-                        `form-container__input ${
-                        error && !isValidEmail(email) ? "form-container__input--error" : ""
-                         } ${activeInput === "email" ? "form-container__input--active" : ""}`
-                         }
-                        />
-                        <div className="form-container__error--container">
-                        {error && !isValidEmail(email) && (
-                                <p className="form-container__error">
-                                  <img className="form-container__error--img" src={info}></img>Email is invalid</p>
-                            )}
-                        </div>
-    
-                        </div>
+              </div>
+              <div className="button-container">
+                <div 
+                  className="button-container__cancel"
+                  onClick={() => navigate(-1)}
+                >
+                  <ButtonSecondary>Cancel</ButtonSecondary>
                 </div>
-                <div className="button-container">
-                  <div 
-                    className="button-container__cancel"
-                    onClick={() => navigate(-1)}
-                  >
-                    <ButtonSecondary>Cancel</ButtonSecondary>
-                  </div>
-                  <div className="button-container__submit">
-                    <ButtonPrimary onClick={handleSubmit}>Save</ButtonPrimary>
-                  </div>
+                <div className="button-container__submit">
+                  <ButtonPrimary onClick={handleSubmit}>Save</ButtonPrimary>
                 </div>
-            </form>
+            </div>
+        </form>
         </div>
         );
         
