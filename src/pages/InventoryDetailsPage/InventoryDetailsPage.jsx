@@ -4,7 +4,6 @@ import axios from "axios";
 import './InventoryDetailsPage.scss';
 import { useEffect, useState } from "react";
 import { useParams, Link } from 'react-router-dom';
-import Edit from '../../assets/icons/edit-24px.svg';
 import BackArrow from '../../assets/icons/arrow_back.svg';
 
 function InventoryDetailsPage () {
@@ -37,7 +36,6 @@ function InventoryDetailsPage () {
                     <h1 className='inventory-details-header__nav-current'>{inventoryDetails.item_name}</h1>
                 </div>
                 <Link to={`/inventory/${itemId}/edit`} className='inventory-details-header__btn'>
-                    <img className='inventory-details-header__btn-edit' src={Edit} alt='Edit'/>
                     <div className='inventory-details-header__btn-text'>Edit</div>
                 </Link>
             </div>

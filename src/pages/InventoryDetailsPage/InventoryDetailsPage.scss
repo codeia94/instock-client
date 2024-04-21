@@ -7,7 +7,7 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		padding: 1rem;
+		padding:24px;
 
 		@include tablet {
 			border-bottom: 1px solid $cloud;
@@ -17,6 +17,7 @@
 		&__nav {
 			display: flex;
 			align-items: center;
+			color:$instock-black;
 
 			&-arrow {
 				padding-top:0.5rem;
@@ -29,30 +30,41 @@
 			}
 		}
 
-
 		&__btn {
 			width: 36px;
 			height: 36px;
 			border-radius: 20px;
-			color: white;
+			color: transparent;
+			background-image: url("../../assets/icons/edit-24px.svg");
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			border: solid 1px $instock-indigo;
+			background-repeat: no-repeat;
+			background-position: calc(100% - 0.5rem) center;
+			background-color: $white;
 			
 				&:hover {
 					background-color: darken(#0052cc, 10%); 
 				}
 
 			@include tablet {
-				width: 8rem;
+				width: 81px;
 				border-bottom: 1px solid $cloud;
+				color: $white;
+				background-position: calc(100% - 3rem) center;
 			}
 
 			&-text {
 				@include tablet {
 					color: $instock-indigo;
-					margin-left:0.5rem;
+					margin-left:1.5rem;
 				}
+			}
+
+			&-edit {
+				width:20px;
+				height:20px;
 			}
 		}
 	}

@@ -3,8 +3,7 @@
 @use '../../styles/partials/typography' as *;
 
 .inventory-details {
-	padding: 1rem;
-	box-sizing: border-box;
+	padding: 24px;
     display: flex;
 	flex-direction: column;
 	
@@ -17,10 +16,9 @@
 .inventory-details__container1{
 	display: flex;
 	flex-direction: column;
-	gap: 4px;
 
 	@include tablet {
-		max-width: 50%;
+		flex:5;
 		margin-right:2rem;
 		border-right: 1px solid $cloud;
 	}
@@ -29,34 +27,32 @@
 .inventory-details__container2{
 	display: flex;
 	flex-direction: column;
-	gap: 4px;
-	margin-bottom: 24px;
 
 	@include tablet {
-		width: 50%;
+		flex:5;
+		margin-bottom: 0;
 	}
 }
 
 .inventory-details__status-and-quantity{
 	display: flex;
 	flex-direction: row;
-    gap: 4px;
 
 	@include tablet {
-		margin-bottom: 6px;
+		margin-bottom: 40px;
 	}
 }
 
 .inventory-description,
 .inventory-category,
-.inventory-status,
 .inventory-quantity,
 .inventory-warehouse {
 	display: flex;
 	flex-direction: column;
-	gap: 4px;
-	margin-bottom: 6px;
+	margin-bottom: 16px;
 	@include p2-style;
+	padding:0;
+	font-weight: $font-weight-regular;
 
 	@include tablet {
 		flex: 1;
@@ -67,24 +63,41 @@
 	&__label {
 		margin: 0;
 		@include h4-style;
-		font-weight: 600;
+		font-weight: $font-weight-semibold;
+		padding-bottom: 4px;
 		color: $slate;
 
 		@include tablet {
-			margin-bottom: 8px;
 			font-weight: 600;
+			padding-bottom: 4px;
 		}
 	}
 
 	&__content {
-		display: flex;
-		margin-top: 0;
+		display: inline-block; 
+		padding:0;
+		margin:0;
+		line-height: 20px;
+		font-size:13px;
 		color:$instock-black;
-		margin-right: 2rem;;
+	
+		@include tablet {
+			line-height: 26px; 
+			font-size:14px;
+		}
+	}
+}
 
+.inventory-description {
+	&__content {
+		width:295px;
 
 		@include tablet {
-			flex-direction: column;
+			margin-bottom:28px;
+		}
+
+		@include desktop {
+			margin-bottom:429px;
 		}
 	}
 }
@@ -92,8 +105,6 @@
 .inventory-status {
 	display: flex;
 	flex-direction: column;
-	gap: 4px;
-	margin-bottom: 6px;
 	width: 50%;
 
 	@include tablet {
@@ -105,38 +116,62 @@
 	&__label {
 		margin: 0;
 		@include h4-style;
-		font-weight: 600;
+		font-weight: $font-weight-semibold;
+		padding-bottom: 4px;
+		font-size:11px;
 		color: $slate;
+		
+
 		@include tablet {
-			margin-bottom: 8px;
-			font-weight: 600;
+			font-size:12px;
+			font-weight: $font-weight-semibold;
 		}
 	}
 
 	&__content {
 		border-radius: 20px;
-        height: 24px;
-        display: inline-block; 
-        justify-content: center;
-        align-items: center;
-		width: 50%;
+		margin: 0;
+		padding: 0 8px; 
+		width:61px;
 		text-transform: uppercase;
+		line-height: 20px;
+		margin-bottom: 12px;
+		font-size:13px;
+		font-weight: $font-weight-semibold;
 
-        @include tablet {
-          height: 26px; 
-		  width: 55%;
-        }
+	
+		@include tablet {
+			line-height: 22px; 
+			margin: 4px;
+			width:65px;
+			font-size:14px;
+		}
 
-        &.in-stock {
-          background-color: rgba(#15B463, 7%);
-          color: #15B463;
-          padding: 4px 8px; 
-        }
+		&.in-stock {
+			background-color: rgba($green, 7%);
+			color: $green;
+			padding: 4px 8px; 
 
-        &.out-of-stock {
-          background-color: rgba(#C94515, 7%);
-          color: #C94515; 
-          padding: 4px 8px; 
-        }
-	}    
+			@include tablet {
+				margin:0;
+				line-height: 26px;
+				font-size:14px;
+			}
+		}
+
+		&.out-of-stock {
+			background-color: rgba($red, 7%);
+			color: $red; 
+			padding: 4px 8px; 
+			
+			@include tablet {
+				margin-bottom: 0;
+				line-height: 26px;
+			}
+		}
+	}
+}
+
+.inventory-warehouse {
+	margin-bottom: 8px;
 }
