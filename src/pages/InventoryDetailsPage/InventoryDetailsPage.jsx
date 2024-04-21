@@ -39,8 +39,11 @@ function InventoryDetailsPage () {
                         onClick={() => navigate(-1)}/>
                     <h1 className='inventory-details-header__nav-current'>{inventoryDetails.item_name}</h1>
                 </div>
-                <Link to={`/inventory/${itemId}/edit`} className='inventory-details-header__btn'>
-                    <div className='inventory-details-header__btn-text'>Edit</div>
+                <Link to={`/inventory/${itemId}/edit`} className='inventory-details-header__btn-container'>
+                    <button className='inventory-details-header__btn'>
+                        <div className='inventory-details-header__btn-text'>Edit</div>
+                        <img className='inventory-details-header__btn-edit' src={Edit} alt='Edit'/>
+                    </button>
                 </Link>
             </div>
             <hr />

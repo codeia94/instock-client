@@ -32,34 +32,40 @@
 		}
 
 		&__btn {
-			// width: 36px;
-			height: 36px;
-			border-radius: 20px;
-			color: transparent;
-			background-image: url("../../assets/icons/edit-24px.svg");
+			border: none;
+			background-color: transparent;
 			display: flex;
-			justify-content: center;
-			align-items: center;
-			border: solid 1px $instock-indigo;
-			background-repeat: no-repeat;
-			background-position: calc(100% - 0.5rem) center;
-			background-color: $white;
-			
+			justify-content: row;
+
+			&-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 36px;
+				height: 36px;
+				border-radius:50px;
+				background-color: $white; 
+				border: solid 1px $instock-indigo;
+				text-decoration: none;
+							
 				&:hover {
 					background-color: darken(#0052cc, 10%); 
 				}
 
-			@include tablet {
-				width: 81px;
-				border-bottom: 1px solid $cloud;
-				color: $white;
-				background-position: calc(100% - 3rem) center;
+				@include tablet {
+					border-radius: 20px;
+					width: 81px;
+					background-position: calc(100% - 3rem) center;
+				}
 			}
 
 			&-text {
+				display:none;
 				@include tablet {
+					display:flex;
 					color: $instock-indigo;
-					margin-left:1.5rem;
+					padding:4px;
+					margin-right: 10px;
 				}
 			}
 
