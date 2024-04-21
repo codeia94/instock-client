@@ -3,7 +3,7 @@ import axios from "axios";
 import './EditWarehouse.scss';
 import back from "../../assets/icons/arrow_back.svg";
 import info from "../../assets/icons/error-24px.svg";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "../../components/ButtonSecondary/ButtonSecondary";
 
@@ -160,11 +160,7 @@ function EditWarehouse() {
                     contact_phone: phone,
                     contact_email: email,
                 });
-                if (response.status === 200) {
-                    alert("Warehouse Data updated successfully");
-                } else {
-                    alert("Failed to update Warehouse. Please try again later.");
-                }
+                navigate(-1)
             } catch (error) {
                 console.error("Error:", error);
                 alert("An error occurred");

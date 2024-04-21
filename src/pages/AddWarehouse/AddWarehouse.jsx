@@ -3,7 +3,7 @@ import axios from "axios";
 import './AddWarehouse.scss';
 import back from "../../assets/icons/arrow_back.svg";
 import info from "../../assets/icons/error-24px.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "../../components/ButtonSecondary/ButtonSecondary";
 
@@ -138,12 +138,7 @@ function FormWarehouse(){
                     contact_email: email,
                   }
                 );
-                
-                  if (response.status === 201) {
-                    alert("Warehouse Data submitted successfully");
-                  } else {
-                    alert("Failed to create Warehouse. Please try again later.");
-                  }
+                navigate(-1);
             } catch (error) {
               console.error("Error:", error);
               alert("An error occurred");
