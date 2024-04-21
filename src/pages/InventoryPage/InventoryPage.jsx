@@ -23,7 +23,7 @@ function InventoryPage() {
     const fetchInventories = async () => {
         try {
             const response = await axios.get(`http://localhost:8080/api/inventories/`);
-            console.log(response.data);
+            // console.log(response.data);
             setInventory(response.data);
         } catch (error) {
             console.error('Error fetching inventory:', error);

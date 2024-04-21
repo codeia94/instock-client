@@ -128,3 +128,15 @@ hr {
 		}
 	}
 }
+
+.inventory-container__list {
+	.inventory-list-section__label-container-warehouse {
+		display: none;
+	}
+	.inventory-list-section__label-warehouse {
+		display: none;
+	}
+	.inventory-item__warehouse-container-warehouse {
+		display: none;
+	}
+}

@@ -6,7 +6,7 @@ import './WarehousesPage.scss';
 import Warehouse from "../../components/Warehouse/Warehouse"
 import WarehouseLabel from "../../components/WarehouseLabel/WarehouseLabel"
 import WarehouseModal from '../../components/WarehouseModal/WarehouseModal';
-
+import ButtonPrimary from '../../components/ButtonPrimary/ButtonPrimary';
 
 function Warehouses() {
 
@@ -59,10 +59,10 @@ function Warehouses() {
 							<input type="text" className="warehouses-form__search" placeholder="Search..."/>
 						</form>
 						
-						<Link to={`/warehouses/add`}>
-							<button className="warehouses-form__button">
+						<Link to={`/warehouses/add`} className="warehouses-form__button-link">
+							<ButtonPrimary>
 								+ Add New Warehouse
-							</button>
+							</ButtonPrimary>
 						</Link>
 					</div>
 				</div>
