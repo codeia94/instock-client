@@ -27,7 +27,16 @@ function InventoryList({ inventory,handleOpenInventoryModal }) {
                         <span className="inventory-list-section__label">WAREHOUSE <img src={SortIcon} alt="Sort" className="inventory-list-section__label-img" /></span>
                     </div>
                 </div>
-                <div id="actions-label" className="inventory-list-section__label-container">
+                <div className="inventory-list-section__label-container">
+                    <span className="inventory-list-section__label">STATUS <img src={SortIcon} alt="Sort" /></span>
+                </div>
+                <div className="inventory-list-section__label-container">
+                    <span className="inventory-list-section__label">QTY <img src={SortIcon} alt="Sort" /></span>
+                </div>
+                <div className="inventory-list-section__label-container inventory-list-section__label-container-warehouse">
+                    <span className="inventory-list-section__label inventory-list-section__label-warehouse">WAREHOUSE <img src={SortIcon} alt="Sort" /></span>
+                </div>
+                <div className="inventory-list-section__label-container">
                     <span className="inventory-list-section__label">ACTIONS</span>
                 </div>
             </div>

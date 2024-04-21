@@ -4,7 +4,7 @@ import './Warehouse.scss';
 import DeleteButton from "../../assets/icons/delete_outline-24px.svg";
 import EditButton from "../../assets/icons/edit-24px.svg";
 import Chevron from "../../assets/icons/chevron_right-24px.svg";
-import EditWarehouse from '../../pages/EditWarehouse/EditWarehouse';
+// import EditWarehouse from '../../pages/EditWarehouse/EditWarehouse';
 
 
 function Warehouse({ data, handleOpenWarehouseModal }) {
@@ -18,7 +18,7 @@ function Warehouse({ data, handleOpenWarehouseModal }) {
 					<div className="warehouse-container warehouse-container__one">
 						<div className="warehouse-location">
 							<h4 className="warehouse-label">WAREHOUSE</h4>
-							<Link className="warehouse-location__item">{warehouse_name} <img src={Chevron} alt='chevron'/></Link>
+							<Link to={`/warehouses/${id}`} className="warehouse-location__item">{warehouse_name} <img src={Chevron} alt='chevron'/></Link>
 						</div>
 						<div className="warehouse-address">
 							<h4 className="warehouse-label">ADDRESS</h4>

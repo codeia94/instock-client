@@ -2,12 +2,15 @@ import './WarehouseDetails.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import InventoryList from '../InventoryList/InventoryList';
+import InventoryModal from '../InventoryModal/InventoryModal';
 
 
 function WarehouseDetails({ details, warehouseId }) {
 	const { address, city, contact_name, contact_email, contact_phone, contact_position, country } = details;
 
 	const [ inventory, setInventory ] = useState([]);
+	const [ inventoryModalOpen, setInventoryModalOpen ] = useState(false);
+	const [ selectedInventoryId, setSelectedInventoryId ] = useState("");
 
 	useEffect(() => {
 		const fetchInventory = async () => {
@@ -20,7 +23,17 @@ function WarehouseDetails({ details, warehouseId }) {
 		};
 
 		fetchInventory();
-	}, [warehouseId])
+	}, [warehouseId]);
+
+	const handleOpenInventoryModal = (inventoryId) => {
+		setSelectedInventoryId(inventoryId);
+		setInventoryModalOpen(true);
+	};
+
+	const handleCloseInventoryModal = () => {
+		setInventoryModalOpen(false);
+	
+	}
 
 	return (
 		<div>
@@ -48,8 +61,14 @@ function WarehouseDetails({ details, warehouseId }) {
 			</section>
 
 			<section className='inventory-container__list'>
-				<InventoryList inventory={inventory}/>
+				<InventoryList inventory={inventory} handleOpenInventoryModal={handleOpenInventoryModal}/>
 			</section>
+			<InventoryModal 
+        isOpen={inventoryModalOpen} 
+        onClose={handleCloseInventoryModal} 
+        inventoryId={selectedInventoryId} 
+        fetchData={setInventory} 
+      />
 		</div>
 	);
 }
