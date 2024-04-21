@@ -132,8 +132,7 @@
       text-transform: uppercase;
       white-space: nowrap;
       cursor: pointer;
-      padding: 0 8px; 
-      width:61px;
+      padding: 4px 8px; 
       line-height: 20px;
       font-size:11px;
       font-weight: $font-weight-semibold;
@@ -141,19 +140,16 @@
       @include tablet {
         line-height: 26px; 
         margin: 4px;
-        width:65px;
       }
 
       &.in-stock {
         background-color: rgba($green, 7%);
         color:$green;
-        padding: 4px 8px; 
       }
 
       &.out-of-stock {
         background-color: rgba($red, 7%);
         color: $red; 
-        padding: 4px 8px; 
       }
     }
   
@@ -166,6 +162,7 @@
         background: none;
         border: none;
         padding: 4px;
+        cursor: pointer;
   
         svg {
           width: 24px;
