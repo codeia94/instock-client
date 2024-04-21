@@ -36,7 +36,7 @@ function InventoryItem({inventory,handleOpenInventoryModal}) {
                         <p className="inventory-item__label-mobile">QTY</p>
                         <p className="inventory-item__quantity">{inventory.quantity}</p>
                     </div>
-                    <div className="inventory-item__warehouse-container">
+                    <div className="inventory-item__warehouse-container inventory-item__warehouse-container-warehouse">
                         <p className="inventory-item__label-mobile">WAREHOUSE</p>
                         <p className="inventory-item__warehouse">{inventory.warehouse_name}</p>
                     </div>
