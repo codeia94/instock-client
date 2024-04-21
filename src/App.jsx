@@ -1,13 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
+import AddInventoryPage from './pages/AddInventoryPage/AddInventoryPage';
 import Header from './components/Header/Header';
 import InventoryPage from './pages/InventoryPage/InventoryPage';
 import ContentWrapper from "./components/ContentWrapper/ContentWrapper";
 import Footer from "./components/Footer/Footer";
 import FormWarehouse from './pages/AddWarehouse/AddWarehouse';
 import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
+import InventoryDetailsPage from './pages/InventoryDetailsPage/InventoryDetailsPage';
 import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage';
+import EditInventoryPage from './pages/EditInventoryPage/EditInventoryPage';
 
 
 function App() {
@@ -36,11 +39,13 @@ function App() {
         <Route path='/inventory' element={<InventoryPage />}></Route>
         
         {/* Add inventory item form */}
-        <Route path='/inventory/add'></Route>
+        <Route path='/inventory/add' element={<AddInventoryPage></AddInventoryPage>}></Route>
+
         {/* Inventory item details */}
-        <Route path='/inventory/:itemId'></Route>
+        <Route path='/inventory/:itemId' element={<InventoryDetailsPage />} ></Route>
+
         {/* Edit inventory item form */}
-        <Route path='/inventory/:itemId/edit'></Route>
+        <Route path='/inventory/:itemId/edit' element={<EditInventoryPage/>}></Route>
       </Routes>
 		</ContentWrapper>
     <Footer/>

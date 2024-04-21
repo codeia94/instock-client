@@ -12,7 +12,7 @@ function InventoryHeader() {
                 className="inventory-header__input" 
                 placeholder="Search..." 
             />
-            <Link to="" className="inventory-header__add-btn-link"> 
+            <Link to="/inventory/add" className="inventory-header__add-btn-link"> 
                 <button className="inventory-header__add-btn">
                     + Add New Item
                 </button>
