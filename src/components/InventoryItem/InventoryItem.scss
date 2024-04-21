@@ -8,16 +8,17 @@
     justify-content: center;
     border-bottom: $cloud 1px solid;
     color: $instock-black;
+    padding:24px 32px;
 
     @include tablet {
-      padding: 32px;
+      padding: 8px 32px;
       flex-direction: row;
     }
 
     &__main-container{
         display: flex;
         flex-direction: row;
-        min-width: 100%;
+        width: 100%;
     }
   
     &__details-container,
@@ -29,91 +30,140 @@
       @include tablet {
         flex-direction: row;
         align-items: center;
-        max-width: 100%;
-        justify-content: space-evenly;
       }
     }
 
     &__label-mobile {
       @include h4-style;
+      margin:0;
+      margin-bottom:4px;
 		  color: $slate;
+      font-weight: $font-weight-semibold;
 		  
       @include tablet {
 			  display: none;
 		  }
     }
 
+    &__name-container {
+      @include tablet {
+        flex: 5.5;
+      }
+    }
 
-    &__name{
-        margin-top: 0;
-        color: $instock-indigo;
+    &__category-container{
+      @include tablet {
+        flex: 4.5;
+      }
     }
 
     &__name-sub-container {
-        font-weight: $font-weight-semibold;
-        display: flex;
-        flex-direction: row;
-        text-decoration: none;
-        @include h3-style;
-        //margin-bottom: 4px;
-        margin-top:0;
-
-        @include tablet {
-          margin-right:2rem;
-        }
+      display: flex;
+      flex-direction: row;
+      text-decoration: none;
+      @include h3-style;
+      margin-top:0;
     }
 
-    &__category,
-    &__status,
-    &__quantity,
-    &__warehouse {
+    &__name{
+      margin-top: 0;
+      margin-bottom:16px;
+      color: $instock-indigo;
+      font-weight: $font-weight-semibold;
+
+      @include tablet {
+        margin-bottom:0px;
+      }
+    }
+
+    &__category {
       @include h3-style;
-      margin-bottom: 1px;
+      margin-bottom: 16px;
       margin-top:0;
 
       @include tablet {
         margin-right:1rem;
+        margin-bottom: 0;
+        flex: 1;
+
+        @include desktop {
+          width: auto; 
+        }
       }
     }
 
+    &__status,
+    &__quantity,
+    &__warehouse {
+      @include h3-style;
+      margin-bottom: 16px;
+      margin-top:0;
+
+      @include tablet {
+        margin-bottom: 0;
+      }
+    }
+
+    &__status-container{
+      @include tablet {
+      flex: 4;
+      }
+    }
+    &__quantity-container{
+      @include tablet {
+      flex: 2;
+      }
+    }
+    &__warehouse-container {
+      @include tablet {
+      flex: 4;
+      }
+    }
 
     &__chevron{
-        height: 20px;
+      height: 20px;
     }
   
     &__status {
-        border-radius: 20px; 
-        height: 24px;
-        display: inline-block; 
-        justify-content: center;
-        align-items: center;
+      border-radius: 20px; 
+      display: inline-block; 
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      white-space: nowrap;
+      cursor: pointer;
+      padding: 4px 8px; 
+      line-height: 20px;
+      font-size:11px;
+      font-weight: $font-weight-semibold;
+      margin-bottom: 12px;
 
-        @include tablet {
-          height: 26px; 
-        }
+      @include tablet {
+        line-height: 26px; 
+        margin: 4px;
+      }
 
-        &.in-stock {
-          background-color: rgba(#15B463, 7%);
-          color: #15B463;
-          padding: 4px 8px; 
-        }
+      &.in-stock {
+        background-color: rgba($green, 7%);
+        color:$green;
+      }
 
-        &.out-of-stock {
-          background-color: rgba(#C94515, 7%);
-          color: #C94515; 
-          padding: 4px 8px; 
-        }
+      &.out-of-stock {
+        background-color: rgba($red, 7%);
+        color: $red; 
+      }
     }
+  
   
     &__actions {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 1rem;;
   
       button {
         background: none;
         border: none;
-        padding: 0;
+        padding: 4px;
+        cursor: pointer;
   
         svg {
           width: 24px;
