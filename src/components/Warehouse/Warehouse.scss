@@ -59,6 +59,7 @@
 		@include desktop {
 			flex: unset;
 			width: unset;
+
 		}
 	}
 
@@ -91,6 +92,7 @@
 	&-label {
 		@include h4-style;
 		color: $slate;
+		font-weight: 600;
 		@include tablet {
 			display: none;
 		}
@@ -108,7 +110,10 @@
 			color: $instock-indigo;
 			display: flex;
 			align-items: center;
-
+			font-weight: 600;
+			@include tablet {
+				font-weight: 600;
+			}
 			
 		}
 	}
@@ -151,11 +156,20 @@
 			&-email {
 				margin-top: 0;
 			}
+
+			@include desktop {
+				margin: 0;
+			}
 		}
 	}
 	&-actions {
 		display: flex;
 		justify-content: space-between;
+
+		@include desktop {
+			gap: 1rem;
+		}
+
 		&__label {
 			display: none;
 		}
@@ -163,6 +177,7 @@
 			background: none;
 			border: none;
 			padding: 0;
+			cursor: pointer;
 		}
 	}
 }

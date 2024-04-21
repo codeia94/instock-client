@@ -6,14 +6,20 @@
 .warehouseLabel {
 	display: none;
 	@include tablet {
-		@include h4-style;
+		// @include h4-style;
 		color: $slate;
 		display: flex;
 		background-color: $light-grey;
 		padding: 0 32px;
 		box-sizing: border-box;
 		width: 100%;
+	}
 
+	&-label {
+		@include tablet {
+			margin-right: 4px;
+			font-weight: 600;
+		}
 	}
 
 	&-container {
@@ -21,6 +27,9 @@
 			display: flex;
 			justify-content: space-between;
 			width: 100%;
+		}
+		@include desktop {
+			justify-content: unset;
 		}
 	}
 
@@ -31,6 +40,29 @@
 			}
 			display: flex;
 			flex-direction: row;
+		}
+
+		@include desktop{
+			&__warehouse {
+				@include desktop {
+					width: 200px;
+				}
+			}
+			&__address {
+				@include desktop {
+					width: 300px;
+				}
+			}
+			&__contact {
+				@include desktop {
+					width: 180px;
+				}
+			}
+			&__info {
+				@include desktop {
+					width: 220px;
+				}
+			}
 		}
 	}
 
