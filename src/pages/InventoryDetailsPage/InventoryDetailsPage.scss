@@ -21,6 +21,7 @@
 
 			&-arrow {
 				padding-top:0.5rem;
+				cursor: pointer;
 			}
 			
 			&-current {
@@ -31,7 +32,7 @@
 		}
 
 		&__btn {
-			width: 36px;
+			// width: 36px;
 			height: 36px;
 			border-radius: 20px;
 			color: transparent;

@@ -3,12 +3,14 @@ import InventoryDetails from '../../components/InventoryDetails/InventoryDetails
 import axios from "axios";
 import './InventoryDetailsPage.scss';
 import { useEffect, useState } from "react";
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import Edit from '../../assets/icons/edit-24px.svg';
 import BackArrow from '../../assets/icons/arrow_back.svg';
 
 function InventoryDetailsPage () {
 	const { itemId } = useParams();
 	const [ inventoryDetails, setInventoryDetails ] = useState('');
+    const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchDetails = async () => {
@@ -30,9 +32,11 @@ function InventoryDetailsPage () {
         <section className='inventory-details-page'>
             <div className='inventory-details-header'>
                 <div className='inventory-details-header__nav'>
-                    <Link to='/inventory' className='inventory-details-header__nav-arrow'>
-                        <img src={BackArrow} alt='Back Arrow'/>
-                    </Link>
+                    <img 
+                        src={BackArrow} 
+                        alt='Back Arrow' 
+                        className='inventory-details-header__nav-arrow'
+                        onClick={() => navigate(-1)}/>
                     <h1 className='inventory-details-header__nav-current'>{inventoryDetails.item_name}</h1>
                 </div>
                 <Link to={`/inventory/${itemId}/edit`} className='inventory-details-header__btn'>

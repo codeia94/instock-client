@@ -101,7 +101,7 @@
 
         &:focus {
             outline: none;
-            border-color: $slate;
+            border-color: $instock-indigo;
         }
 
         &--error {
@@ -150,7 +150,7 @@
     @include tablet {
         justify-content: flex-end;
         width: unset;
-        margin: 0 3rem 1rem 3rem;
+        padding: 1rem 3rem 1rem 3rem;
         gap: 1rem;
     }
 

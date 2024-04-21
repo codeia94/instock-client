@@ -10,6 +10,8 @@ import FormWarehouse from './pages/AddWarehouse/AddWarehouse';
 import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
 import InventoryDetailsPage from './pages/InventoryDetailsPage/InventoryDetailsPage';
 import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage';
+import EditInventoryPage from './pages/EditInventoryPage/EditInventoryPage';
+import Redirect from './components/Redirect/Redirect';
 
 
 function App() {
@@ -19,7 +21,7 @@ function App() {
 		<ContentWrapper>
       <Routes>
         {/* reroute to warehouse list?? */}
-        <Route path='/'></Route>
+        <Route path='/' element={<Redirect/>}></Route>
 
         {/* Warehouse list */}
         <Route path='/warehouses' element={<WarehousesPage />}></Route>
@@ -44,7 +46,7 @@ function App() {
         <Route path='/inventory/:itemId' element={<InventoryDetailsPage />} ></Route>
 
         {/* Edit inventory item form */}
-        <Route path='/inventory/:itemId/edit'></Route>
+        <Route path='/inventory/:itemId/edit' element={<EditInventoryPage/>}></Route>
       </Routes>
 		</ContentWrapper>
     <Footer/>

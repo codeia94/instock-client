@@ -86,10 +86,12 @@
             border-color: $red;
         }
 
-        &--dropdown {
+        &--select {
+            appearance: none;
             background-image: url('../../assets/icons/arrow_drop_down-24px.svg');
             background-repeat: no-repeat;
             background-position: right center;
+            @include p2-style;
         }
     }
 
@@ -101,6 +103,7 @@
         border: 0.0625rem solid $cloud;
         border-radius: 1.25rem;
         position: relative;
+        @include p2-style;
 
         @include tablet {
             // height: 2.375rem;
@@ -122,12 +125,6 @@
         }
     }
 
-    &__option {
-        &::placeholder {
-            @include p2-style;
-        }
-    }
-
     &__radio {
         @include p2-style;
     }
@@ -137,27 +134,6 @@
 
         &--hidden {
             display: none;
-        }
-    }
-
-    &__dropdown {
-        box-sizing: border-box;
-        background-color: $white;
-        border-radius: 4px;
-        box-shadow: 0px 1px 5px $instock-black;
-        padding-left: 0.5rem;
-
-        &--hidden {
-            display: none;
-        }
-    }
-
-    &__option {
-        @include p2-style;
-        color: $slate;
-
-        &:hover {
-            background-color: #2E66E509;
         }
     }
 
