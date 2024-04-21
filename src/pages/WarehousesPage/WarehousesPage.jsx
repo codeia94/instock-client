@@ -59,7 +59,7 @@ function Warehouses() {
 							<input type="text" className="warehouses-form__search" placeholder="Search..."/>
 						</form>
 						
-						<Link to={`/warehouses/add`}>
+						<Link to={`/warehouses/add`} className="warehouses-form__button-link">
 							<button className="warehouses-form__button">
 								+ Add New Warehouse
 							</button>

@@ -113,11 +113,21 @@ hr {
 			border: none;
 			@include h3-style;
 			font-weight: 600;
+			cursor: pointer;
+			&:hover {
+				background-color: $graphite;
+			}
 
 			@include tablet {
 				padding: 8px 16px;
 				font-weight: 600;
-				margin-left: 10px;
+				// margin-left: 10px;
+
+
+				&-link {
+					margin-left: 10px;
+					height: 36px;
+				}
 			}
 		}
 	}
