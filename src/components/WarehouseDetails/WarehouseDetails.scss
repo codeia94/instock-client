@@ -5,6 +5,7 @@
 hr {
 	border: 1px $cloud solid;
 	margin: 0;
+
 	@include tablet {
 		display: none;
 	}
@@ -13,6 +14,7 @@ hr {
 .warehouse-details__container {
 	padding: 1rem;
 	box-sizing: border-box;
+
 	@include tablet {
 		padding: 32px;
 		display: flex;
@@ -25,7 +27,7 @@ hr {
 		flex-direction: column;
 		gap: 4px;
 		margin-bottom: 24px;
-	
+
 		@include tablet {
 			flex: 1;
 			border-right: 1px solid $cloud;
@@ -39,6 +41,7 @@ hr {
 		@include h4-style;
 		font-weight: 600;
 		color: $slate;
+
 		@include tablet {
 			margin-bottom: 8px;
 			font-weight: 600;
@@ -73,6 +76,7 @@ hr {
 
 	&__name {
 		flex: 1;
+
 		@include tablet {
 			flex: none;
 		}
@@ -82,13 +86,15 @@ hr {
 			@include h4-style;
 			font-weight: 600;
 			color: $slate;
+
 			@include tablet {
 				margin-bottom: 8px;
 				font-weight: 600;
 			}
 		}
 
-		&-item, &-pos {
+		&-item,
+		&-pos {
 			margin: 0;
 			@include p2-style;
 			color: $instock-black;
@@ -97,6 +103,7 @@ hr {
 
 	&__info {
 		flex: 1;
+
 		@include tablet {
 			flex: none;
 		}
@@ -106,13 +113,15 @@ hr {
 			@include h4-style;
 			font-weight: 600;
 			color: $slate;
+
 			@include tablet {
 				margin-bottom: 8px;
 				font-weight: 600;
 			}
 		}
 
-		&-num, &-email {
+		&-num,
+		&-email {
 			margin: 0;
 			@include p2-style;
 			color: $instock-black;

@@ -180,7 +180,7 @@ function FormWarehouse(){
                     placeholder="Warehouse Name"
                     className={`form-container__input ${
                     error && !warehouse ? "form-container__input--error" : ""
-                    } ${activeInput === "warehouse" ? "form-container__input--active" : ""}`}
+                    }`}
                     />
                     <div className="form-container__error--container">
                       
@@ -200,7 +200,7 @@ function FormWarehouse(){
                         placeholder="Street Address"
                         className={`form-container__input ${
                         error && !address ? "form-container__input--error" : ""
-                        } ${activeInput === "address" ? "form-container__input--active" : ""}`}
+                        }`}
                     />
                     <div className="form-container__error--container">
                     {error && !address && (
@@ -219,7 +219,7 @@ function FormWarehouse(){
                         placeholder="City"
                         className={`form-container__input ${
                             error && !city ? "form-container__input--error" : ""
-                             } ${activeInput === "city" ? "form-container__input--active" : ""}`}
+                             }`}
                     />
                     <div className="form-container__error--container">
                     {error && !city && (
@@ -238,7 +238,7 @@ function FormWarehouse(){
                         placeholder="Country"
                         className={`form-container__input ${
                     error && !country ? "form-container__input--error" : ""
-                    } ${activeInput === "country" ? "form-container__input--active" : ""}`}
+                    } `}
                     />
                     <div className="form-container__error--container">
                     {error && !country && (
@@ -260,7 +260,7 @@ function FormWarehouse(){
                     placeholder="Contact Name"
                     className={`form-container__input ${
                         error && !name ? "form-container__input--error" : ""
-                         } ${activeInput === "name" ? "form-container__input--active" : ""}`}
+                         }`}
                     />
                     <div className="form-container__error--container">
                     {error && !name && (
@@ -279,7 +279,7 @@ function FormWarehouse(){
                     placeholder="Position"
                     className={`form-container__input ${
                         error && !position ? "form-container__input--error" : ""
-                        } ${activeInput === "position" ? "form-container__input--active" : ""}`}
+                        }`}
                     />
                     <div className="form-container__error--container">
                     {error && !position && (
@@ -298,7 +298,7 @@ function FormWarehouse(){
                     placeholder="Phone Number"
                     className={`form-container__input ${
                     error && !isValidPhoneNumber(phone) ? "form-container__input--error" : ""
-                    } ${activeInput === "phone" ? "form-container__input--active" : ""}`}
+                    } `}
                     />
                     <div className="form-container__error--container">
                     {error && !isValidPhoneNumber(phone) && (
