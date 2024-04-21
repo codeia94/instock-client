@@ -14,18 +14,22 @@
 	@include tablet {
 		padding: 32px;
 		flex-direction: row;
-		flex: 1;
-		&:nth-child(1) {
-			flex: 4;
-		}
-		&:nth-child(2) {
-			flex: 1;
-		}
+		align-items: center;
+		// flex: 1;
+		// &:nth-child(1) {
+		// 	flex: 4;
+		// }
+		// &:nth-child(2) {
+		// 	flex: 1;
+		// }
 	}
 	@include desktop {
 		&:hover {
 			background-color: rgba(46, 102, 229, 0.07);
 		}
+		justify-content: space-between;
+		flex-basis: auto;
+		
 	}
 
 	&-top {
@@ -37,6 +41,12 @@
 			flex: 20;
 			gap: 0;
 		}
+		@include desktop {
+			flex: unset;
+			flex-basis: auto;
+			width: 90%;
+			justify-content: unset;
+		}
 	}
 
 	&-btm {
@@ -45,6 +55,10 @@
 			display: flex;
 			width: max-content;
 			justify-content: flex-start;
+		}
+		@include desktop {
+			flex: unset;
+			width: unset;
 		}
 	}
 
@@ -60,7 +74,19 @@
 			max-width: 300px;
 			justify-content: space-between;
 		}
+		@include desktop {
+			max-width: unset;
+			flex: unset;
+			justify-content: unset;
+		}
+
+		&__one {
+			width: 500px;
+		}
+
 	}
+
+
 
 	&-label {
 		@include h4-style;
@@ -71,12 +97,19 @@
 	}
 
 	&-location {
+
+		@include desktop{
+			width: 200px;
+		}
+
 		&__item {
 			@include h3-style;
 			text-decoration: none;
 			color: $instock-indigo;
 			display: flex;
 			align-items: center;
+
+			
 		}
 	}
 
@@ -98,6 +131,10 @@
 			display: flex;
 			flex-direction: row;
 		}
+		@include desktop {
+			width: 180px;
+		}
+
 		&__item {
 			@include h3-style;
 			margin: 0;
