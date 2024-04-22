@@ -35,7 +35,6 @@ export default function InventoryModal ({ isOpen, onClose,inventoryId, fetchData
   const handleDelete = () => {
     deleteInventory(inventoryId);
     onClose();
-    window.history.back();
   }
   
   return (
