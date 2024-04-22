@@ -12,18 +12,17 @@ function WarehouseDetails({ details, warehouseId }) {
 	const [ inventoryModalOpen, setInventoryModalOpen ] = useState(false);
 	const [ selectedInventoryId, setSelectedInventoryId ] = useState("");
 
+	const fetchInventory = async () => {
+		try {
+			const response = await axios.get(`http://localhost:8080/api/warehouses/${warehouseId}/inventories`);
+			setInventory(response.data);
+		} catch (error) {
+			console.error(`Error fetching data: ${error}`);
+		}
+	};
 	useEffect(() => {
-		const fetchInventory = async () => {
-			try {
-				const response = await axios.get(`http://localhost:8080/api/warehouses/${warehouseId}/inventories`);
-				setInventory(response.data);
-			} catch (error) {
-				console.error(`Error fetching data: ${error}`);
-			}
-		};
-
 		fetchInventory();
-	}, [warehouseId]);
+	}, []);
 
 	const handleOpenInventoryModal = (event) => {
 		setSelectedInventoryId(event.target.id);
@@ -68,7 +67,7 @@ function WarehouseDetails({ details, warehouseId }) {
         isOpen={inventoryModalOpen} 
         onClose={handleCloseInventoryModal} 
         inventoryId={selectedInventoryId} 
-        fetchData={setInventory} 
+        fetchData={fetchInventory} 
       />
 		</div>
 	);
