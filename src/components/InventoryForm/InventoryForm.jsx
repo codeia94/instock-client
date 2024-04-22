@@ -57,6 +57,19 @@ export default function EditInventoryForm ({ data, button, warehouseId }) {
 
     
     useEffect (() => {
+        const isValidQuantity = () => {
+            const num = Number(quantity);
+            if ((inStock === "In Stock") && (num <= 0 || !num)) {
+                setQuantityValid(false);
+                return false;
+            }
+            if ((inStock === "Out of Stock") && num > 0) {
+                setQuantityValid(false);
+                return false;
+            }
+            return true;
+        }
+        
         const quantityUpdate = isValidQuantity();
         setQuantityValid(quantityUpdate);
     }, [quantity, inStock]);
@@ -69,18 +82,7 @@ export default function EditInventoryForm ({ data, button, warehouseId }) {
     }
 
     // Validation functions
-    const isValidQuantity = () => {
-        const num = Number(quantity);
-        if ((inStock === "In Stock") && (num <= 0 || !num)) {
-            setQuantityValid(false);
-            return false;
-        }
-        if ((inStock === "Out of Stock") && num > 0) {
-            setQuantityValid(false);
-            return false;
-        }
-        return true;
-    }
+    
 
     const isFormValid = () => {
         if ( !item || !description || !category || !inStock || !quantity || !warehouse ) {
@@ -212,7 +214,7 @@ export default function EditInventoryForm ({ data, button, warehouseId }) {
                     <div 
                         className={
                             `inventory-form__quantity 
-                            ${inStock === "Out of stock" ? 'inventory-form__quantity--hidden' : ""}`
+                            ${inStock === "Out of Stock" ? 'inventory-form__quantity--hidden' : ""}`
                         }>
                         <label className='inventory-form__label' htmlFor='quantity'>Quantity</label>
                         <input
