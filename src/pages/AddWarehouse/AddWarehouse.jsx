@@ -42,9 +42,9 @@ function FormWarehouse(){
       const handleChangePhone = (event) => {
         const phoneNumber = event.target.value;
         setPhone(phoneNumber);
-        console.log("Phone number:", phoneNumber);
+       
         const isValid = isValidPhoneNumber(phoneNumber);
-        console.log("Phone number validation result:", isValid);
+        
         setError(!isValid);
       };
       const handleChangeEmail = (event) => {
@@ -78,7 +78,7 @@ function FormWarehouse(){
         if (atIndex === 0 || atIndex === email.length-1){
             return false;  //if email begins with @ or ends with @
         }
-          console.log("reached here");
+         
         const afterAt= email.substring(atIndex+1);
         const dotIndex = afterAt.indexOf('.');
     
@@ -94,8 +94,6 @@ function FormWarehouse(){
     const isValidPhoneNumber = () => {
         // Regular expression to match a valid phone number
         const phoneRegex = /^\+\d{1,3}\s?\(\d{3}\)\s?\d{3}-\d{4}$/;
-        console.log("problem is phone");
-        console.log(phoneRegex.test(phone));
         return phoneRegex.test(phone);
     };
 
@@ -265,7 +263,7 @@ function FormWarehouse(){
                     error && !isValidPhoneNumber(phone) ? "form-container__input--error" : ""
                     } `}
                     />
-                    <FormError errorState={error} field={isValidPhoneNumber(phone)}>Phone Number is invalid</FormError>
+                    <FormError errorState={error} field={isValidPhoneNumber(phone)}>Phone number format: +1(xxx)xxx-xxxx</FormError>
 
                     <label className="form-container__label">Email</label>
                     <input
