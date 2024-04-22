@@ -55,7 +55,7 @@ export default function EditInventoryPage () {
 
     return (
         <div className="edit-inventory">
-            <InventoryFormHeader>Edit New Inventory Item</InventoryFormHeader>
+            <InventoryFormHeader>Edit Inventory Item</InventoryFormHeader>
             <InventoryForm
                 data={data}
                 button="Save"

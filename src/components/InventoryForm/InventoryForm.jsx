@@ -82,17 +82,13 @@ export default function EditInventoryForm ({ data, button, warehouseId }) {
     }
 
     // Validation functions
-    
-
     const isFormValid = () => {
         if ( !item || !description || !category || !inStock || !quantity || !warehouse ) {
-            console.log("info missing")
             setError(true);
             return false;
         }
 
         if (!quantityValid) {
-            console.log("quantity invalid")
             setError(true);
             return false;
         }

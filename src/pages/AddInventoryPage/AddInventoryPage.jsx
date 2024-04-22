@@ -1,4 +1,3 @@
-import './AddInventoryPage.scss';
 import InventoryFormHeader from '../../components/InventoryFormHeader/InventoryFormHeader';
 import InventoryForm from '../../components/InventoryForm/InventoryForm';
 

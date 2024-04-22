@@ -26,7 +26,6 @@ function WarehouseDetails({ details, warehouseId }) {
 
 	const handleOpenInventoryModal = (event) => {
 		setSelectedInventoryId(event.target.id);
-		console.log(selectedInventoryId);
 		setInventoryModalOpen(true);
 	};
 

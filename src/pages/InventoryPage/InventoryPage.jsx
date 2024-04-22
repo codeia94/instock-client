@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './InventoryPage.scss';
 import InventoryHeader from '../../components/InventoryHeader/InventoryHeader'; 
 import InventoryList from '../../components/InventoryList/InventoryList';
-import './InventoryPage.scss';
 import InventoryModal from '../../components/InventoryModal/InventoryModal';
 
 function InventoryPage() {
@@ -23,7 +23,6 @@ function InventoryPage() {
     const fetchInventories = async () => {
         try {
             const response = await axios.get(`http://localhost:8080/api/inventories/`);
-            // console.log(response.data);
             setInventory(response.data);
         } catch (error) {
             console.error('Error fetching inventory:', error);

@@ -1,5 +1,5 @@
 import './InventoryFormHeader.scss'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import back from '../../assets/icons/arrow_back-24px.svg'
 
 export default function InventoryFormHeader ({ children }) {

@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import './EditWarehouse.scss';
 import back from "../../assets/icons/arrow_back.svg";
-import info from "../../assets/icons/error-24px.svg";
-import { useParams, useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "../../components/ButtonSecondary/ButtonSecondary";
 import FormError from "../../components/FormError/FormError";
@@ -11,7 +10,6 @@ import FormError from "../../components/FormError/FormError";
 function EditWarehouse() {
     const navigate = useNavigate();
     const {warehouseId}  = useParams();
-    console.log(warehouseId);
     const id=warehouseId;
     const [warehouse, setWarehouse] = useState("");
     const [address, setAddress] = useState("");
@@ -28,9 +26,7 @@ function EditWarehouse() {
         
         const fetchWarehouse = async () => {
             try {
-                console.log({id});
                 const response = await axios.get(`http://localhost:8080/api/warehouses/${id}`);
-                console.log(response.data);
                 const data = response.data;
                 setWarehouse(data.warehouse_name);
                 setAddress(data.address);
@@ -67,9 +63,7 @@ function EditWarehouse() {
       const handleChangePhone = (event) => {
         const phoneNumber = event.target.value;
         setPhone(phoneNumber);
-        console.log("Phone number:", phoneNumber);
         const isValid = isValidPhoneNumber(phoneNumber);
-        console.log("Phone number validation result:", isValid);
         setError(!isValid);
       };
       const handleChangeEmail = (event) => {
@@ -87,10 +81,7 @@ function EditWarehouse() {
         setActiveInput(input);
      };
 
-      const isValidEmail = () =>{
-
-        //return emailValidator.validate(email);
-       
+      const isValidEmail = () =>{       
         if(typeof email !== 'string'){
             return false;
         }
@@ -103,7 +94,6 @@ function EditWarehouse() {
         if (atIndex === 0 || atIndex === email.length-1){
             return false;  //if email begins with @ or ends with @
         }
-          console.log("reached here");
         const afterAt= email.substring(atIndex+1);
         const dotIndex = afterAt.indexOf('.');
     
@@ -119,8 +109,6 @@ function EditWarehouse() {
     const isValidPhoneNumber = () => {
         // Regular expression to match a valid phone number
         const phoneRegex = /^\+\d{1,3}\s?\(\d{3}\)\s?\d{3}-\d{4}$/;
-        console.log("problem is phone");
-        console.log(phoneRegex.test(phone));
         return phoneRegex.test(phone);
     };
 
@@ -319,10 +307,6 @@ function EditWarehouse() {
         </form>
         </div>
         );
-        
-    
-
-
-
 }
+
 export default EditWarehouse;
