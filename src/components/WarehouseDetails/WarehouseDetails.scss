@@ -14,10 +14,12 @@ hr {
 .warehouse-details__container {
 	padding: 1rem;
 	box-sizing: border-box;
+	border-bottom: 1px solid $cloud;
 
 	@include tablet {
 		padding: 32px;
 		display: flex;
+		border-bottom: unset;
 	}
 }
 
@@ -138,5 +140,15 @@ hr {
 	}
 	.inventory-item__warehouse-container-warehouse {
 		display: none;
+	}
+
+	@include desktop {
+		.inventory-list-section__label-container-status {
+			width: 290px;
+	}
+		.inventory-list-section__label-container-quantity {
+			width: 148px;
+		}
+
 	}
 }

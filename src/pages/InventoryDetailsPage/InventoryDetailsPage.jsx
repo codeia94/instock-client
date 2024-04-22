@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Edit from '../../assets/icons/edit-24px.svg';
 import BackArrow from '../../assets/icons/arrow_back.svg';
+import ButtonPrimary from '../../components/ButtonPrimary/ButtonPrimary';
 
 function InventoryDetailsPage () {
 	const { itemId } = useParams();
@@ -39,10 +40,10 @@ function InventoryDetailsPage () {
                         onClick={() => navigate(-1)}/>
                     <h1 className='inventory-details-header__nav-current'>{inventoryDetails.item_name}</h1>
                 </div>
-                <Link to={`/inventory/${itemId}/edit`} className='inventory-details-header__btn-container'>
+                <Link to={`/inventory/${itemId}/edit`} className='inventory-details-header__btn-container' >
                     <button className='inventory-details-header__btn'>
-                        <div className='inventory-details-header__btn-text'>Edit</div>
-                        <img className='inventory-details-header__btn-edit' src={Edit} alt='Edit'/>
+											<img className='inventory-details-header__btn-edit' src={Edit} alt='Edit'/> 
+                      <div className='inventory-details-header__btn-text'>Edit </div>
                     </button>
                 </Link>
             </div>
