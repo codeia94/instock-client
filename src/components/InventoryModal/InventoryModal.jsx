@@ -6,21 +6,22 @@ import './InventoryModal.scss';
 export default function InventoryModal ({ isOpen, onClose,inventoryId, fetchData }) {
   const [inventoryName, setInventoryName] = useState("");
  
-
+console.log(inventoryId);
   useEffect(() => {
     const fetchInventoryName = async () => {
       try {
+        if (isOpen && inventoryId) {
         const response = await axios.get(`http://localhost:8080/api/inventories/${inventoryId}`);
         setInventoryName(response.data.item_name);
         console.log(inventoryName);
+        }
       } catch (error) {
         console.error('Error fetching inventory name:', error);
       }
     };
 
-    if (isOpen && inventoryId) {
       fetchInventoryName();
-    }
+    
   }, [isOpen, inventoryId]);
 
   const deleteInventory = async () => {        
@@ -35,6 +36,7 @@ export default function InventoryModal ({ isOpen, onClose,inventoryId, fetchData
   const handleDelete = () => {
     deleteInventory(inventoryId);
     onClose();
+    window.history.back();
   }
   
   return (
