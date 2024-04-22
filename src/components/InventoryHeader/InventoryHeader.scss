@@ -7,14 +7,14 @@
   flex-direction: column;
   justify-content: center;
   border-bottom: $cloud 1px solid;
-  padding:24px;
+  padding: 36px 24px 24px;
 
   @include tablet {
     border-bottom: none;
     flex-direction: row;
     justify-content: space-between;
     align-items: center; 
-    padding:48px 32px 32px 32px;
+    padding:32px 32px 24px;
   }
 
   &__title {
