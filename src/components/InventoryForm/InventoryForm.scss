@@ -105,10 +105,6 @@
         position: relative;
         @include p2-style;
 
-        @include tablet {
-            // height: 2.375rem;
-        }
-
         &::placeholder {
             @include p2-style;
             color: $slate;

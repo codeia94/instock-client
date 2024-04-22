@@ -1,10 +1,8 @@
 import React from 'react';
 import './InventoryItem.scss';
 import { Link, useNavigate } from 'react-router-dom';
-import { ReactComponent as DeleteIcon } from '../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../assets/icons/edit-24px.svg';
 import deleteicon from '../../assets/icons/delete_outline-24px.svg';
-import { ReactComponent as EditIcon } from '../../assets/icons/edit-24px.svg';
 import ChevronRightIcon from '../../assets/icons/chevron_right-24px.svg';
 
 function InventoryItem({inventory,handleOpenInventoryModal}) {

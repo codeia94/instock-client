@@ -1,14 +1,13 @@
-import { useState } from "react";
-import axios from "axios";
 import './AddWarehouse.scss';
-import back from "../../assets/icons/arrow_back.svg";
-import info from "../../assets/icons/error-24px.svg";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import back from "../../assets/icons/arrow_back.svg";
 import ButtonPrimary from "../../components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "../../components/ButtonSecondary/ButtonSecondary";
 import FormError from "../../components/FormError/FormError";
 
-function FormWarehouse(){
+function AddWarehouse(){
     const navigate = useNavigate();
     const [warehouse, setWarehouse] = useState("");
     const [address, setAddress] = useState("");
@@ -62,10 +61,7 @@ function FormWarehouse(){
         setActiveInput(input);
      };
 
-      const isValidEmail = () =>{
-
-        //return emailValidator.validate(email);
-       
+      const isValidEmail = () =>{       
         if(typeof email !== 'string'){
             return false;
         }
@@ -300,4 +296,4 @@ function FormWarehouse(){
     
 
 }
-export default FormWarehouse;
+export default AddWarehouse;

@@ -6,7 +6,6 @@
 .warehouseLabel {
 	display: none;
 	@include tablet {
-		// @include h4-style;
 		color: $slate;
 		display: flex;
 		background-color: $light-grey;
@@ -79,7 +78,6 @@
 				width: 220px;
 				flex-basis: unset;
 			}
-			
 		}
 	}
 

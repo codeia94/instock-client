@@ -1,6 +1,6 @@
-import './WarehouseModal.scss';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+import './WarehouseModal.scss';
 import Modal from '../Modal/Modal';
 
 export default function DeleteModal ({ isOpen, onClose, warehouseId, fetchData }) {
@@ -12,7 +12,6 @@ export default function DeleteModal ({ isOpen, onClose, warehouseId, fetchData }
       try {
         const response = await axios.get(`http://localhost:8080/api/warehouses/${warehouseId}`);
         setWarehouseName(response.data.warehouse_name);
-        console.log(warehouseName)
       } catch (error) {
         console.error('Error fetching warehouse name:', error)
       }
@@ -28,7 +27,7 @@ export default function DeleteModal ({ isOpen, onClose, warehouseId, fetchData }
       await axios.delete(`http://localhost:8080/api/warehouses/${id}`);
       fetchData();
     } catch (error) {
-      console.log('Could not delete warehouse', error)
+      console.error('Could not delete warehouse', error)
     }
   }
   
