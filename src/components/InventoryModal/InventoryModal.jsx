@@ -6,7 +6,6 @@ import './InventoryModal.scss';
 export default function InventoryModal ({ isOpen, onClose,inventoryId, fetchData }) {
   const [inventoryName, setInventoryName] = useState("");
  
-console.log(inventoryId);
   useEffect(() => {
     const fetchInventoryName = async () => {
       try {
