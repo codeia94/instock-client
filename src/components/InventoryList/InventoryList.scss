@@ -28,7 +28,38 @@
       padding:4px 32px;
       height:40px;
     }
+		@include desktop {
+			justify-content: unset;
+		}
   }
+
+	&__label {
+		@include tablet {
+			&-container {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+
+				@include desktop {
+					&-inventory {
+						width: 245.3px;
+					}
+					&-category {
+						width: 205px;
+					}
+					&-status {
+						width: 170px;
+					}
+					&-quantity {
+						width: 89px;
+					}
+					&-warehouse {
+						width: 180px;
+					}
+				}
+			}
+		}
+	}
 }
 
 .inventory-list-section__label{
@@ -42,58 +73,59 @@
     }
   }
 
-  &-container1{
-    display: flex;
-    flex-direction: row;
-    @include tablet {
-      flex:1;
-    }
-  }
+//   &-container1{
+//     display: flex;
+//     flex-direction: row;
+//     @include tablet {
+//       flex:1;
+//     }
+//   }
 
-  &-container2{
-    display: flex;
-    flex-direction: row;
-    @include tablet {
-      flex:1;
-    }
-  }
-}
+//   &-container2{
+//     display: flex;
+//     flex-direction: row;
+//     @include tablet {
+// 			display: none;
+//       flex:1;
+//     }
+//   }
+// }
 
-#name-label {
-  @include tablet {
-    flex:5.5;
-  }
-}
+// #name-label {
+//   @include tablet {
+//     flex:5.5;
+//   }
+// }
 
-#category-label {
-  @include tablet {
-    flex:4.5;
-  }
-}
+// #category-label {
+//   @include tablet {
+//     flex:4.5;
+//   }
+// }
 
-#status-label {
-  @include tablet {
-    flex:4;
-  }
-}
+// #status-label {
+//   @include tablet {
+//     flex:4;
+//   }
+// }
 
-#quantity-label {
-  @include tablet {
-    flex:2;
-  }
-}
+// #quantity-label {
+//   @include tablet {
+//     flex:2;
+//   }
+// }
 
-#warehouse-label {
-  @include tablet {
-    flex:4;
-  }
-}
+// #warehouse-label {
+//   @include tablet {
+//     flex:4;
+//   }
+// }
 
-#actions-label {
-  @include tablet {
-    width:64px;
-    align-content: right;
-  }
+// #actions-label {
+//   @include tablet {
+//     width:64px;
+//     align-content: right;
+//   }
 
 }
 

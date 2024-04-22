@@ -8,7 +8,7 @@ function InventoryList({ inventory,handleOpenInventoryModal }) {
     return (
         <section className="inventory-list-section">
             <div className="inventory-list-section__labels">
-                <div className="inventory-list-section__label-container1">
+                {/* <div className="inventory-list-section__label-container1">
                     <div id="name-label" className="inventory-list-section__label-container">
                         <span className="inventory-list-section__label">INVENTORY ITEM <img src={SortIcon} alt="Sort" className="inventory-list-section__label-img" /></span>
                     </div>
@@ -26,18 +26,29 @@ function InventoryList({ inventory,handleOpenInventoryModal }) {
                     <div id="warehouse-label" className="inventory-list-section__label-container">
                         <span className="inventory-list-section__label">WAREHOUSE <img src={SortIcon} alt="Sort" className="inventory-list-section__label-img" /></span>
                     </div>
+                </div> */}
+								<div className="inventory-list-section__label-container inventory-list-section__label-container-inventory">
+									<div className="inventory-list-section__label">INVENTORY ITEM</div> 
+									<img src={SortIcon} alt="Sort" className="inventory-list-section__label-img" />
+								</div>
+								<div className="inventory-list-section__label-container inventory-list-section__label-container-category">
+									<div className="inventory-list-section__label">CATEGORY</div> 
+									<img src={SortIcon} alt="Sort" className="inventory-list-section__label-img" />
+								</div>
+                <div className="inventory-list-section__label-container inventory-list-section__label-container-status">
+									<div className="inventory-list-section__label">STATUS</div>
+									<img src={SortIcon} alt="Sort" className="inventory-list-section__label-img"/>
                 </div>
-                <div className="inventory-list-section__label-container">
-                    <span className="inventory-list-section__label">STATUS <img src={SortIcon} alt="Sort" /></span>
-                </div>
-                <div className="inventory-list-section__label-container">
-                    <span className="inventory-list-section__label">QTY <img src={SortIcon} alt="Sort" /></span>
+                <div className="inventory-list-section__label-container inventory-list-section__label-container-quantity">
+									<div className="inventory-list-section__label">QTY</div>
+									<img src={SortIcon} alt="Sort" className="inventory-list-section__label-img"/>
                 </div>
                 <div className="inventory-list-section__label-container inventory-list-section__label-container-warehouse">
-                    <span className="inventory-list-section__label inventory-list-section__label-warehouse">WAREHOUSE <img src={SortIcon} alt="Sort" /></span>
+									<div className="inventory-list-section__label inventory-list-section__label-warehouse">WAREHOUSE</div>
+									<img src={SortIcon} alt="Sort" className="inventory-list-section__label-img"/>
                 </div>
                 <div className="inventory-list-section__label-container">
-                    <span className="inventory-list-section__label">ACTIONS</span>
+									<div className="inventory-list-section__label">ACTIONS</div>
                 </div>
             </div>
             <ul className="inventory-list">
