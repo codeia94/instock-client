@@ -42,27 +42,44 @@
 			flex-direction: row;
 		}
 
-		@include desktop{
-			&__warehouse {
-				@include desktop {
-					width: 200px;
-				}
+		
+		&__warehouse {
+			@include tablet {
+				flex-basis: 10%;
 			}
-			&__address {
-				@include desktop {
-					width: 300px;
-				}
+
+			@include desktop {
+				width: 200px;
+				flex-basis: unset;
 			}
-			&__contact {
-				@include desktop {
-					width: 180px;
-				}
+		}
+		&__address {
+			@include tablet {
+				flex-basis: 20%;
 			}
-			&__info {
-				@include desktop {
-					width: 220px;
-				}
+			@include desktop {
+				width: 300px;
+				flex-basis: unset;
 			}
+		}
+		&__contact {
+			@include tablet {
+				flex-basis: 18%;
+			}
+			@include desktop {
+				width: 180px;
+				flex-basis: unset;
+			}
+		}
+		&__info {
+			@include tablet {
+				flex-basis: 25%;
+			}
+			@include desktop {
+				width: 220px;
+				flex-basis: unset;
+			}
+			
 		}
 	}
 

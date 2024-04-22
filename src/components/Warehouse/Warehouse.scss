@@ -15,13 +15,6 @@
 		padding: 32px;
 		flex-direction: row;
 		align-items: center;
-		// flex: 1;
-		// &:nth-child(1) {
-		// 	flex: 4;
-		// }
-		// &:nth-child(2) {
-		// 	flex: 1;
-		// }
 	}
 	@include desktop {
 		&:hover {
@@ -40,6 +33,8 @@
 		@include tablet {
 			flex: 20;
 			gap: 0;
+			justify-content: unset;
+			width: 100%;
 		}
 		@include desktop {
 			flex: unset;
@@ -50,6 +45,7 @@
 	}
 
 	&-btm {
+		display: flex;
 		@include tablet {
 			flex: 1;
 			display: flex;
@@ -59,7 +55,6 @@
 		@include desktop {
 			flex: unset;
 			width: unset;
-
 		}
 	}
 
@@ -71,9 +66,7 @@
 			display: flex;
 			flex-direction: row;
 			align-items: center;
-			flex: auto;
-			max-width: 300px;
-			justify-content: space-between;
+			flex: unset;
 		}
 		@include desktop {
 			max-width: unset;
@@ -82,26 +75,48 @@
 		}
 
 		&__one {
-			width: 500px;
+			@include tablet {
+				flex-basis: 45%;
+			}
+			@include desktop {
+				width: 500px;
+				flex-basis: unset
+			}
+			
+		}
+
+		&__two {
+			@include tablet {
+				flex-basis: 55%;
+			}
+			@include desktop {
+				flex-basis: unset;
+			}
 		}
 
 	}
-
-
 
 	&-label {
 		@include h4-style;
 		color: $slate;
 		font-weight: 600;
+		margin: 0;
+		padding-bottom: 4px;
 		@include tablet {
 			display: none;
+			padding: 0;
 		}
 	}
 
 	&-location {
-
+		padding-bottom: 1rem;
+		@include tablet {
+			flex-basis: 35%;
+			padding: 0;
+		}
 		@include desktop{
 			width: 200px;
+			flex-basis: unset;
 		}
 
 		&__item {
@@ -122,8 +137,10 @@
 		@include tablet {
 			display: flex;
 			flex-wrap: wrap;
+			margin-right: 1rem;
 		}
 		&__item {
+			margin: 0;
 			@include h3-style;
 			color: $instock-black;
 			@include tablet {
@@ -132,12 +149,16 @@
 	}
 
 	&-contact {
+		padding-bottom: 1rem;
 		@include tablet {
 			display: flex;
+			padding: 0;
 			flex-direction: row;
+			flex-basis: 43%;
 		}
 		@include desktop {
 			width: 180px;
+			flex-basis: unset
 		}
 
 		&__item {
@@ -152,11 +173,10 @@
 		&__item {
 			@include h3-style;
 			color: $instock-black;
-			margin-bottom: 0;
+			margin: 0;
 			&-email {
 				margin-top: 0;
 			}
-
 			@include desktop {
 				margin: 0;
 			}
@@ -164,7 +184,7 @@
 	}
 	&-actions {
 		display: flex;
-		justify-content: space-between;
+		width: 100%;
 
 		@include desktop {
 			gap: 1rem;
@@ -178,6 +198,15 @@
 			border: none;
 			padding: 0;
 			cursor: pointer;
+			}
 		}
+}
+
+.warehouse-buttons__flex {
+	flex: 1;
+	margin-top: 1rem;
+
+	@include tablet {
+		margin: unset;
 	}
 }
