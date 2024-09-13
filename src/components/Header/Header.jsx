@@ -15,7 +15,7 @@ export default function Header() {
     return (
         <header className='header'>
             <div className='header__content'>
-                <Link to='/warehouses'>
+                <Link to='warehouses'>
                     <InStockLogo className='header__logo'/>
                 </Link>
                 <div className='header__tabs'>
