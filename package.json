@@ -1,5 +1,5 @@
 {
-  "name": "instock-g7",
+  "name": "instock-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -44,5 +44,5 @@
   "devDependencies": {
     "gh-pages": "^6.1.1"
   },
-	"homepage": "https://codeia94.github.io/warehouses/"
+	"homepage": "https://codeia94.github.io/instock-client/"
 }
