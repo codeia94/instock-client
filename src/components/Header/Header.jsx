@@ -20,11 +20,11 @@ export default function Header() {
                 </Link>
                 <div className='header__tabs'>
                     <Link
-                        to='/warehouses'
+                        to='warehouses'
                         className={url === '/warehouses' ? 'header__button header__button--active' : 'header__button'}
                         >Warehouses</Link>
                     <Link
-                        to='/inventory'
+                        to='inventory'
                         className={url === '/inventory' ? 'header__button header__button--active' : 'header__button'}
                     >Inventory</Link>
                 </div>
