@@ -22,7 +22,7 @@ export default function Header() {
                     <Link
                         to='warehouses'
                         className={url === '/warehouses' ? 'header__button header__button--active' : 'header__button'}
-                        >Warehouses</Link>
+                        >Whouses</Link>
                     <Link
                         to='inventory'
                         className={url === '/inventory' ? 'header__button header__button--active' : 'header__button'}
